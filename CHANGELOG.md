@@ -202,3 +202,22 @@
   - Experiment output includes CI integration examples for GitHub Actions and GitLab CI in markdown report
   - Paginated API fetch for real data; realistic mock data (14 issues across 3 iOS apps) when OX_API_KEY not configured
   - Supports app filtering via OX_APP_NAME env var or CLI arg, severity filter via OX_SEVERITY
+
+## E19: Diff Report
+
+- **2026-02-22T15:30:00Z** — E19: Diff Report (scripts/diff-report.js)
+  - Compares two scan snapshots to identify new issues, resolved issues, severity changes, and per-app risk shifts
+  - Three operational modes: `snapshot` (save current scan state), `diff` (compare two snapshots), and `demo` (built-in mock data)
+  - Snapshot management: save named snapshots to experiments/snapshots/, list available snapshots with metadata, load by name or file path
+  - Diff engine computes: new issues, resolved issues, severity changes (upgraded/downgraded), severity distribution shift, per-app risk delta
+  - Risk-weighted impact calculation: severity-weighted scores for new vs resolved issues yield net risk change
+  - Per-app change tracking: issue count delta, risk score delta, new/resolved/changed counts, improvement status (improved/worsened/stable)
+  - ASCII severity delta chart with before/after bar comparison per severity level
+  - Breakdowns of new issues by source type and category to identify emerging vulnerability patterns
+  - Resolved issues section with risk weight removed calculation
+  - Severity change table showing direction (upgraded/downgraded), before/after severity, and affected app
+  - Insights & recommendations engine: flags growing backlogs, new critical issues, upgraded severities, worsened apps, and improvement momentum
+  - Compatible with CI export JSON format (schema 1.0.0) — can diff files from `ci-export.js` via OX_BEFORE/OX_AFTER env vars
+  - Outputs JSON (full diff data + timestamps) and markdown report to experiments/diff-report-{date}/
+  - Supports app filtering via OX_APP_NAME env var
+  - Realistic mock data: 12-issue "before" and 11-issue "after" snapshots across 3 iOS apps with 2 new, 3 resolved, 4 severity changes

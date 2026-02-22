@@ -1,0 +1,188 @@
+{
+  "generated": "2026-02-22T15:26:02.492Z",
+  "source": "mock",
+  "timestamps": {
+    "before": "2026-02-01T10:00:00Z",
+    "after": "2026-02-22T10:00:00Z"
+  },
+  "summary": {
+    "before_total": 12,
+    "after_total": 11,
+    "total_delta": -1,
+    "new_issues": 2,
+    "resolved_issues": 3,
+    "severity_changes": 4,
+    "unchanged": 5,
+    "net_risk_change": -5
+  },
+  "severity_shift": {
+    "Critical": {
+      "before": 3,
+      "after": 2,
+      "delta": -1
+    },
+    "High": {
+      "before": 4,
+      "after": 3,
+      "delta": -1
+    },
+    "Medium": {
+      "before": 3,
+      "after": 3,
+      "delta": 0
+    },
+    "Low": {
+      "before": 2,
+      "after": 2,
+      "delta": 0
+    },
+    "Info": {
+      "before": 0,
+      "after": 1,
+      "delta": 1
+    }
+  },
+  "new_issues": [
+    {
+      "id": "ISS-016",
+      "title": "Weak TLS 1.0 Still Enabled in URLSession",
+      "severity": "Critical",
+      "original_severity": "Critical",
+      "source_type": "SAST",
+      "category": "Mobile Security",
+      "app": "MyBankingApp-iOS",
+      "created": "2026-02-20T08:00:00Z"
+    },
+    {
+      "id": "ISS-017",
+      "title": "Insecure Biometric Auth Fallback",
+      "severity": "Low",
+      "original_severity": "Low",
+      "source_type": "SAST",
+      "category": "Mobile Security",
+      "app": "ShopEasy-iOS",
+      "created": "2026-02-18T11:00:00Z"
+    }
+  ],
+  "resolved_issues": [
+    {
+      "id": "ISS-002",
+      "title": "Prototype Pollution in lodash",
+      "severity": "Critical",
+      "original_severity": "Critical",
+      "source_type": "SCA",
+      "category": "Vulnerable Dependency",
+      "app": "MyBankingApp-iOS",
+      "created": "2025-11-20T08:00:00Z"
+    },
+    {
+      "id": "ISS-006",
+      "title": "Vulnerable OpenSSL in Alamofire",
+      "severity": "High",
+      "original_severity": "Critical",
+      "source_type": "SCA",
+      "category": "Vulnerable Dependency",
+      "app": "MyBankingApp-iOS",
+      "created": "2025-10-22T11:30:00Z"
+    },
+    {
+      "id": "ISS-015",
+      "title": "Cleartext HTTP traffic allowed in HealthKit sync",
+      "severity": "Low",
+      "original_severity": "Low",
+      "source_type": "SAST",
+      "category": "Mobile Security",
+      "app": "HealthTracker-iOS",
+      "created": "2025-12-10T09:00:00Z"
+    }
+  ],
+  "severity_changes": [
+    {
+      "id": "ISS-005",
+      "title": "SQL Injection in SQLite Query Builder",
+      "app": "HealthTracker-iOS",
+      "before_severity": "High",
+      "after_severity": "Critical",
+      "direction": "upgraded",
+      "source_type": "SAST",
+      "category": "Code Vulnerability"
+    },
+    {
+      "id": "ISS-001",
+      "title": "Remote Code Execution in libxml2",
+      "app": "MyBankingApp-iOS",
+      "before_severity": "Critical",
+      "after_severity": "High",
+      "direction": "downgraded",
+      "source_type": "SCA",
+      "category": "Vulnerable Dependency"
+    },
+    {
+      "id": "ISS-003",
+      "title": "Insecure Data Storage — Keychain Missing Accessibility",
+      "app": "HealthTracker-iOS",
+      "before_severity": "Critical",
+      "after_severity": "High",
+      "direction": "downgraded",
+      "source_type": "SAST",
+      "category": "Mobile Security"
+    },
+    {
+      "id": "ISS-012",
+      "title": "Information Disclosure via Error Messages",
+      "app": "MyBankingApp-iOS",
+      "before_severity": "Medium",
+      "after_severity": "Info",
+      "direction": "downgraded",
+      "source_type": "SAST",
+      "category": "Code Vulnerability"
+    }
+  ],
+  "app_changes": [
+    {
+      "name": "ShopEasy-iOS",
+      "before_issues": 3,
+      "after_issues": 4,
+      "issue_delta": 1,
+      "before_risk": 12,
+      "after_risk": 10,
+      "risk_delta": -2,
+      "new_count": 1,
+      "resolved_count": 0,
+      "severity_changes": 0,
+      "status": "improved"
+    },
+    {
+      "name": "HealthTracker-iOS",
+      "before_issues": 4,
+      "after_issues": 3,
+      "issue_delta": -1,
+      "before_risk": 22,
+      "after_risk": 17,
+      "risk_delta": -5,
+      "new_count": 0,
+      "resolved_count": 1,
+      "severity_changes": 2,
+      "status": "improved"
+    },
+    {
+      "name": "MyBankingApp-iOS",
+      "before_issues": 5,
+      "after_issues": 4,
+      "issue_delta": -1,
+      "before_risk": 55,
+      "after_risk": 27,
+      "risk_delta": -28,
+      "new_count": 1,
+      "resolved_count": 2,
+      "severity_changes": 2,
+      "status": "improved"
+    }
+  ],
+  "new_by_source": {
+    "SAST": 2
+  },
+  "new_by_category": {
+    "Mobile Security": 2
+  }
+}
