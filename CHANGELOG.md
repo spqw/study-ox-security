@@ -52,3 +52,19 @@
   - Supports app filtering via OX_APP_NAME env var or CLI arg
   - Paginated API fetch for real data; realistic iOS mock data (28 endpoints across 3 apps)
   - Mock data covers: banking APIs (transfers, card tokenization, account balance), health APIs (records, vitals, export), e-commerce APIs (checkout, payments, cart)
+
+## E10: Trend Analyzer
+
+- **2026-02-22T14:46:00Z** — E10: Trend Analyzer (scripts/trend-analyzer.js)
+  - Uses getIssuesTrendData to fetch daily vulnerability counts by severity over time
+  - ASCII trend charts: full-height area charts for total issues and per-severity (Critical, High)
+  - Sparkline summaries for quick visual trend indication per severity and per app
+  - 7-day moving average computation for smoothed trend analysis
+  - Automated trend detection: classifies each severity and app as improving/stable/worsening
+  - Notable event detection: identifies significant spikes and drops vs 7-day moving average (>20% deviation)
+  - Per-application trend breakdown with individual charts and severity tables
+  - Weekly summary table with avg/min/max issue counts and week-over-week direction
+  - Insights & recommendations engine: flags worsening apps, rising critical counts, frequent spikes
+  - Outputs JSON (full time series + analysis) and markdown report to experiments/trends-{date}/
+  - Supports app filtering via OX_APP_NAME env var or CLI arg, configurable period via OX_DAYS (default 90)
+  - Realistic iOS mock data: 3 apps with distinct trend profiles (improving bank app, ramping health app, steady e-commerce with dependency spike)
