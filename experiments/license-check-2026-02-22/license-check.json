@@ -1,0 +1,632 @@
+{
+  "timestamp": "2026-02-22T14:59:40.234Z",
+  "mockMode": true,
+  "filter": null,
+  "portfolio": {
+    "totalLibraries": 31,
+    "uniqueLicenses": [
+      "AGPL-3.0",
+      "Apache-2.0",
+      "BSD-2-Clause",
+      "BSD-3-Clause",
+      "GPL-3.0",
+      "ISC",
+      "LGPL-2.1",
+      "MIT",
+      "OpenSSL",
+      "UNKNOWN",
+      "Zlib"
+    ],
+    "categoryCounts": {
+      "permissive": 27,
+      "strong-copyleft": 2,
+      "weak-copyleft": 1,
+      "unknown": 1
+    },
+    "totalConflicts": 4,
+    "criticalConflicts": 1,
+    "highConflicts": 3,
+    "mediumConflicts": 0
+  },
+  "perApp": {
+    "MyBankingApp-iOS": {
+      "grade": "F",
+      "riskScore": 75,
+      "totalLibs": 10,
+      "categoryCounts": {
+        "permissive": 8,
+        "strong-copyleft": 1,
+        "weak-copyleft": 1
+      },
+      "conflictCount": 4,
+      "conflicts": [
+        {
+          "type": "copyleft-in-proprietary",
+          "severity": "critical",
+          "message": "AGPL-3.0 license on CryptoSwift — strong copyleft may require open-sourcing your app",
+          "detail": "GPL/AGPL are widely considered incompatible with Apple App Store distribution. The App Store's DRM and distribution terms conflict with GPL's freedom-to-redistribute requirement.",
+          "library": "CryptoSwift@1.7.2"
+        },
+        {
+          "type": "appstore-incompatible",
+          "severity": "critical",
+          "message": "AGPL-3.0 is likely incompatible with Apple App Store distribution",
+          "detail": "AGPL requires source distribution for network interaction. Combined with App Store incompatibility, this is a critical compliance risk.",
+          "library": "CryptoSwift@1.7.2"
+        },
+        {
+          "type": "weak-copyleft-review",
+          "severity": "medium",
+          "message": "LGPL-2.1 on FFmpeg-iOS — review required for iOS static linking compliance",
+          "detail": "iOS apps typically link libraries statically. LGPL requires allowing re-linking, which may need special build configuration.",
+          "library": "FFmpeg-iOS@4.4.3"
+        },
+        {
+          "type": "ox-license-flag",
+          "severity": "high",
+          "message": "Ox Security flagged license issue on FFmpeg-iOS@4.4.3 (LGPL-2.1)",
+          "detail": "Ox Security's compliance engine detected a license issue with this library.",
+          "library": "FFmpeg-iOS@4.4.3"
+        }
+      ]
+    },
+    "HealthTracker-iOS": {
+      "grade": "C",
+      "riskScore": 20,
+      "totalLibs": 9,
+      "categoryCounts": {
+        "permissive": 8,
+        "unknown": 1
+      },
+      "conflictCount": 2,
+      "conflicts": [
+        {
+          "type": "missing-license",
+          "severity": "medium",
+          "message": "No license declared for FMDB@2.7.5",
+          "detail": "Missing license means uncertain legal standing. The default copyright applies — you may not have rights to use this code.",
+          "library": "FMDB@2.7.5"
+        },
+        {
+          "type": "ox-license-flag",
+          "severity": "high",
+          "message": "Ox Security flagged license issue on FMDB@2.7.5 (unknown license)",
+          "detail": "Ox Security's compliance engine detected a license issue with this library.",
+          "library": "FMDB@2.7.5"
+        }
+      ]
+    },
+    "ShopEasy-iOS": {
+      "grade": "D",
+      "riskScore": 35,
+      "totalLibs": 12,
+      "categoryCounts": {
+        "permissive": 11,
+        "strong-copyleft": 1
+      },
+      "conflictCount": 1,
+      "conflicts": [
+        {
+          "type": "copyleft-in-proprietary",
+          "severity": "high",
+          "message": "GPL-3.0 license on iCarousel — strong copyleft may require open-sourcing your app",
+          "detail": "GPL/AGPL are widely considered incompatible with Apple App Store distribution. The App Store's DRM and distribution terms conflict with GPL's freedom-to-redistribute requirement.",
+          "library": "iCarousel@1.8.3"
+        }
+      ]
+    }
+  },
+  "libraries": [
+    {
+      "name": "Alamofire",
+      "version": "5.6.4",
+      "app": "MyBankingApp-iOS",
+      "level": "Direct",
+      "source": "Swift Package Manager",
+      "licenseDeclared": "MIT",
+      "licenseCategory": "permissive",
+      "licenseSpdx": "MIT",
+      "licenseRisk": "none",
+      "oxLicenseIssue": false,
+      "conflicts": [],
+      "hasConflict": false,
+      "maxConflictSeverity": null
+    },
+    {
+      "name": "Ono",
+      "version": "2.5.0",
+      "app": "MyBankingApp-iOS",
+      "level": "Direct",
+      "source": "CocoaPods",
+      "licenseDeclared": "MIT",
+      "licenseCategory": "permissive",
+      "licenseSpdx": "MIT",
+      "licenseRisk": "none",
+      "oxLicenseIssue": false,
+      "conflicts": [],
+      "hasConflict": false,
+      "maxConflictSeverity": null
+    },
+    {
+      "name": "KeychainAccess",
+      "version": "4.2.2",
+      "app": "MyBankingApp-iOS",
+      "level": "Direct",
+      "source": "Swift Package Manager",
+      "licenseDeclared": "MIT",
+      "licenseCategory": "permissive",
+      "licenseSpdx": "MIT",
+      "licenseRisk": "none",
+      "oxLicenseIssue": false,
+      "conflicts": [],
+      "hasConflict": false,
+      "maxConflictSeverity": null
+    },
+    {
+      "name": "CryptoSwift",
+      "version": "1.7.2",
+      "app": "MyBankingApp-iOS",
+      "level": "Direct",
+      "source": "Swift Package Manager",
+      "licenseDeclared": "AGPL-3.0",
+      "licenseCategory": "strong-copyleft",
+      "licenseSpdx": "AGPL-3.0",
+      "licenseRisk": "critical",
+      "oxLicenseIssue": true,
+      "conflicts": [
+        {
+          "type": "copyleft-in-proprietary",
+          "severity": "critical",
+          "message": "AGPL-3.0 license on CryptoSwift — strong copyleft may require open-sourcing your app",
+          "detail": "GPL/AGPL are widely considered incompatible with Apple App Store distribution. The App Store's DRM and distribution terms conflict with GPL's freedom-to-redistribute requirement."
+        },
+        {
+          "type": "appstore-incompatible",
+          "severity": "critical",
+          "message": "AGPL-3.0 is likely incompatible with Apple App Store distribution",
+          "detail": "AGPL requires source distribution for network interaction. Combined with App Store incompatibility, this is a critical compliance risk."
+        }
+      ],
+      "hasConflict": true,
+      "maxConflictSeverity": "critical"
+    },
+    {
+      "name": "lodash",
+      "version": "4.17.19",
+      "app": "MyBankingApp-iOS",
+      "level": "Direct",
+      "source": "npm",
+      "licenseDeclared": "MIT",
+      "licenseCategory": "permissive",
+      "licenseSpdx": "MIT",
+      "licenseRisk": "none",
+      "oxLicenseIssue": false,
+      "conflicts": [],
+      "hasConflict": false,
+      "maxConflictSeverity": null
+    },
+    {
+      "name": "SwiftLint",
+      "version": "0.54.0",
+      "app": "MyBankingApp-iOS",
+      "level": "Direct",
+      "source": "Swift Package Manager",
+      "licenseDeclared": "MIT",
+      "licenseCategory": "permissive",
+      "licenseSpdx": "MIT",
+      "licenseRisk": "none",
+      "oxLicenseIssue": false,
+      "conflicts": [],
+      "hasConflict": false,
+      "maxConflictSeverity": null
+    },
+    {
+      "name": "libxml2",
+      "version": "2.11.6",
+      "app": "MyBankingApp-iOS",
+      "level": "Transitive",
+      "source": "CocoaPods",
+      "licenseDeclared": "MIT",
+      "licenseCategory": "permissive",
+      "licenseSpdx": "MIT",
+      "licenseRisk": "none",
+      "oxLicenseIssue": false,
+      "conflicts": [],
+      "hasConflict": false,
+      "maxConflictSeverity": null
+    },
+    {
+      "name": "OpenSSL",
+      "version": "1.1.1w",
+      "app": "MyBankingApp-iOS",
+      "level": "Transitive",
+      "source": "CocoaPods",
+      "licenseDeclared": "OpenSSL/SSLeay",
+      "licenseCategory": "permissive",
+      "licenseSpdx": "OpenSSL",
+      "licenseRisk": "none",
+      "oxLicenseIssue": false,
+      "conflicts": [],
+      "hasConflict": false,
+      "maxConflictSeverity": null
+    },
+    {
+      "name": "BoringSSL-GRPC",
+      "version": "0.0.27",
+      "app": "MyBankingApp-iOS",
+      "level": "Transitive",
+      "source": "CocoaPods",
+      "licenseDeclared": "ISC",
+      "licenseCategory": "permissive",
+      "licenseSpdx": "ISC",
+      "licenseRisk": "none",
+      "oxLicenseIssue": false,
+      "conflicts": [],
+      "hasConflict": false,
+      "maxConflictSeverity": null
+    },
+    {
+      "name": "FFmpeg-iOS",
+      "version": "4.4.3",
+      "app": "MyBankingApp-iOS",
+      "level": "Direct",
+      "source": "CocoaPods",
+      "licenseDeclared": "LGPL-2.1",
+      "licenseCategory": "weak-copyleft",
+      "licenseSpdx": "LGPL-2.1",
+      "licenseRisk": "medium",
+      "oxLicenseIssue": true,
+      "conflicts": [
+        {
+          "type": "weak-copyleft-review",
+          "severity": "medium",
+          "message": "LGPL-2.1 on FFmpeg-iOS — review required for iOS static linking compliance",
+          "detail": "iOS apps typically link libraries statically. LGPL requires allowing re-linking, which may need special build configuration."
+        },
+        {
+          "type": "ox-license-flag",
+          "severity": "high",
+          "message": "Ox Security flagged license issue on FFmpeg-iOS@4.4.3 (LGPL-2.1)",
+          "detail": "Ox Security's compliance engine detected a license issue with this library."
+        }
+      ],
+      "hasConflict": true,
+      "maxConflictSeverity": "high"
+    },
+    {
+      "name": "SQLite.swift",
+      "version": "0.14.1",
+      "app": "HealthTracker-iOS",
+      "level": "Direct",
+      "source": "Swift Package Manager",
+      "licenseDeclared": "MIT",
+      "licenseCategory": "permissive",
+      "licenseSpdx": "MIT",
+      "licenseRisk": "none",
+      "oxLicenseIssue": false,
+      "conflicts": [],
+      "hasConflict": false,
+      "maxConflictSeverity": null
+    },
+    {
+      "name": "Charts",
+      "version": "5.0.0",
+      "app": "HealthTracker-iOS",
+      "level": "Direct",
+      "source": "Swift Package Manager",
+      "licenseDeclared": "Apache-2.0",
+      "licenseCategory": "permissive",
+      "licenseSpdx": "Apache-2.0",
+      "licenseRisk": "none",
+      "oxLicenseIssue": false,
+      "conflicts": [],
+      "hasConflict": false,
+      "maxConflictSeverity": null
+    },
+    {
+      "name": "Realm",
+      "version": "10.44.0",
+      "app": "HealthTracker-iOS",
+      "level": "Direct",
+      "source": "CocoaPods",
+      "licenseDeclared": "Apache-2.0",
+      "licenseCategory": "permissive",
+      "licenseSpdx": "Apache-2.0",
+      "licenseRisk": "none",
+      "oxLicenseIssue": false,
+      "conflicts": [],
+      "hasConflict": false,
+      "maxConflictSeverity": null
+    },
+    {
+      "name": "SnapKit",
+      "version": "5.6.0",
+      "app": "HealthTracker-iOS",
+      "level": "Direct",
+      "source": "Swift Package Manager",
+      "licenseDeclared": "MIT",
+      "licenseCategory": "permissive",
+      "licenseSpdx": "MIT",
+      "licenseRisk": "none",
+      "oxLicenseIssue": false,
+      "conflicts": [],
+      "hasConflict": false,
+      "maxConflictSeverity": null
+    },
+    {
+      "name": "libexpat",
+      "version": "2.5.0",
+      "app": "HealthTracker-iOS",
+      "level": "Transitive",
+      "source": "CocoaPods",
+      "licenseDeclared": "MIT",
+      "licenseCategory": "permissive",
+      "licenseSpdx": "MIT",
+      "licenseRisk": "none",
+      "oxLicenseIssue": false,
+      "conflicts": [],
+      "hasConflict": false,
+      "maxConflictSeverity": null
+    },
+    {
+      "name": "RealmCore",
+      "version": "13.26.0",
+      "app": "HealthTracker-iOS",
+      "level": "Transitive",
+      "source": "CocoaPods",
+      "licenseDeclared": "Apache-2.0",
+      "licenseCategory": "permissive",
+      "licenseSpdx": "Apache-2.0",
+      "licenseRisk": "none",
+      "oxLicenseIssue": false,
+      "conflicts": [],
+      "hasConflict": false,
+      "maxConflictSeverity": null
+    },
+    {
+      "name": "libuv",
+      "version": "1.44.2",
+      "app": "HealthTracker-iOS",
+      "level": "Transitive",
+      "source": "CocoaPods",
+      "licenseDeclared": "MIT",
+      "licenseCategory": "permissive",
+      "licenseSpdx": "MIT",
+      "licenseRisk": "none",
+      "oxLicenseIssue": false,
+      "conflicts": [],
+      "hasConflict": false,
+      "maxConflictSeverity": null
+    },
+    {
+      "name": "FMDB",
+      "version": "2.7.5",
+      "app": "HealthTracker-iOS",
+      "level": "Direct",
+      "source": "CocoaPods",
+      "licenseDeclared": "",
+      "licenseCategory": "unknown",
+      "licenseSpdx": "UNKNOWN",
+      "licenseRisk": "medium",
+      "oxLicenseIssue": true,
+      "conflicts": [
+        {
+          "type": "missing-license",
+          "severity": "medium",
+          "message": "No license declared for FMDB@2.7.5",
+          "detail": "Missing license means uncertain legal standing. The default copyright applies — you may not have rights to use this code."
+        },
+        {
+          "type": "ox-license-flag",
+          "severity": "high",
+          "message": "Ox Security flagged license issue on FMDB@2.7.5 (unknown license)",
+          "detail": "Ox Security's compliance engine detected a license issue with this library."
+        }
+      ],
+      "hasConflict": true,
+      "maxConflictSeverity": "high"
+    },
+    {
+      "name": "OpenCV",
+      "version": "4.8.0",
+      "app": "HealthTracker-iOS",
+      "level": "Direct",
+      "source": "CocoaPods",
+      "licenseDeclared": "BSD-3-Clause",
+      "licenseCategory": "permissive",
+      "licenseSpdx": "BSD-3-Clause",
+      "licenseRisk": "none",
+      "oxLicenseIssue": false,
+      "conflicts": [],
+      "hasConflict": false,
+      "maxConflictSeverity": null
+    },
+    {
+      "name": "react-native",
+      "version": "0.71.8",
+      "app": "ShopEasy-iOS",
+      "level": "Direct",
+      "source": "npm",
+      "licenseDeclared": "MIT",
+      "licenseCategory": "permissive",
+      "licenseSpdx": "MIT",
+      "licenseRisk": "none",
+      "oxLicenseIssue": false,
+      "conflicts": [],
+      "hasConflict": false,
+      "maxConflictSeverity": null
+    },
+    {
+      "name": "react",
+      "version": "18.2.0",
+      "app": "ShopEasy-iOS",
+      "level": "Direct",
+      "source": "npm",
+      "licenseDeclared": "MIT",
+      "licenseCategory": "permissive",
+      "licenseSpdx": "MIT",
+      "licenseRisk": "none",
+      "oxLicenseIssue": false,
+      "conflicts": [],
+      "hasConflict": false,
+      "maxConflictSeverity": null
+    },
+    {
+      "name": "@react-navigation/native",
+      "version": "6.1.9",
+      "app": "ShopEasy-iOS",
+      "level": "Direct",
+      "source": "npm",
+      "licenseDeclared": "MIT",
+      "licenseCategory": "permissive",
+      "licenseSpdx": "MIT",
+      "licenseRisk": "none",
+      "oxLicenseIssue": false,
+      "conflicts": [],
+      "hasConflict": false,
+      "maxConflictSeverity": null
+    },
+    {
+      "name": "stripe-react-native",
+      "version": "0.35.0",
+      "app": "ShopEasy-iOS",
+      "level": "Direct",
+      "source": "npm",
+      "licenseDeclared": "MIT",
+      "licenseCategory": "permissive",
+      "licenseSpdx": "MIT",
+      "licenseRisk": "none",
+      "oxLicenseIssue": false,
+      "conflicts": [],
+      "hasConflict": false,
+      "maxConflictSeverity": null
+    },
+    {
+      "name": "moment",
+      "version": "2.29.4",
+      "app": "ShopEasy-iOS",
+      "level": "Direct",
+      "source": "npm",
+      "licenseDeclared": "MIT",
+      "licenseCategory": "permissive",
+      "licenseSpdx": "MIT",
+      "licenseRisk": "none",
+      "oxLicenseIssue": false,
+      "conflicts": [],
+      "hasConflict": false,
+      "maxConflictSeverity": null
+    },
+    {
+      "name": "react-native-firebase",
+      "version": "18.6.0",
+      "app": "ShopEasy-iOS",
+      "level": "Direct",
+      "source": "npm",
+      "licenseDeclared": "Apache-2.0",
+      "licenseCategory": "permissive",
+      "licenseSpdx": "Apache-2.0",
+      "licenseRisk": "none",
+      "oxLicenseIssue": false,
+      "conflicts": [],
+      "hasConflict": false,
+      "maxConflictSeverity": null
+    },
+    {
+      "name": "hermes-engine",
+      "version": "0.71.14",
+      "app": "ShopEasy-iOS",
+      "level": "Transitive",
+      "source": "npm",
+      "licenseDeclared": "MIT",
+      "licenseCategory": "permissive",
+      "licenseSpdx": "MIT",
+      "licenseRisk": "none",
+      "oxLicenseIssue": false,
+      "conflicts": [],
+      "hasConflict": false,
+      "maxConflictSeverity": null
+    },
+    {
+      "name": "jsc-android",
+      "version": "250231.0.0",
+      "app": "ShopEasy-iOS",
+      "level": "Transitive",
+      "source": "npm",
+      "licenseDeclared": "BSD-2-Clause",
+      "licenseCategory": "permissive",
+      "licenseSpdx": "BSD-2-Clause",
+      "licenseRisk": "none",
+      "oxLicenseIssue": false,
+      "conflicts": [],
+      "hasConflict": false,
+      "maxConflictSeverity": null
+    },
+    {
+      "name": "nanopb",
+      "version": "2.30909.0",
+      "app": "ShopEasy-iOS",
+      "level": "Transitive",
+      "source": "CocoaPods",
+      "licenseDeclared": "Zlib",
+      "licenseCategory": "permissive",
+      "licenseSpdx": "Zlib",
+      "licenseRisk": "none",
+      "oxLicenseIssue": false,
+      "conflicts": [],
+      "hasConflict": false,
+      "maxConflictSeverity": null
+    },
+    {
+      "name": "GoogleUtilities",
+      "version": "7.12.0",
+      "app": "ShopEasy-iOS",
+      "level": "Transitive",
+      "source": "CocoaPods",
+      "licenseDeclared": "Apache-2.0",
+      "licenseCategory": "permissive",
+      "licenseSpdx": "Apache-2.0",
+      "licenseRisk": "none",
+      "oxLicenseIssue": false,
+      "conflicts": [],
+      "hasConflict": false,
+      "maxConflictSeverity": null
+    },
+    {
+      "name": "iCarousel",
+      "version": "1.8.3",
+      "app": "ShopEasy-iOS",
+      "level": "Direct",
+      "source": "CocoaPods",
+      "licenseDeclared": "GPL-3.0",
+      "licenseCategory": "strong-copyleft",
+      "licenseSpdx": "GPL-3.0",
+      "licenseRisk": "high",
+      "oxLicenseIssue": true,
+      "conflicts": [
+        {
+          "type": "copyleft-in-proprietary",
+          "severity": "high",
+          "message": "GPL-3.0 license on iCarousel — strong copyleft may require open-sourcing your app",
+          "detail": "GPL/AGPL are widely considered incompatible with Apple App Store distribution. The App Store's DRM and distribution terms conflict with GPL's freedom-to-redistribute requirement."
+        }
+      ],
+      "hasConflict": true,
+      "maxConflictSeverity": "high"
+    },
+    {
+      "name": "analytics-swift",
+      "version": "1.5.3",
+      "app": "ShopEasy-iOS",
+      "level": "Direct",
+      "source": "Swift Package Manager",
+      "licenseDeclared": "MIT",
+      "licenseCategory": "permissive",
+      "licenseSpdx": "MIT",
+      "licenseRisk": "none",
+      "oxLicenseIssue": false,
+      "conflicts": [],
+      "hasConflict": false,
+      "maxConflictSeverity": null
+    }
+  ]
+}

@@ -102,3 +102,18 @@
   - Outputs JSON (full classification data + categories) and markdown report to experiments/ios-filter-{date}/
   - Supports app filtering via OX_APP_NAME env var or CLI arg
   - Realistic mock data: 14 issues (12 iOS, 2 non-iOS) across 4 apps + 31 SBOM libraries with varied sources
+
+## E13: License Compliance Check
+
+- **2026-02-22T14:59:00Z** — E13: License Compliance Check (scripts/license-check.js)
+  - Classifies every SBOM library license into 6 categories: permissive, public-domain, weak-copyleft, strong-copyleft, proprietary, unknown
+  - 14 license pattern rules covering MIT, BSD, Apache, ISC, GPL, LGPL, AGPL, SSPL, MPL, EPL, CDDL, Zlib, OpenSSL, and more — ordered for correct LGPL-before-GPL matching
+  - Conflict detection engine identifies: strong-copyleft in proprietary/App Store apps, AGPL/SSPL with broadest copyleft scope, weak-copyleft static linking risks on iOS, missing/unknown licenses, Ox-flagged license issues
+  - iOS App Store compliance analysis: GPL/AGPL incompatibility with App Store DRM terms, LGPL static linking requirements, SSPL warnings
+  - Per-app compliance grading (A-F) with composite risk scores based on copyleft count, unknown licenses, conflict severity
+  - Portfolio-level overview: license distribution chart, unique license inventory, conflict summary by severity
+  - Per-library inventory table sorted by risk, showing license category, SPDX identifier, conflict status, and Ox flag
+  - Recommendations engine: prioritized advice for strong-copyleft replacement, missing license resolution, weak-copyleft review, CI pipeline license allowlists
+  - Outputs JSON (full compliance data + per-app grades) and markdown report to experiments/license-check-{date}/
+  - Supports app filtering via OX_APP_NAME env var or CLI arg
+  - Realistic mock data: 31 libraries across 3 iOS apps with mixed licenses (MIT, Apache, AGPL, GPL, LGPL, BSD, Zlib, OpenSSL, missing)
