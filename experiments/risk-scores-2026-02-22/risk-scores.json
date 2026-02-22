@@ -1,0 +1,453 @@
+{
+  "timestamp": "2026-02-22T14:50:27.322Z",
+  "methodology": {
+    "severityWeights": {
+      "critical": 10,
+      "high": 5,
+      "medium": 2,
+      "low": 0.5,
+      "info": 0
+    },
+    "dimensionWeights": {
+      "issueRisk": 0.35,
+      "sbomHealth": 0.25,
+      "transitiveRisk": 0.15,
+      "maintenanceDebt": 0.15,
+      "oxRiskScore": 0.1
+    },
+    "gradeThresholds": [
+      {
+        "max": 20,
+        "grade": "A",
+        "label": "Excellent"
+      },
+      {
+        "max": 40,
+        "grade": "B",
+        "label": "Good"
+      },
+      {
+        "max": 60,
+        "grade": "C",
+        "label": "Moderate"
+      },
+      {
+        "max": 80,
+        "grade": "D",
+        "label": "Poor"
+      },
+      {
+        "max": 100,
+        "grade": "F",
+        "label": "Critical"
+      }
+    ]
+  },
+  "results": [
+    {
+      "appName": "MyBankingApp-iOS",
+      "appId": "app-1",
+      "type": "Mobile",
+      "businessPriority": "Critical",
+      "owners": [
+        "Alice Chen"
+      ],
+      "tags": [
+        "ios",
+        "fintech"
+      ],
+      "issuesBySeverity": {
+        "critical": 3,
+        "high": 8,
+        "medium": 14,
+        "low": 25,
+        "info": 5
+      },
+      "dimensions": {
+        "issueRisk": 100,
+        "sbomHealth": 100,
+        "transitiveRisk": 46,
+        "maintenanceDebt": 33,
+        "oxRiskScore": 72
+      },
+      "composite": 79,
+      "grade": "D",
+      "gradeLabel": "Poor",
+      "sbomStats": {
+        "totalLibs": 10,
+        "directLibs": 6,
+        "transitiveLibs": 4,
+        "vulnLibs": 6,
+        "deprecatedLibs": 0,
+        "unmaintainedLibs": 1,
+        "licenseIssueLibs": 0
+      },
+      "topRiskyLibs": [
+        {
+          "libraryName": "libxml2",
+          "libraryVersion": "2.11.6",
+          "appName": "MyBankingApp-iOS",
+          "dependencyLevel": "Transitive",
+          "vulnerabilityCounts": {
+            "critical": 1,
+            "high": 1,
+            "medium": 0,
+            "low": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskWeight": 15
+        },
+        {
+          "libraryName": "Alamofire",
+          "libraryVersion": "5.6.4",
+          "appName": "MyBankingApp-iOS",
+          "dependencyLevel": "Direct",
+          "vulnerabilityCounts": {
+            "critical": 0,
+            "high": 2,
+            "medium": 1,
+            "low": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskWeight": 12
+        },
+        {
+          "libraryName": "lodash",
+          "libraryVersion": "4.17.19",
+          "appName": "MyBankingApp-iOS",
+          "dependencyLevel": "Direct",
+          "vulnerabilityCounts": {
+            "critical": 1,
+            "high": 0,
+            "medium": 1,
+            "low": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskWeight": 12
+        },
+        {
+          "libraryName": "OpenSSL",
+          "libraryVersion": "1.1.1w",
+          "appName": "MyBankingApp-iOS",
+          "dependencyLevel": "Transitive",
+          "vulnerabilityCounts": {
+            "critical": 0,
+            "high": 1,
+            "medium": 1,
+            "low": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskWeight": 7
+        },
+        {
+          "libraryName": "CryptoSwift",
+          "libraryVersion": "1.7.2",
+          "appName": "MyBankingApp-iOS",
+          "dependencyLevel": "Direct",
+          "vulnerabilityCounts": {
+            "critical": 0,
+            "high": 0,
+            "medium": 1,
+            "low": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskWeight": 2
+        }
+      ]
+    },
+    {
+      "appName": "ShopEasy-iOS",
+      "appId": "app-3",
+      "type": "Mobile",
+      "businessPriority": "Medium",
+      "owners": [
+        "Carol Li"
+      ],
+      "tags": [
+        "ios",
+        "ecommerce"
+      ],
+      "issuesBySeverity": {
+        "critical": 2,
+        "high": 6,
+        "medium": 11,
+        "low": 20,
+        "info": 8
+      },
+      "dimensions": {
+        "issueRisk": 82,
+        "sbomHealth": 92,
+        "transitiveRisk": 51,
+        "maintenanceDebt": 64,
+        "oxRiskScore": 68
+      },
+      "composite": 76,
+      "grade": "D",
+      "gradeLabel": "Poor",
+      "sbomStats": {
+        "totalLibs": 13,
+        "directLibs": 7,
+        "transitiveLibs": 6,
+        "vulnLibs": 6,
+        "deprecatedLibs": 1,
+        "unmaintainedLibs": 1,
+        "licenseIssueLibs": 0
+      },
+      "topRiskyLibs": [
+        {
+          "libraryName": "react-native",
+          "libraryVersion": "0.71.8",
+          "appName": "ShopEasy-iOS",
+          "dependencyLevel": "Direct",
+          "vulnerabilityCounts": {
+            "critical": 1,
+            "high": 2,
+            "medium": 0,
+            "low": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskWeight": 20
+        },
+        {
+          "libraryName": "hermes-engine",
+          "libraryVersion": "0.71.14",
+          "appName": "ShopEasy-iOS",
+          "dependencyLevel": "Transitive",
+          "vulnerabilityCounts": {
+            "critical": 1,
+            "high": 1,
+            "medium": 0,
+            "low": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskWeight": 15
+        },
+        {
+          "libraryName": "jsc-android",
+          "libraryVersion": "250231.0.0",
+          "appName": "ShopEasy-iOS",
+          "dependencyLevel": "Transitive",
+          "vulnerabilityCounts": {
+            "critical": 0,
+            "high": 1,
+            "medium": 0,
+            "low": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": true,
+          "licenseIssue": false,
+          "riskWeight": 5
+        },
+        {
+          "libraryName": "stripe-react-native",
+          "libraryVersion": "0.35.0",
+          "appName": "ShopEasy-iOS",
+          "dependencyLevel": "Direct",
+          "vulnerabilityCounts": {
+            "critical": 0,
+            "high": 0,
+            "medium": 1,
+            "low": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskWeight": 2
+        },
+        {
+          "libraryName": "metro",
+          "libraryVersion": "0.76.8",
+          "appName": "ShopEasy-iOS",
+          "dependencyLevel": "Transitive",
+          "vulnerabilityCounts": {
+            "critical": 0,
+            "high": 0,
+            "medium": 1,
+            "low": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskWeight": 2
+        }
+      ]
+    },
+    {
+      "appName": "HealthTracker-iOS",
+      "appId": "app-2",
+      "type": "Mobile",
+      "businessPriority": "High",
+      "owners": [
+        "Bob Park"
+      ],
+      "tags": [
+        "ios",
+        "healthcare"
+      ],
+      "issuesBySeverity": {
+        "critical": 1,
+        "high": 4,
+        "medium": 9,
+        "low": 18,
+        "info": 3
+      },
+      "dimensions": {
+        "issueRisk": 57,
+        "sbomHealth": 89,
+        "transitiveRisk": 83,
+        "maintenanceDebt": 0,
+        "oxRiskScore": 55
+      },
+      "composite": 60,
+      "grade": "C",
+      "gradeLabel": "Moderate",
+      "sbomStats": {
+        "totalLibs": 9,
+        "directLibs": 5,
+        "transitiveLibs": 4,
+        "vulnLibs": 4,
+        "deprecatedLibs": 0,
+        "unmaintainedLibs": 0,
+        "licenseIssueLibs": 0
+      },
+      "topRiskyLibs": [
+        {
+          "libraryName": "libexpat",
+          "libraryVersion": "2.5.0",
+          "appName": "HealthTracker-iOS",
+          "dependencyLevel": "Transitive",
+          "vulnerabilityCounts": {
+            "critical": 0,
+            "high": 1,
+            "medium": 0,
+            "low": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskWeight": 5
+        },
+        {
+          "libraryName": "RealmCore",
+          "libraryVersion": "13.26.0",
+          "appName": "HealthTracker-iOS",
+          "dependencyLevel": "Transitive",
+          "vulnerabilityCounts": {
+            "critical": 0,
+            "high": 0,
+            "medium": 1,
+            "low": 1
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskWeight": 2.5
+        },
+        {
+          "libraryName": "Realm",
+          "libraryVersion": "10.44.0",
+          "appName": "HealthTracker-iOS",
+          "dependencyLevel": "Direct",
+          "vulnerabilityCounts": {
+            "critical": 0,
+            "high": 0,
+            "medium": 1,
+            "low": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskWeight": 2
+        },
+        {
+          "libraryName": "libuv",
+          "libraryVersion": "1.44.2",
+          "appName": "HealthTracker-iOS",
+          "dependencyLevel": "Transitive",
+          "vulnerabilityCounts": {
+            "critical": 0,
+            "high": 0,
+            "medium": 1,
+            "low": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskWeight": 2
+        }
+      ]
+    }
+  ],
+  "recommendations": [
+    {
+      "app": "MyBankingApp-iOS",
+      "priority": "Critical",
+      "text": "**MyBankingApp-iOS**: Very high issue burden (score 100/100). Focus on resolving critical and high severity issues first."
+    },
+    {
+      "app": "ShopEasy-iOS",
+      "priority": "Critical",
+      "text": "**ShopEasy-iOS**: Very high issue burden (score 82/100). Focus on resolving critical and high severity issues first."
+    },
+    {
+      "app": "MyBankingApp-iOS",
+      "priority": "High",
+      "text": "**MyBankingApp-iOS**: 6/10 libraries have known vulnerabilities (score 100/100). Run dependency updates."
+    },
+    {
+      "app": "MyBankingApp-iOS",
+      "priority": "High",
+      "text": "**MyBankingApp-iOS**: Highest-risk library is libxml2@2.11.6 (risk weight 15). Check for available updates."
+    },
+    {
+      "app": "ShopEasy-iOS",
+      "priority": "High",
+      "text": "**ShopEasy-iOS**: 6/13 libraries have known vulnerabilities (score 92/100). Run dependency updates."
+    },
+    {
+      "app": "ShopEasy-iOS",
+      "priority": "High",
+      "text": "**ShopEasy-iOS**: Highest-risk library is react-native@0.71.8 (risk weight 20). Check for available updates."
+    },
+    {
+      "app": "HealthTracker-iOS",
+      "priority": "High",
+      "text": "**HealthTracker-iOS**: 4/9 libraries have known vulnerabilities (score 89/100). Run dependency updates."
+    },
+    {
+      "app": "HealthTracker-iOS",
+      "priority": "High",
+      "text": "**HealthTracker-iOS**: Highest-risk library is libexpat@2.5.0 (risk weight 5). Check for available updates."
+    },
+    {
+      "app": "ShopEasy-iOS",
+      "priority": "Medium",
+      "text": "**ShopEasy-iOS**: Maintenance debt detected — 1 deprecated, 1 unmaintained libraries. Plan migration."
+    },
+    {
+      "app": "HealthTracker-iOS",
+      "priority": "Medium",
+      "text": "**HealthTracker-iOS**: 83% of vulnerability risk comes from transitive dependencies. Review direct deps that pull in risky transitive deps."
+    }
+  ],
+  "fleetSummary": {
+    "appsAnalyzed": 3,
+    "averageScore": 72,
+    "highestRisk": "MyBankingApp-iOS",
+    "lowestRisk": "HealthTracker-iOS"
+  }
+}

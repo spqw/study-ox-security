@@ -38,7 +38,7 @@ Your goal: build the most useful iOS vulnerability analysis toolkit using the Ox
 
 ### Tier 2 — Analysis & Intelligence
 
-- [ ] **E11: Risk Scoring Model** — Combine Ox risk score, issue severity counts, SBOM vulnerability data, and maintenance status into a composite risk score per app
+- [x] **E11: Risk Scoring Model** — Combine Ox risk score, issue severity counts, SBOM vulnerability data, and maintenance status into a composite risk score per app
 - [ ] **E12: iOS-Specific Filter** — Create a script that identifies iOS-specific vulnerabilities (CocoaPods, Swift Package Manager, Xcode-related issues)
 - [ ] **E13: License Compliance Check** — Scan SBOM for license conflicts (GPL in proprietary apps, etc.)
 - [ ] **E14: Deprecated Dependency Alert** — List all deprecated/unmaintained libraries sorted by risk

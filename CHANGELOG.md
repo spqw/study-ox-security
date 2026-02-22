@@ -68,3 +68,22 @@
   - Outputs JSON (full time series + analysis) and markdown report to experiments/trends-{date}/
   - Supports app filtering via OX_APP_NAME env var or CLI arg, configurable period via OX_DAYS (default 90)
   - Realistic iOS mock data: 3 apps with distinct trend profiles (improving bank app, ramping health app, steady e-commerce with dependency spike)
+
+## E11: Risk Scoring Model
+
+- **2026-02-22T14:50:00Z** — E11: Risk Scoring Model (scripts/risk-score.js)
+  - Combines 5 risk dimensions into a weighted composite score (0-100) per app with letter grades (A-F)
+  - Dimensions: Issue Risk (35%), SBOM Health (25%), Transitive Risk (15%), Maintenance Debt (15%), Ox Risk Score (10%)
+  - Issue Risk: weighted severity counts (Critical*10, High*5, Medium*2, Low*0.5), normalized to 0-100
+  - SBOM Health: vulnerable library density — ratio of libs with known vulns to total libs
+  - Transitive Risk: what percentage of total vulnerability weight comes from transitive (indirect) dependencies
+  - Maintenance Debt: deprecated, unmaintained, and license-issue library ratio
+  - Ox Risk Score: Ox Security's built-in risk assessment, passed through directly
+  - Risk comparison matrix with all apps side-by-side across all dimensions
+  - Per-app risk profiles with ASCII bar charts showing each dimension score
+  - Top risky libraries per app ranked by weighted vulnerability score
+  - Recommendations engine: generates prioritized (Critical/High/Medium) actionable advice per app
+  - Fleet summary: average score, highest/lowest risk apps across the portfolio
+  - Outputs JSON (full scoring data + methodology) and markdown report to experiments/risk-scores-{date}/
+  - Supports app filtering via OX_APP_NAME env var or CLI arg
+  - Realistic iOS mock data: 3 apps (banking/health/ecommerce) with distinct risk profiles and 32 libraries
