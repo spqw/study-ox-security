@@ -1,0 +1,20 @@
+{
+  "name": "study-ox-security",
+  "version": "1.0.0",
+  "description": "Ox Security API client for iOS app vulnerability analysis",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "apps": "node scripts/list-apps.js",
+    "issues": "node scripts/list-issues.js",
+    "sbom": "node scripts/list-sbom.js",
+    "scan": "node scripts/full-scan.js",
+    "report": "node scripts/generate-report.js",
+    "ralph": "bash ralph-loop.sh 1",
+    "test": "node --test lib/*.test.js"
+  },
+  "keywords": ["ox-security", "appsec", "ios", "vulnerability", "graphql"],
+  "author": "spqw",
+  "license": "MIT"
+}
