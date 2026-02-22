@@ -1,0 +1,62 @@
+{
+  "blocks": [
+    {
+      "type": "header",
+      "text": {
+        "type": "plain_text",
+        "text": "🚨 2 New Security Issues Detected",
+        "emoji": true
+      }
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "*🔴 Critical:* 1\n*🟠 High:* 1\n*Apps affected:* 1\n*Scan time:* 2026-02-22T15:29:19.368Z"
+      }
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "🟠 *Hardcoded API Key in AppDelegate.swift*\n_App:_ ShopEasy · _Source:_ SecretDetection · _Category:_ Secret Detection"
+      }
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "🔴 *React Native Hermes Engine RCE (CVE-2024-1234)*\n_App:_ ShopEasy · _Source:_ SCA · _Category:_ Vulnerability\n✅ Auto-fix available"
+      }
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "*Per-App Breakdown:*\n• *ShopEasy*: 🔴 1 Critical, 🟠 1 High"
+      }
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "✅ *2 issues resolved* since last scan"
+      }
+    },
+    {
+      "type": "context",
+      "elements": [
+        {
+          "type": "mrkdwn",
+          "text": "📊 Ox Security Scan · 2026-02-22T15:29:19.368Z"
+        }
+      ]
+    }
+  ]
+}

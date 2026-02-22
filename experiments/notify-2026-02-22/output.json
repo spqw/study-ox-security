@@ -1,0 +1,201 @@
+{
+  "timestamp": "2026-02-22T15:29:19.368Z",
+  "mode": "diff-notify",
+  "format": "both",
+  "severities": [
+    "Critical",
+    "High"
+  ],
+  "isDiff": true,
+  "issueCount": 2,
+  "resolvedCount": 2,
+  "appsAffected": [
+    "ShopEasy"
+  ],
+  "issues": [
+    {
+      "issueId": "ISS-007",
+      "title": "Hardcoded API Key in AppDelegate.swift",
+      "severity": "High",
+      "originalSeverity": "High",
+      "category": "Secret Detection",
+      "sourceType": "SecretDetection",
+      "associatedApplication": {
+        "appId": "app3",
+        "name": "ShopEasy"
+      },
+      "autoFix": null
+    },
+    {
+      "issueId": "ISS-008",
+      "title": "React Native Hermes Engine RCE (CVE-2024-1234)",
+      "severity": "Critical",
+      "originalSeverity": "Critical",
+      "category": "Vulnerability",
+      "sourceType": "SCA",
+      "associatedApplication": {
+        "appId": "app3",
+        "name": "ShopEasy"
+      },
+      "autoFix": {
+        "fixType": "VersionBump"
+      }
+    }
+  ],
+  "slackPayload": {
+    "blocks": [
+      {
+        "type": "header",
+        "text": {
+          "type": "plain_text",
+          "text": "🚨 2 New Security Issues Detected",
+          "emoji": true
+        }
+      },
+      {
+        "type": "section",
+        "text": {
+          "type": "mrkdwn",
+          "text": "*🔴 Critical:* 1\n*🟠 High:* 1\n*Apps affected:* 1\n*Scan time:* 2026-02-22T15:29:19.368Z"
+        }
+      },
+      {
+        "type": "divider"
+      },
+      {
+        "type": "section",
+        "text": {
+          "type": "mrkdwn",
+          "text": "🟠 *Hardcoded API Key in AppDelegate.swift*\n_App:_ ShopEasy · _Source:_ SecretDetection · _Category:_ Secret Detection"
+        }
+      },
+      {
+        "type": "section",
+        "text": {
+          "type": "mrkdwn",
+          "text": "🔴 *React Native Hermes Engine RCE (CVE-2024-1234)*\n_App:_ ShopEasy · _Source:_ SCA · _Category:_ Vulnerability\n✅ Auto-fix available"
+        }
+      },
+      {
+        "type": "divider"
+      },
+      {
+        "type": "section",
+        "text": {
+          "type": "mrkdwn",
+          "text": "*Per-App Breakdown:*\n• *ShopEasy*: 🔴 1 Critical, 🟠 1 High"
+        }
+      },
+      {
+        "type": "section",
+        "text": {
+          "type": "mrkdwn",
+          "text": "✅ *2 issues resolved* since last scan"
+        }
+      },
+      {
+        "type": "context",
+        "elements": [
+          {
+            "type": "mrkdwn",
+            "text": "📊 Ox Security Scan · 2026-02-22T15:29:19.368Z"
+          }
+        ]
+      }
+    ]
+  },
+  "teamsPayload": {
+    "type": "message",
+    "attachments": [
+      {
+        "contentType": "application/vnd.microsoft.card.adaptive",
+        "content": {
+          "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+          "type": "AdaptiveCard",
+          "version": "1.4",
+          "body": [
+            {
+              "type": "TextBlock",
+              "text": "🚨 2 New Security Issues Detected",
+              "weight": "bolder",
+              "size": "large",
+              "wrap": true,
+              "color": "attention"
+            },
+            {
+              "type": "FactSet",
+              "facts": [
+                {
+                  "title": "🔴 Critical",
+                  "value": "1"
+                },
+                {
+                  "title": "🟠 High",
+                  "value": "1"
+                },
+                {
+                  "title": "Apps Affected",
+                  "value": "1"
+                },
+                {
+                  "title": "Scan Time",
+                  "value": "2026-02-22T15:29:19.368Z"
+                }
+              ]
+            },
+            {
+              "type": "TextBlock",
+              "text": "---",
+              "separator": true
+            },
+            {
+              "type": "TextBlock",
+              "text": "Top Issues",
+              "weight": "bolder",
+              "size": "medium"
+            },
+            {
+              "type": "TextBlock",
+              "wrap": true,
+              "text": "🟠 **Hardcoded API Key in AppDelegate.swift**\n_ShopEasy_ · SecretDetection · Secret Detection"
+            },
+            {
+              "type": "TextBlock",
+              "wrap": true,
+              "text": "🔴 **React Native Hermes Engine RCE (CVE-2024-1234)** ✅\n_ShopEasy_ · SCA · Vulnerability"
+            },
+            {
+              "type": "TextBlock",
+              "text": "---",
+              "separator": true
+            },
+            {
+              "type": "TextBlock",
+              "text": "Per-App Breakdown",
+              "weight": "bolder",
+              "size": "medium"
+            },
+            {
+              "type": "TextBlock",
+              "text": "**ShopEasy**: 🔴 1 Critical, 🟠 1 High",
+              "wrap": true
+            },
+            {
+              "type": "TextBlock",
+              "text": "✅ **2 issues resolved** since last scan",
+              "color": "good",
+              "wrap": true
+            }
+          ],
+          "actions": [
+            {
+              "type": "Action.OpenUrl",
+              "title": "Open Ox Security Dashboard",
+              "url": "https://app.ox.security"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,114 @@
+[
+  {
+    "issueId": "ISS-001",
+    "title": "Remote Code Execution in libxml2 < 2.12.0",
+    "severity": "Critical",
+    "originalSeverity": "Critical",
+    "category": "Vulnerability",
+    "sourceType": "SCA",
+    "associatedApplication": {
+      "appId": "app1",
+      "name": "MyBankingApp"
+    },
+    "autoFix": {
+      "fixType": "VersionBump"
+    }
+  },
+  {
+    "issueId": "ISS-002",
+    "title": "Prototype Pollution in lodash < 4.17.21",
+    "severity": "Critical",
+    "originalSeverity": "High",
+    "category": "Vulnerability",
+    "sourceType": "SCA",
+    "associatedApplication": {
+      "appId": "app1",
+      "name": "MyBankingApp"
+    },
+    "autoFix": {
+      "fixType": "VersionBump"
+    }
+  },
+  {
+    "issueId": "ISS-003",
+    "title": "Missing Certificate Pinning in Network Layer",
+    "severity": "High",
+    "originalSeverity": "High",
+    "category": "Mobile Security",
+    "sourceType": "SAST",
+    "associatedApplication": {
+      "appId": "app1",
+      "name": "MyBankingApp"
+    },
+    "autoFix": null
+  },
+  {
+    "issueId": "ISS-004",
+    "title": "Insecure Keychain Access Configuration",
+    "severity": "High",
+    "originalSeverity": "Medium",
+    "category": "Mobile Security",
+    "sourceType": "SAST",
+    "associatedApplication": {
+      "appId": "app2",
+      "name": "HealthTracker"
+    },
+    "autoFix": null
+  },
+  {
+    "issueId": "ISS-005",
+    "title": "SQL Injection via unsanitized Core Data predicate",
+    "severity": "Critical",
+    "originalSeverity": "Critical",
+    "category": "OWASP",
+    "sourceType": "SAST",
+    "associatedApplication": {
+      "appId": "app2",
+      "name": "HealthTracker"
+    },
+    "autoFix": null
+  },
+  {
+    "issueId": "ISS-006",
+    "title": "OpenSSL 1.1.1 End-of-Life — Multiple CVEs",
+    "severity": "High",
+    "originalSeverity": "High",
+    "category": "Vulnerability",
+    "sourceType": "SCA",
+    "associatedApplication": {
+      "appId": "app3",
+      "name": "ShopEasy"
+    },
+    "autoFix": {
+      "fixType": "VersionBump"
+    }
+  },
+  {
+    "issueId": "ISS-007",
+    "title": "Hardcoded API Key in AppDelegate.swift",
+    "severity": "High",
+    "originalSeverity": "High",
+    "category": "Secret Detection",
+    "sourceType": "SecretDetection",
+    "associatedApplication": {
+      "appId": "app3",
+      "name": "ShopEasy"
+    },
+    "autoFix": null
+  },
+  {
+    "issueId": "ISS-008",
+    "title": "React Native Hermes Engine RCE (CVE-2024-1234)",
+    "severity": "Critical",
+    "originalSeverity": "Critical",
+    "category": "Vulnerability",
+    "sourceType": "SCA",
+    "associatedApplication": {
+      "appId": "app3",
+      "name": "ShopEasy"
+    },
+    "autoFix": {
+      "fixType": "VersionBump"
+    }
+  }
+]

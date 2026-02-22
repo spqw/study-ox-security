@@ -221,3 +221,20 @@
   - Outputs JSON (full diff data + timestamps) and markdown report to experiments/diff-report-{date}/
   - Supports app filtering via OX_APP_NAME env var
   - Realistic mock data: 12-issue "before" and 11-issue "after" snapshots across 3 iOS apps with 2 new, 3 resolved, 4 severity changes
+
+## E20: Notification Script
+
+- **2026-02-22T15:35:00Z** — E20: Notification Script (scripts/notify.js)
+  - Generates webhook-compatible payloads for Slack (Block Kit) and Microsoft Teams (Adaptive Cards) when critical/high issues appear
+  - Three operational modes: `generate` (build and save payloads), `send` (POST to webhook URLs), `diff-notify` (only alert on NEW issues vs saved snapshot)
+  - Slack payload: Block Kit format with header, severity summary, top 10 issues with emoji severity indicators, per-app breakdown, and contextual footer
+  - Teams payload: Adaptive Card v1.4 with FactSet summary, issue list, per-app breakdown, and "Open Dashboard" action button
+  - Diff-notify mode: compares current scan against a saved snapshot, identifies new issues and resolved issues, only notifies on changes
+  - Snapshot management: each run saves current issue state as snapshot.json for future diff-notify comparisons
+  - Per-app breakdown in all payloads showing Critical/High counts per application
+  - Auto-fix badges highlight immediately actionable issues in notifications
+  - Configurable: OX_SEVERITY (default: Critical,High), OX_FORMAT (slack/teams/both), OX_DRY_RUN, OX_SLACK_WEBHOOK, OX_TEAMS_WEBHOOK
+  - Detailed markdown report includes: summary table, per-app breakdown, full issue list, raw payload JSON, and integration guides for Slack, Teams, GitHub Actions CI
+  - Outputs slack-payload.json, teams-payload.json, snapshot.json, output.json, and report.md to experiments/notify-{date}/
+  - Supports app filtering via OX_APP_NAME env var or CLI arg
+  - Realistic mock data: 8 Critical/High issues across 3 iOS apps, with separate mock previous snapshot (8 issues, 2 overlap removals) for diff-notify testing

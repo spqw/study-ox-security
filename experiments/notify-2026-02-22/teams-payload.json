@@ -1,0 +1,94 @@
+{
+  "type": "message",
+  "attachments": [
+    {
+      "contentType": "application/vnd.microsoft.card.adaptive",
+      "content": {
+        "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+        "type": "AdaptiveCard",
+        "version": "1.4",
+        "body": [
+          {
+            "type": "TextBlock",
+            "text": "🚨 2 New Security Issues Detected",
+            "weight": "bolder",
+            "size": "large",
+            "wrap": true,
+            "color": "attention"
+          },
+          {
+            "type": "FactSet",
+            "facts": [
+              {
+                "title": "🔴 Critical",
+                "value": "1"
+              },
+              {
+                "title": "🟠 High",
+                "value": "1"
+              },
+              {
+                "title": "Apps Affected",
+                "value": "1"
+              },
+              {
+                "title": "Scan Time",
+                "value": "2026-02-22T15:29:19.368Z"
+              }
+            ]
+          },
+          {
+            "type": "TextBlock",
+            "text": "---",
+            "separator": true
+          },
+          {
+            "type": "TextBlock",
+            "text": "Top Issues",
+            "weight": "bolder",
+            "size": "medium"
+          },
+          {
+            "type": "TextBlock",
+            "wrap": true,
+            "text": "🟠 **Hardcoded API Key in AppDelegate.swift**\n_ShopEasy_ · SecretDetection · Secret Detection"
+          },
+          {
+            "type": "TextBlock",
+            "wrap": true,
+            "text": "🔴 **React Native Hermes Engine RCE (CVE-2024-1234)** ✅\n_ShopEasy_ · SCA · Vulnerability"
+          },
+          {
+            "type": "TextBlock",
+            "text": "---",
+            "separator": true
+          },
+          {
+            "type": "TextBlock",
+            "text": "Per-App Breakdown",
+            "weight": "bolder",
+            "size": "medium"
+          },
+          {
+            "type": "TextBlock",
+            "text": "**ShopEasy**: 🔴 1 Critical, 🟠 1 High",
+            "wrap": true
+          },
+          {
+            "type": "TextBlock",
+            "text": "✅ **2 issues resolved** since last scan",
+            "color": "good",
+            "wrap": true
+          }
+        ],
+        "actions": [
+          {
+            "type": "Action.OpenUrl",
+            "title": "Open Ox Security Dashboard",
+            "url": "https://app.ox.security"
+          }
+        ]
+      }
+    }
+  ]
+}
