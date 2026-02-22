@@ -149,3 +149,22 @@
   - Outputs JSON (full classification data + methodology) and markdown report to experiments/fix-priority-{date}/
   - Supports app filtering via OX_APP_NAME env var or CLI arg, severity filter via OX_SEVERITY
   - Realistic mock data: 14 issues across 3 iOS apps with varied fix availability (8 auto-fix, 1 minor, 1 major, 4 code change)
+
+## E16: Severity Drift Report
+
+- **2026-02-22T15:14:00Z** — E16: Severity Drift Report (scripts/severity-drift.js)
+  - Compares original scanner-reported severity vs Ox-prioritized severity for every issue
+  - Drift classification: upgraded (Ox raised severity), downgraded (Ox lowered), unchanged
+  - Drift magnitude distribution: counts how many severity levels each issue shifted (0-4)
+  - Severity drift matrix: cross-tabulation of original × Ox severity (visual heatmap-style table)
+  - Aggregate prioritization comparison using getIssuePrioritization API (original vs Ox totals per severity)
+  - Fetches severityChangedReason detail for all drifted issues: reason text, shortName, and changeCategory
+  - Reason category analysis: groups re-prioritization drivers (Reachability, Exploitability, Business Context, Environment, Attack Vector, Impact) with occurrence counts and direction
+  - Triage effort impact calculation: severity-weighted effort saved by downgrades vs effort added by upgrades, with net triage workload effect
+  - Per-app drift breakdown: drift rate, upgrade/downgrade counts, and effort saved per application
+  - Per-category and per-sourceType drift analysis: which issue types get re-prioritized most
+  - Detailed upgraded/downgraded issue listings with full reasons and context
+  - Recommendations engine: flags high-drift apps, reachability analysis value, triage efficiency gains
+  - Outputs JSON (full drift data + matrix + reasons) and markdown report to experiments/severity-drift-{date}/
+  - Supports app filtering via OX_APP_NAME env var or CLI arg
+  - Realistic mock data: 16 issues across 3 iOS apps with 9 drifted (3 upgraded, 6 downgraded), 15 severity change reasons across 6 categories
