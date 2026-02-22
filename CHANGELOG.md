@@ -22,3 +22,17 @@
   - Report sections: prioritization overview, enrichment summary, auto-fix opportunities, severity re-prioritizations, detailed per-issue analysis
   - Falls back to realistic iOS mock data (10 issues across 3 apps) when no API key configured
   - Mock data covers: RCE, prototype pollution, keychain security, cert pinning, SQLi, OpenSSL vulns, hardcoded secrets, ATS config, React Native CVEs
+
+## E08: Dependency Tree Mapper
+
+- **2026-02-22T14:38:00Z** — E08: Dependency Tree Mapper (scripts/dependency-tree.js)
+  - Maps SBOM dependency chains (direct → transitive) for all apps
+  - Computes per-library risk scores based on vulnerability counts, maintenance status, and deprecation
+  - Identifies transitive risk hotspots: transitive deps that introduce the most risk and which direct dep pulls them in
+  - Generates ASCII dependency trees showing direct → transitive relationships with risk annotations
+  - Per-app risk summaries with transitive risk percentage breakdown
+  - Outputs JSON (full analysis), markdown report (tables + trees + recommendations), and trees.txt (quick reference)
+  - Supports app filtering via OX_APP_NAME env var or CLI arg
+  - Paginated API fetch for real data; realistic iOS mock data for 3 apps (33 libs, CocoaPods/SPM/npm)
+  - Mock data includes known dependency edges (e.g., Ono→libxml2, react-native→hermes-engine, Alamofire→OpenSSL)
+  - Report includes: overview stats, app risk table, transitive hotspots, visual trees, per-app detail tables, key findings, and remediation recommendations

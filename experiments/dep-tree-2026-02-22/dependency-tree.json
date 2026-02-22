@@ -1,0 +1,1175 @@
+{
+  "meta": {
+    "timestamp": "2026-02-22T14:38:57.604Z",
+    "mockData": true,
+    "appFilter": null,
+    "totalLibraries": 33,
+    "appsAnalyzed": 3
+  },
+  "appSummaries": [
+    {
+      "appName": "ShopEasy-iOS",
+      "directCount": 7,
+      "transitiveCount": 7,
+      "totalCount": 14,
+      "directRisk": 25,
+      "transitiveRisk": 27.1,
+      "totalRisk": 52.1,
+      "transitiveRiskPct": 52,
+      "directVulns": 4,
+      "transitiveVulns": 5,
+      "totalVulns": 9,
+      "flaggedLibs": 2,
+      "riskiestDirect": {
+        "libraryName": "react-native",
+        "libraryVersion": "0.71.8",
+        "license": "MIT",
+        "appName": "ShopEasy-iOS",
+        "dependencyType": "Runtime",
+        "dependencyLevel": "Direct",
+        "source": "npm",
+        "vulnerabilityCounts": {
+          "critical": 1,
+          "high": 2,
+          "medium": 0,
+          "low": 0,
+          "info": 0
+        },
+        "notMaintained": false,
+        "isDeprecated": false,
+        "licenseIssue": false,
+        "riskScore": 20,
+        "totalVulns": 3
+      },
+      "riskiestTransitive": {
+        "libraryName": "hermes-engine",
+        "libraryVersion": "0.71.14",
+        "license": "MIT",
+        "appName": "ShopEasy-iOS",
+        "dependencyType": "Runtime",
+        "dependencyLevel": "Transitive",
+        "source": "npm",
+        "vulnerabilityCounts": {
+          "critical": 1,
+          "high": 1,
+          "medium": 0,
+          "low": 0,
+          "info": 0
+        },
+        "notMaintained": false,
+        "isDeprecated": false,
+        "licenseIssue": false,
+        "riskScore": 15,
+        "totalVulns": 2
+      }
+    },
+    {
+      "appName": "MyBankingApp-iOS",
+      "directCount": 6,
+      "transitiveCount": 4,
+      "totalCount": 10,
+      "directRisk": 29,
+      "transitiveRisk": 23,
+      "totalRisk": 52,
+      "transitiveRiskPct": 44,
+      "directVulns": 6,
+      "transitiveVulns": 5,
+      "totalVulns": 11,
+      "flaggedLibs": 1,
+      "riskiestDirect": {
+        "libraryName": "Alamofire",
+        "libraryVersion": "5.6.4",
+        "license": "MIT",
+        "appName": "MyBankingApp-iOS",
+        "dependencyType": "Runtime",
+        "dependencyLevel": "Direct",
+        "source": "Swift Package Manager",
+        "vulnerabilityCounts": {
+          "critical": 0,
+          "high": 2,
+          "medium": 1,
+          "low": 0,
+          "info": 0
+        },
+        "notMaintained": false,
+        "isDeprecated": false,
+        "licenseIssue": false,
+        "riskScore": 12,
+        "totalVulns": 3
+      },
+      "riskiestTransitive": {
+        "libraryName": "libxml2",
+        "libraryVersion": "2.11.6",
+        "license": "MIT",
+        "appName": "MyBankingApp-iOS",
+        "dependencyType": "Runtime",
+        "dependencyLevel": "Transitive",
+        "source": "CocoaPods",
+        "vulnerabilityCounts": {
+          "critical": 1,
+          "high": 1,
+          "medium": 0,
+          "low": 0,
+          "info": 0
+        },
+        "notMaintained": false,
+        "isDeprecated": false,
+        "licenseIssue": false,
+        "riskScore": 15,
+        "totalVulns": 2
+      }
+    },
+    {
+      "appName": "HealthTracker-iOS",
+      "directCount": 5,
+      "transitiveCount": 4,
+      "totalCount": 9,
+      "directRisk": 2,
+      "transitiveRisk": 10,
+      "totalRisk": 12,
+      "transitiveRiskPct": 83,
+      "directVulns": 1,
+      "transitiveVulns": 4,
+      "totalVulns": 5,
+      "flaggedLibs": 0,
+      "riskiestDirect": {
+        "libraryName": "Realm",
+        "libraryVersion": "10.44.0",
+        "license": "Apache-2.0",
+        "appName": "HealthTracker-iOS",
+        "dependencyType": "Runtime",
+        "dependencyLevel": "Direct",
+        "source": "CocoaPods",
+        "vulnerabilityCounts": {
+          "critical": 0,
+          "high": 0,
+          "medium": 1,
+          "low": 0,
+          "info": 0
+        },
+        "notMaintained": false,
+        "isDeprecated": false,
+        "licenseIssue": false,
+        "riskScore": 2,
+        "totalVulns": 1
+      },
+      "riskiestTransitive": {
+        "libraryName": "libexpat",
+        "libraryVersion": "2.5.0",
+        "license": "MIT",
+        "appName": "HealthTracker-iOS",
+        "dependencyType": "Runtime",
+        "dependencyLevel": "Transitive",
+        "source": "CocoaPods",
+        "vulnerabilityCounts": {
+          "critical": 0,
+          "high": 1,
+          "medium": 0,
+          "low": 0,
+          "info": 0
+        },
+        "notMaintained": false,
+        "isDeprecated": false,
+        "licenseIssue": false,
+        "riskScore": 5,
+        "totalVulns": 1
+      }
+    }
+  ],
+  "hotspots": [
+    {
+      "appName": "MyBankingApp-iOS",
+      "library": "libxml2@2.11.6",
+      "libraryName": "libxml2",
+      "riskScore": 15,
+      "totalVulns": 2,
+      "vulnerabilityCounts": {
+        "critical": 1,
+        "high": 1,
+        "medium": 0,
+        "low": 0,
+        "info": 0
+      },
+      "introducedBy": "Ono",
+      "reason": "Ono uses libxml2 for HTML/XML parsing",
+      "flags": [],
+      "source": "CocoaPods"
+    },
+    {
+      "appName": "ShopEasy-iOS",
+      "library": "hermes-engine@0.71.14",
+      "libraryName": "hermes-engine",
+      "riskScore": 15,
+      "totalVulns": 2,
+      "vulnerabilityCounts": {
+        "critical": 1,
+        "high": 1,
+        "medium": 0,
+        "low": 0,
+        "info": 0
+      },
+      "introducedBy": "react-native",
+      "reason": "React Native bundles Hermes JS engine",
+      "flags": [],
+      "source": "npm"
+    },
+    {
+      "appName": "ShopEasy-iOS",
+      "library": "jsc-android@250231.0.0",
+      "libraryName": "jsc-android",
+      "riskScore": 9,
+      "totalVulns": 1,
+      "vulnerabilityCounts": {
+        "critical": 0,
+        "high": 1,
+        "medium": 0,
+        "low": 0,
+        "info": 0
+      },
+      "introducedBy": "react-native",
+      "reason": "Fallback JavaScriptCore engine",
+      "flags": [
+        "DEPRECATED"
+      ],
+      "source": "npm"
+    },
+    {
+      "appName": "MyBankingApp-iOS",
+      "library": "OpenSSL@1.1.1w",
+      "libraryName": "OpenSSL",
+      "riskScore": 7,
+      "totalVulns": 2,
+      "vulnerabilityCounts": {
+        "critical": 0,
+        "high": 1,
+        "medium": 1,
+        "low": 0,
+        "info": 0
+      },
+      "introducedBy": "Alamofire",
+      "reason": "Alamofire 5.6.x bundles OpenSSL for TLS",
+      "flags": [],
+      "source": "CocoaPods"
+    },
+    {
+      "appName": "HealthTracker-iOS",
+      "library": "libexpat@2.5.0",
+      "libraryName": "libexpat",
+      "riskScore": 5,
+      "totalVulns": 1,
+      "vulnerabilityCounts": {
+        "critical": 0,
+        "high": 1,
+        "medium": 0,
+        "low": 0,
+        "info": 0
+      },
+      "introducedBy": "Charts",
+      "reason": "Charts uses XML for config/data import",
+      "flags": [],
+      "source": "CocoaPods"
+    },
+    {
+      "appName": "HealthTracker-iOS",
+      "library": "RealmCore@13.26.0",
+      "libraryName": "RealmCore",
+      "riskScore": 3,
+      "totalVulns": 2,
+      "vulnerabilityCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 1,
+        "info": 0
+      },
+      "introducedBy": "Realm",
+      "reason": "Realm Swift wraps RealmCore C++ engine",
+      "flags": [],
+      "source": "CocoaPods"
+    },
+    {
+      "appName": "HealthTracker-iOS",
+      "library": "libuv@1.44.2",
+      "libraryName": "libuv",
+      "riskScore": 2,
+      "totalVulns": 1,
+      "vulnerabilityCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 0,
+        "info": 0
+      },
+      "introducedBy": "Realm",
+      "reason": "RealmCore uses libuv for async I/O",
+      "flags": [],
+      "source": "CocoaPods"
+    },
+    {
+      "appName": "ShopEasy-iOS",
+      "library": "metro@0.76.8",
+      "libraryName": "metro",
+      "riskScore": 2,
+      "totalVulns": 1,
+      "vulnerabilityCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 0,
+        "info": 0
+      },
+      "introducedBy": "react-native",
+      "reason": "Metro bundler for JS compilation",
+      "flags": [],
+      "source": "npm"
+    },
+    {
+      "appName": "MyBankingApp-iOS",
+      "library": "BoringSSL-GRPC@0.0.27",
+      "libraryName": "BoringSSL-GRPC",
+      "riskScore": 1,
+      "totalVulns": 1,
+      "vulnerabilityCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 1,
+        "info": 0
+      },
+      "introducedBy": "Alamofire",
+      "reason": "gRPC plugin uses BoringSSL",
+      "flags": [],
+      "source": "CocoaPods"
+    },
+    {
+      "appName": "ShopEasy-iOS",
+      "library": "follow-redirects@1.15.3",
+      "libraryName": "follow-redirects",
+      "riskScore": 1,
+      "totalVulns": 1,
+      "vulnerabilityCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 1,
+        "info": 0
+      },
+      "introducedBy": "axios",
+      "reason": "axios uses follow-redirects for HTTP",
+      "flags": [],
+      "source": "npm"
+    },
+    {
+      "appName": "ShopEasy-iOS",
+      "library": "abseil-cpp@1.20230802.0",
+      "libraryName": "abseil-cpp",
+      "riskScore": 0.1,
+      "totalVulns": 0,
+      "vulnerabilityCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "info": 1
+      },
+      "introducedBy": "react-native-firebase",
+      "reason": "Firebase depends on abseil C++ lib",
+      "flags": [],
+      "source": "CocoaPods"
+    }
+  ],
+  "trees": {
+    "MyBankingApp-iOS": {
+      "direct": [
+        {
+          "libraryName": "Alamofire",
+          "libraryVersion": "5.6.4",
+          "license": "MIT",
+          "appName": "MyBankingApp-iOS",
+          "dependencyType": "Runtime",
+          "dependencyLevel": "Direct",
+          "source": "Swift Package Manager",
+          "vulnerabilityCounts": {
+            "critical": 0,
+            "high": 2,
+            "medium": 1,
+            "low": 0,
+            "info": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskScore": 12,
+          "totalVulns": 3
+        },
+        {
+          "libraryName": "Ono",
+          "libraryVersion": "2.5.0",
+          "license": "MIT",
+          "appName": "MyBankingApp-iOS",
+          "dependencyType": "Runtime",
+          "dependencyLevel": "Direct",
+          "source": "CocoaPods",
+          "vulnerabilityCounts": {
+            "critical": 0,
+            "high": 0,
+            "medium": 0,
+            "low": 0,
+            "info": 0
+          },
+          "notMaintained": true,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskScore": 3,
+          "totalVulns": 0
+        },
+        {
+          "libraryName": "KeychainAccess",
+          "libraryVersion": "4.2.2",
+          "license": "MIT",
+          "appName": "MyBankingApp-iOS",
+          "dependencyType": "Runtime",
+          "dependencyLevel": "Direct",
+          "source": "CocoaPods",
+          "vulnerabilityCounts": {
+            "critical": 0,
+            "high": 0,
+            "medium": 0,
+            "low": 0,
+            "info": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskScore": 0,
+          "totalVulns": 0
+        },
+        {
+          "libraryName": "SwiftLint",
+          "libraryVersion": "0.54.0",
+          "license": "MIT",
+          "appName": "MyBankingApp-iOS",
+          "dependencyType": "Development",
+          "dependencyLevel": "Direct",
+          "source": "Swift Package Manager",
+          "vulnerabilityCounts": {
+            "critical": 0,
+            "high": 0,
+            "medium": 0,
+            "low": 0,
+            "info": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskScore": 0,
+          "totalVulns": 0
+        },
+        {
+          "libraryName": "CryptoSwift",
+          "libraryVersion": "1.7.2",
+          "license": "MIT",
+          "appName": "MyBankingApp-iOS",
+          "dependencyType": "Runtime",
+          "dependencyLevel": "Direct",
+          "source": "Swift Package Manager",
+          "vulnerabilityCounts": {
+            "critical": 0,
+            "high": 0,
+            "medium": 1,
+            "low": 0,
+            "info": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskScore": 2,
+          "totalVulns": 1
+        },
+        {
+          "libraryName": "lodash",
+          "libraryVersion": "4.17.19",
+          "license": "MIT",
+          "appName": "MyBankingApp-iOS",
+          "dependencyType": "Runtime",
+          "dependencyLevel": "Direct",
+          "source": "npm",
+          "vulnerabilityCounts": {
+            "critical": 1,
+            "high": 0,
+            "medium": 1,
+            "low": 0,
+            "info": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskScore": 12,
+          "totalVulns": 2
+        }
+      ],
+      "transitive": [
+        {
+          "libraryName": "libxml2",
+          "libraryVersion": "2.11.6",
+          "license": "MIT",
+          "appName": "MyBankingApp-iOS",
+          "dependencyType": "Runtime",
+          "dependencyLevel": "Transitive",
+          "source": "CocoaPods",
+          "vulnerabilityCounts": {
+            "critical": 1,
+            "high": 1,
+            "medium": 0,
+            "low": 0,
+            "info": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskScore": 15,
+          "totalVulns": 2
+        },
+        {
+          "libraryName": "OpenSSL",
+          "libraryVersion": "1.1.1w",
+          "license": "Apache-2.0",
+          "appName": "MyBankingApp-iOS",
+          "dependencyType": "Runtime",
+          "dependencyLevel": "Transitive",
+          "source": "CocoaPods",
+          "vulnerabilityCounts": {
+            "critical": 0,
+            "high": 1,
+            "medium": 1,
+            "low": 0,
+            "info": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskScore": 7,
+          "totalVulns": 2
+        },
+        {
+          "libraryName": "BoringSSL-GRPC",
+          "libraryVersion": "0.0.27",
+          "license": "ISC",
+          "appName": "MyBankingApp-iOS",
+          "dependencyType": "Runtime",
+          "dependencyLevel": "Transitive",
+          "source": "CocoaPods",
+          "vulnerabilityCounts": {
+            "critical": 0,
+            "high": 0,
+            "medium": 0,
+            "low": 1,
+            "info": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskScore": 1,
+          "totalVulns": 1
+        },
+        {
+          "libraryName": "CFNetwork",
+          "libraryVersion": "0.0.0",
+          "license": "Apple",
+          "appName": "MyBankingApp-iOS",
+          "dependencyType": "Runtime",
+          "dependencyLevel": "Transitive",
+          "source": "System",
+          "vulnerabilityCounts": {
+            "critical": 0,
+            "high": 0,
+            "medium": 0,
+            "low": 0,
+            "info": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskScore": 0,
+          "totalVulns": 0
+        }
+      ],
+      "edges": [
+        {
+          "from": "Ono",
+          "to": "libxml2",
+          "reason": "Ono uses libxml2 for HTML/XML parsing"
+        },
+        {
+          "from": "Alamofire",
+          "to": "OpenSSL",
+          "reason": "Alamofire 5.6.x bundles OpenSSL for TLS"
+        },
+        {
+          "from": "Alamofire",
+          "to": "CFNetwork",
+          "reason": "Alamofire wraps Apple CFNetwork"
+        },
+        {
+          "from": "Alamofire",
+          "to": "BoringSSL-GRPC",
+          "reason": "gRPC plugin uses BoringSSL"
+        }
+      ]
+    },
+    "HealthTracker-iOS": {
+      "direct": [
+        {
+          "libraryName": "SQLite.swift",
+          "libraryVersion": "0.14.1",
+          "license": "MIT",
+          "appName": "HealthTracker-iOS",
+          "dependencyType": "Runtime",
+          "dependencyLevel": "Direct",
+          "source": "CocoaPods",
+          "vulnerabilityCounts": {
+            "critical": 0,
+            "high": 0,
+            "medium": 0,
+            "low": 0,
+            "info": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskScore": 0,
+          "totalVulns": 0
+        },
+        {
+          "libraryName": "Charts",
+          "libraryVersion": "5.0.0",
+          "license": "Apache-2.0",
+          "appName": "HealthTracker-iOS",
+          "dependencyType": "Runtime",
+          "dependencyLevel": "Direct",
+          "source": "CocoaPods",
+          "vulnerabilityCounts": {
+            "critical": 0,
+            "high": 0,
+            "medium": 0,
+            "low": 0,
+            "info": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskScore": 0,
+          "totalVulns": 0
+        },
+        {
+          "libraryName": "Realm",
+          "libraryVersion": "10.44.0",
+          "license": "Apache-2.0",
+          "appName": "HealthTracker-iOS",
+          "dependencyType": "Runtime",
+          "dependencyLevel": "Direct",
+          "source": "CocoaPods",
+          "vulnerabilityCounts": {
+            "critical": 0,
+            "high": 0,
+            "medium": 1,
+            "low": 0,
+            "info": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskScore": 2,
+          "totalVulns": 1
+        },
+        {
+          "libraryName": "HealthKit",
+          "libraryVersion": "17.0",
+          "license": "Apple",
+          "appName": "HealthTracker-iOS",
+          "dependencyType": "Runtime",
+          "dependencyLevel": "Direct",
+          "source": "System",
+          "vulnerabilityCounts": {
+            "critical": 0,
+            "high": 0,
+            "medium": 0,
+            "low": 0,
+            "info": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskScore": 0,
+          "totalVulns": 0
+        },
+        {
+          "libraryName": "SnapKit",
+          "libraryVersion": "5.6.0",
+          "license": "MIT",
+          "appName": "HealthTracker-iOS",
+          "dependencyType": "Runtime",
+          "dependencyLevel": "Direct",
+          "source": "CocoaPods",
+          "vulnerabilityCounts": {
+            "critical": 0,
+            "high": 0,
+            "medium": 0,
+            "low": 0,
+            "info": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskScore": 0,
+          "totalVulns": 0
+        }
+      ],
+      "transitive": [
+        {
+          "libraryName": "libexpat",
+          "libraryVersion": "2.5.0",
+          "license": "MIT",
+          "appName": "HealthTracker-iOS",
+          "dependencyType": "Runtime",
+          "dependencyLevel": "Transitive",
+          "source": "CocoaPods",
+          "vulnerabilityCounts": {
+            "critical": 0,
+            "high": 1,
+            "medium": 0,
+            "low": 0,
+            "info": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskScore": 5,
+          "totalVulns": 1
+        },
+        {
+          "libraryName": "RealmCore",
+          "libraryVersion": "13.26.0",
+          "license": "Apache-2.0",
+          "appName": "HealthTracker-iOS",
+          "dependencyType": "Runtime",
+          "dependencyLevel": "Transitive",
+          "source": "CocoaPods",
+          "vulnerabilityCounts": {
+            "critical": 0,
+            "high": 0,
+            "medium": 1,
+            "low": 1,
+            "info": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskScore": 3,
+          "totalVulns": 2
+        },
+        {
+          "libraryName": "libuv",
+          "libraryVersion": "1.44.2",
+          "license": "MIT",
+          "appName": "HealthTracker-iOS",
+          "dependencyType": "Runtime",
+          "dependencyLevel": "Transitive",
+          "source": "CocoaPods",
+          "vulnerabilityCounts": {
+            "critical": 0,
+            "high": 0,
+            "medium": 1,
+            "low": 0,
+            "info": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskScore": 2,
+          "totalVulns": 1
+        },
+        {
+          "libraryName": "sqlite3",
+          "libraryVersion": "3.42.0",
+          "license": "Public Domain",
+          "appName": "HealthTracker-iOS",
+          "dependencyType": "Runtime",
+          "dependencyLevel": "Transitive",
+          "source": "System",
+          "vulnerabilityCounts": {
+            "critical": 0,
+            "high": 0,
+            "medium": 0,
+            "low": 0,
+            "info": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskScore": 0,
+          "totalVulns": 0
+        }
+      ],
+      "edges": [
+        {
+          "from": "SQLite.swift",
+          "to": "sqlite3",
+          "reason": "SQLite.swift wraps system sqlite3"
+        },
+        {
+          "from": "Realm",
+          "to": "RealmCore",
+          "reason": "Realm Swift wraps RealmCore C++ engine"
+        },
+        {
+          "from": "Realm",
+          "to": "libuv",
+          "reason": "RealmCore uses libuv for async I/O"
+        },
+        {
+          "from": "Charts",
+          "to": "libexpat",
+          "reason": "Charts uses XML for config/data import"
+        }
+      ]
+    },
+    "ShopEasy-iOS": {
+      "direct": [
+        {
+          "libraryName": "react-native",
+          "libraryVersion": "0.71.8",
+          "license": "MIT",
+          "appName": "ShopEasy-iOS",
+          "dependencyType": "Runtime",
+          "dependencyLevel": "Direct",
+          "source": "npm",
+          "vulnerabilityCounts": {
+            "critical": 1,
+            "high": 2,
+            "medium": 0,
+            "low": 0,
+            "info": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskScore": 20,
+          "totalVulns": 3
+        },
+        {
+          "libraryName": "react",
+          "libraryVersion": "18.2.0",
+          "license": "MIT",
+          "appName": "ShopEasy-iOS",
+          "dependencyType": "Runtime",
+          "dependencyLevel": "Direct",
+          "source": "npm",
+          "vulnerabilityCounts": {
+            "critical": 0,
+            "high": 0,
+            "medium": 0,
+            "low": 0,
+            "info": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskScore": 0,
+          "totalVulns": 0
+        },
+        {
+          "libraryName": "@react-navigation/native",
+          "libraryVersion": "6.1.9",
+          "license": "MIT",
+          "appName": "ShopEasy-iOS",
+          "dependencyType": "Runtime",
+          "dependencyLevel": "Direct",
+          "source": "npm",
+          "vulnerabilityCounts": {
+            "critical": 0,
+            "high": 0,
+            "medium": 0,
+            "low": 0,
+            "info": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskScore": 0,
+          "totalVulns": 0
+        },
+        {
+          "libraryName": "stripe-react-native",
+          "libraryVersion": "0.35.0",
+          "license": "MIT",
+          "appName": "ShopEasy-iOS",
+          "dependencyType": "Runtime",
+          "dependencyLevel": "Direct",
+          "source": "npm",
+          "vulnerabilityCounts": {
+            "critical": 0,
+            "high": 0,
+            "medium": 1,
+            "low": 0,
+            "info": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskScore": 2,
+          "totalVulns": 1
+        },
+        {
+          "libraryName": "axios",
+          "libraryVersion": "1.6.0",
+          "license": "MIT",
+          "appName": "ShopEasy-iOS",
+          "dependencyType": "Runtime",
+          "dependencyLevel": "Direct",
+          "source": "npm",
+          "vulnerabilityCounts": {
+            "critical": 0,
+            "high": 0,
+            "medium": 0,
+            "low": 0,
+            "info": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskScore": 0,
+          "totalVulns": 0
+        },
+        {
+          "libraryName": "moment",
+          "libraryVersion": "2.29.4",
+          "license": "MIT",
+          "appName": "ShopEasy-iOS",
+          "dependencyType": "Runtime",
+          "dependencyLevel": "Direct",
+          "source": "npm",
+          "vulnerabilityCounts": {
+            "critical": 0,
+            "high": 0,
+            "medium": 0,
+            "low": 0,
+            "info": 0
+          },
+          "notMaintained": true,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskScore": 3,
+          "totalVulns": 0
+        },
+        {
+          "libraryName": "react-native-firebase",
+          "libraryVersion": "18.6.0",
+          "license": "Apache-2.0",
+          "appName": "ShopEasy-iOS",
+          "dependencyType": "Runtime",
+          "dependencyLevel": "Direct",
+          "source": "npm",
+          "vulnerabilityCounts": {
+            "critical": 0,
+            "high": 0,
+            "medium": 0,
+            "low": 0,
+            "info": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskScore": 0,
+          "totalVulns": 0
+        }
+      ],
+      "transitive": [
+        {
+          "libraryName": "hermes-engine",
+          "libraryVersion": "0.71.14",
+          "license": "MIT",
+          "appName": "ShopEasy-iOS",
+          "dependencyType": "Runtime",
+          "dependencyLevel": "Transitive",
+          "source": "npm",
+          "vulnerabilityCounts": {
+            "critical": 1,
+            "high": 1,
+            "medium": 0,
+            "low": 0,
+            "info": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskScore": 15,
+          "totalVulns": 2
+        },
+        {
+          "libraryName": "jsc-android",
+          "libraryVersion": "250231.0.0",
+          "license": "BSD-2-Clause",
+          "appName": "ShopEasy-iOS",
+          "dependencyType": "Runtime",
+          "dependencyLevel": "Transitive",
+          "source": "npm",
+          "vulnerabilityCounts": {
+            "critical": 0,
+            "high": 1,
+            "medium": 0,
+            "low": 0,
+            "info": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": true,
+          "licenseIssue": false,
+          "riskScore": 9,
+          "totalVulns": 1
+        },
+        {
+          "libraryName": "metro",
+          "libraryVersion": "0.76.8",
+          "license": "MIT",
+          "appName": "ShopEasy-iOS",
+          "dependencyType": "Development",
+          "dependencyLevel": "Transitive",
+          "source": "npm",
+          "vulnerabilityCounts": {
+            "critical": 0,
+            "high": 0,
+            "medium": 1,
+            "low": 0,
+            "info": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskScore": 2,
+          "totalVulns": 1
+        },
+        {
+          "libraryName": "follow-redirects",
+          "libraryVersion": "1.15.3",
+          "license": "MIT",
+          "appName": "ShopEasy-iOS",
+          "dependencyType": "Runtime",
+          "dependencyLevel": "Transitive",
+          "source": "npm",
+          "vulnerabilityCounts": {
+            "critical": 0,
+            "high": 0,
+            "medium": 0,
+            "low": 1,
+            "info": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskScore": 1,
+          "totalVulns": 1
+        },
+        {
+          "libraryName": "nanopb",
+          "libraryVersion": "2.30909.0",
+          "license": "zlib",
+          "appName": "ShopEasy-iOS",
+          "dependencyType": "Runtime",
+          "dependencyLevel": "Transitive",
+          "source": "CocoaPods",
+          "vulnerabilityCounts": {
+            "critical": 0,
+            "high": 0,
+            "medium": 0,
+            "low": 0,
+            "info": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskScore": 0,
+          "totalVulns": 0
+        },
+        {
+          "libraryName": "GoogleUtilities",
+          "libraryVersion": "7.12.0",
+          "license": "Apache-2.0",
+          "appName": "ShopEasy-iOS",
+          "dependencyType": "Runtime",
+          "dependencyLevel": "Transitive",
+          "source": "CocoaPods",
+          "vulnerabilityCounts": {
+            "critical": 0,
+            "high": 0,
+            "medium": 0,
+            "low": 0,
+            "info": 0
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskScore": 0,
+          "totalVulns": 0
+        },
+        {
+          "libraryName": "abseil-cpp",
+          "libraryVersion": "1.20230802.0",
+          "license": "Apache-2.0",
+          "appName": "ShopEasy-iOS",
+          "dependencyType": "Runtime",
+          "dependencyLevel": "Transitive",
+          "source": "CocoaPods",
+          "vulnerabilityCounts": {
+            "critical": 0,
+            "high": 0,
+            "medium": 0,
+            "low": 0,
+            "info": 1
+          },
+          "notMaintained": false,
+          "isDeprecated": false,
+          "licenseIssue": false,
+          "riskScore": 0.1,
+          "totalVulns": 0
+        }
+      ],
+      "edges": [
+        {
+          "from": "react-native",
+          "to": "hermes-engine",
+          "reason": "React Native bundles Hermes JS engine"
+        },
+        {
+          "from": "react-native",
+          "to": "jsc-android",
+          "reason": "Fallback JavaScriptCore engine"
+        },
+        {
+          "from": "react-native",
+          "to": "metro",
+          "reason": "Metro bundler for JS compilation"
+        },
+        {
+          "from": "axios",
+          "to": "follow-redirects",
+          "reason": "axios uses follow-redirects for HTTP"
+        },
+        {
+          "from": "react-native-firebase",
+          "to": "nanopb",
+          "reason": "Firebase uses nanopb for protobuf"
+        },
+        {
+          "from": "react-native-firebase",
+          "to": "GoogleUtilities",
+          "reason": "Firebase shared utilities"
+        },
+        {
+          "from": "react-native-firebase",
+          "to": "abseil-cpp",
+          "reason": "Firebase depends on abseil C++ lib"
+        }
+      ]
+    }
+  }
+}

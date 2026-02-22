@@ -1,0 +1,38 @@
+MyBankingApp-iOS
+  |-- Alamofire@5.6.4 (Swift Package Manager) [RISK: 12]
+  |   |-- OpenSSL@1.1.1w (CocoaPods) [RISK: 7]
+  |   |-- CFNetwork@0.0.0 (System)
+  |   +-- BoringSSL-GRPC@0.0.27 (CocoaPods) [RISK: 1]
+  |-- lodash@4.17.19 (npm) [RISK: 12]
+  |-- Ono@2.5.0 (CocoaPods) [RISK: 3] {NOT-MAINTAINED}
+  |   +-- libxml2@2.11.6 (CocoaPods) [RISK: 15]
+  |-- CryptoSwift@1.7.2 (Swift Package Manager) [RISK: 2]
+  |-- KeychainAccess@4.2.2 (CocoaPods)
+  +-- SwiftLint@0.54.0 (Swift Package Manager)
+
+HealthTracker-iOS
+  |-- Realm@10.44.0 (CocoaPods) [RISK: 2]
+  |   |-- RealmCore@13.26.0 (CocoaPods) [RISK: 3]
+  |   +-- libuv@1.44.2 (CocoaPods) [RISK: 2]
+  |-- SQLite.swift@0.14.1 (CocoaPods)
+  |   +-- sqlite3@3.42.0 (System)
+  |-- Charts@5.0.0 (CocoaPods)
+  |   +-- libexpat@2.5.0 (CocoaPods) [RISK: 5]
+  |-- HealthKit@17.0 (System)
+  +-- SnapKit@5.6.0 (CocoaPods)
+
+ShopEasy-iOS
+  |-- react-native@0.71.8 (npm) [RISK: 20]
+  |   |-- hermes-engine@0.71.14 (npm) [RISK: 15]
+  |   |-- jsc-android@250231.0.0 (npm) [RISK: 9] {DEPRECATED}
+  |   +-- metro@0.76.8 (npm) [RISK: 2]
+  |-- moment@2.29.4 (npm) [RISK: 3] {NOT-MAINTAINED}
+  |-- stripe-react-native@0.35.0 (npm) [RISK: 2]
+  |-- react@18.2.0 (npm)
+  |-- @react-navigation/native@6.1.9 (npm)
+  |-- axios@1.6.0 (npm)
+  |   +-- follow-redirects@1.15.3 (npm) [RISK: 1]
+  +-- react-native-firebase@18.6.0 (npm)
+      |-- nanopb@2.30909.0 (CocoaPods)
+      |-- GoogleUtilities@7.12.0 (CocoaPods)
+      +-- abseil-cpp@1.20230802.0 (CocoaPods) [RISK: 0.1]
