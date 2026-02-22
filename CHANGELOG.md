@@ -36,3 +36,19 @@
   - Paginated API fetch for real data; realistic iOS mock data for 3 apps (33 libs, CocoaPods/SPM/npm)
   - Mock data includes known dependency edges (e.g., Ono→libxml2, react-native→hermes-engine, Alamofire→OpenSSL)
   - Report includes: overview stats, app risk table, transitive hotspots, visual trees, per-app detail tables, key findings, and remediation recommendations
+
+## E09: API Security Scanner
+
+- **2026-02-22T14:43:00Z** — E09: API Security Scanner (scripts/api-security-scan.js)
+  - Uses getApiSecurityItems + getApiSecurityFiltersLazy to map all exposed API endpoints across iOS apps
+  - Risk pattern detection engine identifies: PAYMENT, HEALTH_DATA, AUTH, PII, LEGACY_API, DATA_EXPORT, DESTRUCTIVE, IDOR_RISK, CONFIG_EXPOSURE
+  - Composite risk scoring (0-100) combines endpoint severity, HTTP method risk, and detected patterns
+  - Per-app breakdown with severity counts, endpoint tables, and critical+high attention flags
+  - Top 10 high-risk endpoint ranking with code locations and discovery sources
+  - API version analysis to identify legacy/deprecated API versions still in use
+  - Discovery source breakdown (OpenAPI spec vs CodeAnalysis)
+  - Actionable recommendations: PCI DSS for payment endpoints, HIPAA for health data, IDOR mitigation, legacy API deprecation
+  - Outputs JSON (full analysis + risk ranking) and markdown report to experiments/api-security-{date}/
+  - Supports app filtering via OX_APP_NAME env var or CLI arg
+  - Paginated API fetch for real data; realistic iOS mock data (28 endpoints across 3 apps)
+  - Mock data covers: banking APIs (transfers, card tokenization, account balance), health APIs (records, vitals, export), e-commerce APIs (checkout, payments, cart)

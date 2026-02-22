@@ -33,7 +33,7 @@ Your goal: build the most useful iOS vulnerability analysis toolkit using the Ox
 - [x] **E06: Report Generator** — Markdown vulnerability report (scripts/generate-report.js)
 - [x] **E07: Issue Deep-Dive** — For each critical issue, fetch full detail including CVEs, fix suggestions, severity change reasons. Write enriched report to experiments/
 - [x] **E08: Dependency Tree Mapper** — Map SBOM dependency chains (direct → transitive) and identify which transitive deps introduce the most risk
-- [ ] **E09: API Security Scanner** — Use getApiSecurityItems to map exposed API endpoints and their severities
+- [x] **E09: API Security Scanner** — Use getApiSecurityItems to map exposed API endpoints and their severities
 - [ ] **E10: Trend Analyzer** — Use getIssuesTrendData to show how vulnerability counts change over time. Generate a text-based trend chart
 
 ### Tier 2 — Analysis & Intelligence

@@ -1,0 +1,404 @@
+{
+  "meta": {
+    "timestamp": "2026-02-22T14:42:37.243Z",
+    "mockData": true,
+    "appFilter": "HealthTracker",
+    "totalEndpoints": 8,
+    "totalFromApi": 28
+  },
+  "filters": {
+    "methods": [
+      {
+        "name": "GET",
+        "count": 12
+      },
+      {
+        "name": "POST",
+        "count": 10
+      },
+      {
+        "name": "PUT",
+        "count": 3
+      },
+      {
+        "name": "DELETE",
+        "count": 2
+      },
+      {
+        "name": "PATCH",
+        "count": 1
+      }
+    ],
+    "severities": [
+      {
+        "name": "Critical",
+        "count": 5
+      },
+      {
+        "name": "High",
+        "count": 5
+      },
+      {
+        "name": "Medium",
+        "count": 8
+      },
+      {
+        "name": "Low",
+        "count": 6
+      },
+      {
+        "name": "Info",
+        "count": 4
+      }
+    ],
+    "apps": [
+      {
+        "name": "MyBankingApp-iOS",
+        "count": 10
+      },
+      {
+        "name": "HealthTracker-iOS",
+        "count": 8
+      },
+      {
+        "name": "ShopEasy-iOS",
+        "count": 10
+      }
+    ]
+  },
+  "summary": {
+    "appCount": 1,
+    "severityCounts": {
+      "High": 3,
+      "Critical": 1,
+      "Low": 1,
+      "Medium": 3
+    },
+    "methodCounts": {
+      "POST": 3,
+      "GET": 3,
+      "PUT": 1,
+      "DELETE": 1
+    },
+    "uniquePatterns": 6
+  },
+  "riskRanking": [
+    {
+      "id": "api-012",
+      "method": "GET",
+      "path": "/api/v1/health/records/{userId}",
+      "severity": "Critical",
+      "app": "HealthTracker-iOS",
+      "riskScore": 86,
+      "patterns": [
+        "HEALTH_DATA",
+        "LEGACY_API",
+        "IDOR_RISK"
+      ],
+      "codeLocation": {
+        "filePath": "HealthTracker/Network/HealthRecordAPI.swift",
+        "lineNumber": 22
+      },
+      "discoverySource": "OpenAPI"
+    },
+    {
+      "id": "api-017",
+      "method": "GET",
+      "path": "/api/v1/health/export/pdf",
+      "severity": "High",
+      "app": "HealthTracker-iOS",
+      "riskScore": 81,
+      "patterns": [
+        "HEALTH_DATA",
+        "LEGACY_API",
+        "DATA_EXPORT"
+      ],
+      "codeLocation": {
+        "filePath": "HealthTracker/Network/ExportAPI.swift",
+        "lineNumber": 29
+      },
+      "discoverySource": "CodeAnalysis"
+    },
+    {
+      "id": "api-018",
+      "method": "DELETE",
+      "path": "/api/v1/health/records/{recordId}",
+      "severity": "Medium",
+      "app": "HealthTracker-iOS",
+      "riskScore": 75,
+      "patterns": [
+        "HEALTH_DATA",
+        "LEGACY_API",
+        "DESTRUCTIVE",
+        "IDOR_RISK"
+      ],
+      "codeLocation": {
+        "filePath": "HealthTracker/Network/HealthRecordAPI.swift",
+        "lineNumber": 78
+      },
+      "discoverySource": "CodeAnalysis"
+    },
+    {
+      "id": "api-011",
+      "method": "POST",
+      "path": "/api/v1/health/sync",
+      "severity": "High",
+      "app": "HealthTracker-iOS",
+      "riskScore": 71,
+      "patterns": [
+        "HEALTH_DATA",
+        "LEGACY_API"
+      ],
+      "codeLocation": {
+        "filePath": "HealthTracker/Network/HealthSyncService.swift",
+        "lineNumber": 34
+      },
+      "discoverySource": "CodeAnalysis"
+    },
+    {
+      "id": "api-013",
+      "method": "POST",
+      "path": "/api/v1/health/vitals",
+      "severity": "High",
+      "app": "HealthTracker-iOS",
+      "riskScore": 71,
+      "patterns": [
+        "HEALTH_DATA",
+        "LEGACY_API"
+      ],
+      "codeLocation": {
+        "filePath": "HealthTracker/Network/VitalsAPI.swift",
+        "lineNumber": 48
+      },
+      "discoverySource": "CodeAnalysis"
+    },
+    {
+      "id": "api-015",
+      "method": "PUT",
+      "path": "/api/v1/health/medication/update",
+      "severity": "Medium",
+      "app": "HealthTracker-iOS",
+      "riskScore": 59,
+      "patterns": [
+        "HEALTH_DATA",
+        "LEGACY_API"
+      ],
+      "codeLocation": {
+        "filePath": "HealthTracker/Network/MedicationAPI.swift",
+        "lineNumber": 56
+      },
+      "discoverySource": "OpenAPI"
+    },
+    {
+      "id": "api-016",
+      "method": "POST",
+      "path": "/api/v1/auth/biometric",
+      "severity": "Medium",
+      "app": "HealthTracker-iOS",
+      "riskScore": 52,
+      "patterns": [
+        "AUTH",
+        "LEGACY_API"
+      ],
+      "codeLocation": {
+        "filePath": "HealthTracker/Network/AuthService.swift",
+        "lineNumber": 63
+      },
+      "discoverySource": "CodeAnalysis"
+    },
+    {
+      "id": "api-014",
+      "method": "GET",
+      "path": "/api/v1/doctors/{doctorId}/schedule",
+      "severity": "Low",
+      "app": "HealthTracker-iOS",
+      "riskScore": 27,
+      "patterns": [
+        "LEGACY_API"
+      ],
+      "codeLocation": {
+        "filePath": "HealthTracker/Network/DoctorAPI.swift",
+        "lineNumber": 17
+      },
+      "discoverySource": "CodeAnalysis"
+    }
+  ],
+  "endpoints": [
+    {
+      "id": "api-011",
+      "method": "POST",
+      "path": "/api/v1/health/sync",
+      "severity": "High",
+      "codeLocations": [
+        {
+          "filePath": "HealthTracker/Network/HealthSyncService.swift",
+          "lineNumber": 34
+        }
+      ],
+      "definitions": [
+        {
+          "source": "CodeAnalysis",
+          "path": null
+        }
+      ],
+      "app": {
+        "id": "app-2",
+        "name": "HealthTracker-iOS"
+      }
+    },
+    {
+      "id": "api-012",
+      "method": "GET",
+      "path": "/api/v1/health/records/{userId}",
+      "severity": "Critical",
+      "codeLocations": [
+        {
+          "filePath": "HealthTracker/Network/HealthRecordAPI.swift",
+          "lineNumber": 22
+        }
+      ],
+      "definitions": [
+        {
+          "source": "OpenAPI",
+          "path": "/specs/health-api.yaml"
+        }
+      ],
+      "app": {
+        "id": "app-2",
+        "name": "HealthTracker-iOS"
+      }
+    },
+    {
+      "id": "api-013",
+      "method": "POST",
+      "path": "/api/v1/health/vitals",
+      "severity": "High",
+      "codeLocations": [
+        {
+          "filePath": "HealthTracker/Network/VitalsAPI.swift",
+          "lineNumber": 48
+        }
+      ],
+      "definitions": [
+        {
+          "source": "CodeAnalysis",
+          "path": null
+        }
+      ],
+      "app": {
+        "id": "app-2",
+        "name": "HealthTracker-iOS"
+      }
+    },
+    {
+      "id": "api-014",
+      "method": "GET",
+      "path": "/api/v1/doctors/{doctorId}/schedule",
+      "severity": "Low",
+      "codeLocations": [
+        {
+          "filePath": "HealthTracker/Network/DoctorAPI.swift",
+          "lineNumber": 17
+        }
+      ],
+      "definitions": [
+        {
+          "source": "CodeAnalysis",
+          "path": null
+        }
+      ],
+      "app": {
+        "id": "app-2",
+        "name": "HealthTracker-iOS"
+      }
+    },
+    {
+      "id": "api-015",
+      "method": "PUT",
+      "path": "/api/v1/health/medication/update",
+      "severity": "Medium",
+      "codeLocations": [
+        {
+          "filePath": "HealthTracker/Network/MedicationAPI.swift",
+          "lineNumber": 56
+        }
+      ],
+      "definitions": [
+        {
+          "source": "OpenAPI",
+          "path": "/specs/health-api.yaml"
+        }
+      ],
+      "app": {
+        "id": "app-2",
+        "name": "HealthTracker-iOS"
+      }
+    },
+    {
+      "id": "api-016",
+      "method": "POST",
+      "path": "/api/v1/auth/biometric",
+      "severity": "Medium",
+      "codeLocations": [
+        {
+          "filePath": "HealthTracker/Network/AuthService.swift",
+          "lineNumber": 63
+        }
+      ],
+      "definitions": [
+        {
+          "source": "CodeAnalysis",
+          "path": null
+        }
+      ],
+      "app": {
+        "id": "app-2",
+        "name": "HealthTracker-iOS"
+      }
+    },
+    {
+      "id": "api-017",
+      "method": "GET",
+      "path": "/api/v1/health/export/pdf",
+      "severity": "High",
+      "codeLocations": [
+        {
+          "filePath": "HealthTracker/Network/ExportAPI.swift",
+          "lineNumber": 29
+        }
+      ],
+      "definitions": [
+        {
+          "source": "CodeAnalysis",
+          "path": null
+        }
+      ],
+      "app": {
+        "id": "app-2",
+        "name": "HealthTracker-iOS"
+      }
+    },
+    {
+      "id": "api-018",
+      "method": "DELETE",
+      "path": "/api/v1/health/records/{recordId}",
+      "severity": "Medium",
+      "codeLocations": [
+        {
+          "filePath": "HealthTracker/Network/HealthRecordAPI.swift",
+          "lineNumber": 78
+        }
+      ],
+      "definitions": [
+        {
+          "source": "CodeAnalysis",
+          "path": null
+        }
+      ],
+      "app": {
+        "id": "app-2",
+        "name": "HealthTracker-iOS"
+      }
+    }
+  ]
+}
