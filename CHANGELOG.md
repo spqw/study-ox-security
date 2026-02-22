@@ -184,3 +184,21 @@
   - Supports app filtering via OX_APP_NAME env var or CLI arg
   - Falls back to realistic mock data (4 iOS apps, 16 issues, 18 libraries) when OX_API_KEY not configured
   - Fetches apps, issues, and SBOM libraries from Ox Security API when key is available
+
+## E18: JSON Export for CI
+
+- **2026-02-22T15:22:00Z** — E18: JSON Export for CI (scripts/ci-export.js)
+  - Generates machine-readable JSON report for CI/CD pipeline integration with configurable severity gate
+  - Exit codes: 0 = PASS (all thresholds met), 1 = FAIL (threshold exceeded), 2 = ERROR (script failure)
+  - Configurable thresholds via environment variables: OX_MAX_CRITICAL (default: 0), OX_MAX_HIGH, OX_MAX_MEDIUM, OX_MAX_LOW, OX_MAX_TOTAL (-1 = unlimited)
+  - JSON output to stdout (pipe-friendly) with status messages on stderr — works with `jq`, CI artifact collection, etc.
+  - Versioned schema (1.0.0) with gate result, severity summary, source type breakdown, category breakdown, per-app risk scores, and full issue list
+  - Gate evaluation: compares actual severity counts against thresholds, reports violations with exceeded-by counts
+  - Per-app breakdown with individual severity counts and risk scores (0-100)
+  - Risk score computation: severity-weighted issue count (Critical=10, High=5, Medium=2, Low=0.5)
+  - Issues sorted by severity weight then date, with flat CI-friendly structure (id, title, severity, source_type, category, app)
+  - OX_OUTPUT_FILE env var writes JSON to a specific file path for artifact collection
+  - OX_QUIET=true suppresses stderr for clean piping; OX_SAVE_EXPERIMENT=false skips experiment directory output
+  - Experiment output includes CI integration examples for GitHub Actions and GitLab CI in markdown report
+  - Paginated API fetch for real data; realistic mock data (14 issues across 3 iOS apps) when OX_API_KEY not configured
+  - Supports app filtering via OX_APP_NAME env var or CLI arg, severity filter via OX_SEVERITY
