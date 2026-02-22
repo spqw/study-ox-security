@@ -1,0 +1,369 @@
+{
+  "timestamp": "2026-02-22T15:03:49.257Z",
+  "mockMode": true,
+  "filter": null,
+  "summary": {
+    "totalLibraries": 36,
+    "totalFlagged": 10,
+    "totalDeprecated": 4,
+    "totalUnmaintained": 7,
+    "uniqueFlagged": 10,
+    "withVulns": 6,
+    "withAlternatives": 10,
+    "criticalUrgency": 0,
+    "highUrgency": 2,
+    "appsAffected": 3,
+    "totalApps": 3
+  },
+  "scoringMethodology": {
+    "statusPoints": {
+      "deprecated+unmaintained": 40,
+      "deprecated": 35,
+      "unmaintained": 25
+    },
+    "vulnWeights": {
+      "critical": 10,
+      "high": 5,
+      "medium": 2,
+      "low": 0.5,
+      "info": 0
+    },
+    "maxVulnPoints": 40,
+    "directDepBonus": 10,
+    "transitiveDepBonus": 3,
+    "licenseIssueBonus": 10,
+    "urgencyThresholds": [
+      {
+        "min": 80,
+        "label": "CRITICAL",
+        "description": "Immediate replacement required"
+      },
+      {
+        "min": 60,
+        "label": "HIGH",
+        "description": "Plan replacement within 1 sprint"
+      },
+      {
+        "min": 40,
+        "label": "MEDIUM",
+        "description": "Schedule replacement this quarter"
+      },
+      {
+        "min": 0,
+        "label": "LOW",
+        "description": "Monitor and replace when convenient"
+      }
+    ]
+  },
+  "alerts": [
+    {
+      "libraryName": "AFNetworking",
+      "libraryVersion": "4.0.1",
+      "appName": "MyBankingApp-iOS",
+      "dependencyLevel": "Direct",
+      "source": "CocoaPods",
+      "isDeprecated": true,
+      "notMaintained": false,
+      "licenseIssue": false,
+      "license": "MIT",
+      "vulnerabilityCounts": {
+        "critical": 0,
+        "high": 1,
+        "medium": 2,
+        "low": 0
+      },
+      "totalVulns": 3,
+      "vulnWeight": 9,
+      "riskScore": 63,
+      "urgency": "HIGH",
+      "urgencyDescription": "Plan replacement within 1 sprint",
+      "alternative": "Alamofire",
+      "alternativeReason": "AFNetworking is deprecated; Alamofire is the standard Swift networking library"
+    },
+    {
+      "libraryName": "iCarousel",
+      "libraryVersion": "1.8.3",
+      "appName": "ShopEasy-iOS",
+      "dependencyLevel": "Direct",
+      "source": "CocoaPods",
+      "isDeprecated": true,
+      "notMaintained": true,
+      "licenseIssue": true,
+      "license": "GPL-3.0",
+      "vulnerabilityCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0
+      },
+      "totalVulns": 0,
+      "vulnWeight": 0,
+      "riskScore": 60,
+      "urgency": "HIGH",
+      "urgencyDescription": "Plan replacement within 1 sprint",
+      "alternative": "UICollectionView compositional layout",
+      "alternativeReason": "iCarousel is unmaintained; use UIKit's built-in compositional layouts"
+    },
+    {
+      "libraryName": "jsc-android",
+      "libraryVersion": "250231.0.0",
+      "appName": "ShopEasy-iOS",
+      "dependencyLevel": "Transitive",
+      "source": "npm",
+      "isDeprecated": true,
+      "notMaintained": false,
+      "licenseIssue": false,
+      "license": "BSD-2-Clause",
+      "vulnerabilityCounts": {
+        "critical": 0,
+        "high": 1,
+        "medium": 0,
+        "low": 0
+      },
+      "totalVulns": 1,
+      "vulnWeight": 5,
+      "riskScore": 48,
+      "urgency": "MEDIUM",
+      "urgencyDescription": "Schedule replacement this quarter",
+      "alternative": "hermes-engine",
+      "alternativeReason": "JSC for Android is deprecated; Hermes is the default RN JS engine since RN 0.70"
+    },
+    {
+      "libraryName": "RNCryptor",
+      "libraryVersion": "5.1.0",
+      "appName": "HealthTracker-iOS",
+      "dependencyLevel": "Direct",
+      "source": "CocoaPods",
+      "isDeprecated": true,
+      "notMaintained": false,
+      "licenseIssue": false,
+      "license": "MIT",
+      "vulnerabilityCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0
+      },
+      "totalVulns": 0,
+      "vulnWeight": 0,
+      "riskScore": 45,
+      "urgency": "MEDIUM",
+      "urgencyDescription": "Schedule replacement this quarter",
+      "alternative": "CryptoKit",
+      "alternativeReason": "Apple's CryptoKit (iOS 13+) provides native encryption APIs"
+    },
+    {
+      "libraryName": "OpenSSL",
+      "libraryVersion": "1.1.1w",
+      "appName": "MyBankingApp-iOS",
+      "dependencyLevel": "Transitive",
+      "source": "CocoaPods",
+      "isDeprecated": false,
+      "notMaintained": true,
+      "licenseIssue": false,
+      "license": "OpenSSL",
+      "vulnerabilityCounts": {
+        "critical": 0,
+        "high": 1,
+        "medium": 1,
+        "low": 0
+      },
+      "totalVulns": 2,
+      "vulnWeight": 7,
+      "riskScore": 42,
+      "urgency": "MEDIUM",
+      "urgencyDescription": "Schedule replacement this quarter",
+      "alternative": "BoringSSL or Apple Security framework",
+      "alternativeReason": "OpenSSL 1.1.x is EOL; use BoringSSL or Apple's native crypto"
+    },
+    {
+      "libraryName": "CocoaAsyncSocket",
+      "libraryVersion": "7.6.5",
+      "appName": "MyBankingApp-iOS",
+      "dependencyLevel": "Direct",
+      "source": "CocoaPods",
+      "isDeprecated": false,
+      "notMaintained": true,
+      "licenseIssue": false,
+      "license": "Public Domain",
+      "vulnerabilityCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 1
+      },
+      "totalVulns": 2,
+      "vulnWeight": 2.5,
+      "riskScore": 40,
+      "urgency": "MEDIUM",
+      "urgencyDescription": "Schedule replacement this quarter",
+      "alternative": "Network.framework (NWConnection)",
+      "alternativeReason": "Apple's Network framework replaces third-party socket libraries"
+    },
+    {
+      "libraryName": "Ono",
+      "libraryVersion": "2.5.0",
+      "appName": "MyBankingApp-iOS",
+      "dependencyLevel": "Direct",
+      "source": "CocoaPods",
+      "isDeprecated": false,
+      "notMaintained": true,
+      "licenseIssue": false,
+      "license": "MIT",
+      "vulnerabilityCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 0
+      },
+      "totalVulns": 1,
+      "vulnWeight": 2,
+      "riskScore": 39,
+      "urgency": "LOW",
+      "urgencyDescription": "Monitor and replace when convenient",
+      "alternative": "SWXMLHash or XMLCoder",
+      "alternativeReason": "Ono is unmaintained since 2019; SWXMLHash is actively maintained pure Swift"
+    },
+    {
+      "libraryName": "FMDB",
+      "libraryVersion": "2.7.5",
+      "appName": "HealthTracker-iOS",
+      "dependencyLevel": "Direct",
+      "source": "CocoaPods",
+      "isDeprecated": false,
+      "notMaintained": true,
+      "licenseIssue": false,
+      "license": "MIT",
+      "vulnerabilityCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 1
+      },
+      "totalVulns": 1,
+      "vulnWeight": 0.5,
+      "riskScore": 36,
+      "urgency": "LOW",
+      "urgencyDescription": "Monitor and replace when convenient",
+      "alternative": "SQLite.swift or GRDB.swift",
+      "alternativeReason": "FMDB is an Obj-C wrapper with declining maintenance; modern Swift alternatives exist"
+    },
+    {
+      "libraryName": "AsyncDisplayKit",
+      "libraryVersion": "3.1.0",
+      "appName": "HealthTracker-iOS",
+      "dependencyLevel": "Direct",
+      "source": "CocoaPods",
+      "isDeprecated": false,
+      "notMaintained": true,
+      "licenseIssue": false,
+      "license": "Apache-2.0",
+      "vulnerabilityCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0
+      },
+      "totalVulns": 0,
+      "vulnWeight": 0,
+      "riskScore": 35,
+      "urgency": "LOW",
+      "urgencyDescription": "Monitor and replace when convenient",
+      "alternative": "SwiftUI or UICollectionView diffable data sources",
+      "alternativeReason": "AsyncDisplayKit (Texture) has minimal maintenance"
+    },
+    {
+      "libraryName": "moment",
+      "libraryVersion": "2.29.4",
+      "appName": "ShopEasy-iOS",
+      "dependencyLevel": "Direct",
+      "source": "npm",
+      "isDeprecated": false,
+      "notMaintained": true,
+      "licenseIssue": false,
+      "license": "MIT",
+      "vulnerabilityCounts": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0
+      },
+      "totalVulns": 0,
+      "vulnWeight": 0,
+      "riskScore": 35,
+      "urgency": "LOW",
+      "urgencyDescription": "Monitor and replace when convenient",
+      "alternative": "date-fns or luxon",
+      "alternativeReason": "moment.js is officially in maintenance mode since 2020; date-fns is tree-shakeable"
+    }
+  ],
+  "perApp": {
+    "MyBankingApp-iOS": {
+      "healthRatio": 67,
+      "totalLibs": 12,
+      "deprecatedCount": 1,
+      "unmaintainedCount": 3,
+      "totalFlaggedVulns": 8,
+      "maxRiskScore": 63,
+      "flaggedLibs": [
+        "AFNetworking",
+        "OpenSSL",
+        "CocoaAsyncSocket",
+        "Ono"
+      ]
+    },
+    "HealthTracker-iOS": {
+      "healthRatio": 70,
+      "totalLibs": 10,
+      "deprecatedCount": 1,
+      "unmaintainedCount": 2,
+      "totalFlaggedVulns": 1,
+      "maxRiskScore": 45,
+      "flaggedLibs": [
+        "RNCryptor",
+        "FMDB",
+        "AsyncDisplayKit"
+      ]
+    },
+    "ShopEasy-iOS": {
+      "healthRatio": 71,
+      "totalLibs": 14,
+      "deprecatedCount": 2,
+      "unmaintainedCount": 2,
+      "totalFlaggedVulns": 1,
+      "maxRiskScore": 60,
+      "flaggedLibs": [
+        "iCarousel",
+        "jsc-android",
+        "moment"
+      ]
+    }
+  },
+  "sharedFlagged": [],
+  "recommendations": [
+    {
+      "priority": "High",
+      "text": "Replace AFNetworking@4.0.1 with Alamofire. AFNetworking is deprecated; Alamofire is the standard Swift networking library"
+    },
+    {
+      "priority": "High",
+      "text": "Replace iCarousel@1.8.3 with UICollectionView compositional layout. iCarousel is unmaintained; use UIKit's built-in compositional layouts"
+    },
+    {
+      "priority": "Medium",
+      "text": "MyBankingApp-iOS has a dependency health ratio of 67% (1 deprecated, 3 unmaintained out of 12 total). Consider a dedicated dependency cleanup sprint."
+    },
+    {
+      "priority": "Medium",
+      "text": "HealthTracker-iOS has a dependency health ratio of 70% (1 deprecated, 2 unmaintained out of 10 total). Consider a dedicated dependency cleanup sprint."
+    },
+    {
+      "priority": "Medium",
+      "text": "ShopEasy-iOS has a dependency health ratio of 71% (2 deprecated, 2 unmaintained out of 14 total). Consider a dedicated dependency cleanup sprint."
+    },
+    {
+      "priority": "Medium",
+      "text": "Add deprecated dependency checks to your CI pipeline. Block PRs that introduce new deprecated or unmaintained dependencies."
+    }
+  ]
+}

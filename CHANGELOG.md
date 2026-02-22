@@ -117,3 +117,18 @@
   - Outputs JSON (full compliance data + per-app grades) and markdown report to experiments/license-check-{date}/
   - Supports app filtering via OX_APP_NAME env var or CLI arg
   - Realistic mock data: 31 libraries across 3 iOS apps with mixed licenses (MIT, Apache, AGPL, GPL, LGPL, BSD, Zlib, OpenSSL, missing)
+
+## E14: Deprecated Dependency Alert
+
+- **2026-02-22T15:03:00Z** — E14: Deprecated Dependency Alert (scripts/deprecated-deps.js)
+  - Scans SBOM for all deprecated and unmaintained libraries across the iOS app portfolio
+  - Composite risk scoring (0-100) per flagged library combining: status weight (deprecated/unmaintained/both), vulnerability exposure (weighted severity), dependency level (direct vs transitive), and license issues
+  - Migration urgency classification: CRITICAL (80+), HIGH (60-79), MEDIUM (40-59), LOW (0-39) with actionable descriptions
+  - Known alternatives database with 20+ iOS/JS library mappings (e.g., AFNetworking->Alamofire, moment->date-fns, FMDB->SQLite.swift, RNCryptor->CryptoKit)
+  - Per-app dependency health ratio showing flagged-to-total library percentage with ASCII bar visualization
+  - Cross-app analysis identifies libraries flagged in multiple apps for portfolio-wide improvement
+  - Prioritized alert list sorted by risk score with vulnerability details, source info, and migration suggestions
+  - Recommendations engine: critical vuln+deprecated combos, high-priority alternatives, shared library fixes, CI pipeline integration
+  - Outputs JSON (full analysis + scoring methodology) and markdown report to experiments/deprecated-deps-{date}/
+  - Supports app filtering via OX_APP_NAME env var or CLI arg
+  - Realistic mock data: 36 libraries across 3 iOS apps with 4 deprecated, 7 unmaintained, and varied vulnerability profiles
