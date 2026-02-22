@@ -42,7 +42,7 @@ Your goal: build the most useful iOS vulnerability analysis toolkit using the Ox
 - [x] **E12: iOS-Specific Filter** — Create a script that identifies iOS-specific vulnerabilities (CocoaPods, Swift Package Manager, Xcode-related issues)
 - [x] **E13: License Compliance Check** — Scan SBOM for license conflicts (GPL in proprietary apps, etc.)
 - [x] **E14: Deprecated Dependency Alert** — List all deprecated/unmaintained libraries sorted by risk
-- [ ] **E15: Fix Prioritizer** — Rank issues by fixability: auto-fix available > minor version fix > major version fix > no fix
+- [x] **E15: Fix Prioritizer** — Rank issues by fixability: auto-fix available > minor version fix > major version fix > no fix
 - [ ] **E16: Severity Drift Report** — Compare original severity vs Ox-prioritized severity, highlight where Ox downgraded or upgraded
 
 ### Tier 3 — Reporting & Dashboards

@@ -132,3 +132,20 @@
   - Outputs JSON (full analysis + scoring methodology) and markdown report to experiments/deprecated-deps-{date}/
   - Supports app filtering via OX_APP_NAME env var or CLI arg
   - Realistic mock data: 36 libraries across 3 iOS apps with 4 deprecated, 7 unmaintained, and varied vulnerability profiles
+
+## E15: Fix Prioritizer
+
+- **2026-02-22T15:09:00Z** — E15: Fix Prioritizer (scripts/fix-prioritizer.js)
+  - Classifies every issue into 5 fix tiers: Auto-Fix (T1), Minor/Patch Version Bump (T2), Major Version Upgrade (T3), Code Change Required (T4), Manual Remediation (T5)
+  - ROI scoring engine: severity weight (Critical=10, High=5, Medium=2, Low=0.5) multiplied by fix ease score (100/80/50/30/10 per tier) ranks issues by highest-impact, lowest-effort first
+  - Fix tier classification logic inspects autoFix field (fixType: VersionBump vs CodeChange), scaVulnerabilities (minorVerWithFix vs majorVerWithFix), and sourceType to determine effort level
+  - Quick wins section highlights all Tier 1-2 issues (auto-fix + minor version) for immediate remediation
+  - Breaking change warnings flag major version upgrades that may require API migration or code changes
+  - Severity vs fixability matrix shows how many issues per severity level are auto-fixable, fixable (T1-3), or manual
+  - Per-app remediation summary with issue counts, quick win counts, tier distribution, and average ROI per app
+  - Full prioritized fix list ranked by ROI score with fix actions and version targets
+  - Recommendations engine generates numbered remediation strategy based on analysis results
+  - Impact projection calculates what % of severity-weighted risk is addressable by quick wins alone
+  - Outputs JSON (full classification data + methodology) and markdown report to experiments/fix-priority-{date}/
+  - Supports app filtering via OX_APP_NAME env var or CLI arg, severity filter via OX_SEVERITY
+  - Realistic mock data: 14 issues across 3 iOS apps with varied fix availability (8 auto-fix, 1 minor, 1 major, 4 code change)
