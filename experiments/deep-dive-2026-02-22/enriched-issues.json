@@ -1,0 +1,451 @@
+{
+  "meta": {
+    "timestamp": "2026-02-22T14:35:15.115Z",
+    "mockData": true,
+    "severities": [
+      "Critical",
+      "High"
+    ],
+    "appFilter": null,
+    "totalIssuesFetched": 147,
+    "issuesEnriched": 10
+  },
+  "prioritization": {
+    "original": {
+      "critical": 5,
+      "high": 12,
+      "medium": 45,
+      "low": 67,
+      "info": 18
+    },
+    "oxPrioritized": {
+      "critical": 4,
+      "high": 10,
+      "medium": 38,
+      "low": 72,
+      "info": 23
+    },
+    "aggregated": {
+      "critical": 4,
+      "high": 10,
+      "medium": 38,
+      "low": 72,
+      "info": 23
+    }
+  },
+  "issues": [
+    {
+      "issueId": "ISS-001",
+      "mainTitle": "Remote Code Execution in libxml2",
+      "secondTitle": "CVE-2024-40896 affects libxml2 < 2.12.5 used via CocoaPods",
+      "description": "libxml2 before 2.12.5 has a use-after-free in xmlXIncludeAddNode that can be triggered by crafted XML documents, leading to remote code execution. This library is pulled in transitively through the Ono CocoaPods dependency used for HTML/XML parsing.",
+      "severity": "Critical",
+      "originalSeverity": "Critical",
+      "severityChanged": false,
+      "created": "2025-12-15T10:30:00Z",
+      "app": {
+        "id": "app-1",
+        "name": "MyBankingApp-iOS",
+        "type": "iOS"
+      },
+      "category": "Vulnerable Dependency",
+      "owners": [
+        "ios-team"
+      ],
+      "cves": [
+        {
+          "cve": "CVE-2024-40896",
+          "link": "https://nvd.nist.gov/vuln/detail/CVE-2024-40896",
+          "severity": "Critical",
+          "minorFix": "2.12.5",
+          "majorFix": "2.12.5",
+          "fixAvailable": true
+        },
+        {
+          "cve": "CVE-2024-34459",
+          "link": "https://nvd.nist.gov/vuln/detail/CVE-2024-34459",
+          "severity": "High",
+          "minorFix": "2.12.7",
+          "majorFix": null,
+          "fixAvailable": true
+        }
+      ],
+      "library": {
+        "name": "libxml2",
+        "version": "2.11.6",
+        "license": "MIT",
+        "packageManager": "CocoaPods"
+      },
+      "autoFix": {
+        "type": "VersionBump",
+        "title": "Upgrade libxml2 to 2.12.5+",
+        "description": "Update the Ono CocoaPods dependency to a version that bundles libxml2 >= 2.12.5"
+      },
+      "policy": {
+        "name": "Critical SCA Policy",
+        "description": "Block critical SCA vulnerabilities"
+      }
+    },
+    {
+      "issueId": "ISS-002",
+      "mainTitle": "Prototype Pollution in lodash",
+      "secondTitle": "lodash < 4.17.21 allows prototype pollution via merge/zipObjectDeep",
+      "description": "lodash versions prior to 4.17.21 are vulnerable to Prototype Pollution via the set, setWith, and zipObjectDeep functions, potentially allowing attackers to modify object prototypes and inject malicious properties.",
+      "severity": "Critical",
+      "originalSeverity": "Critical",
+      "severityChanged": false,
+      "created": "2025-11-20T08:00:00Z",
+      "app": {
+        "id": "app-1",
+        "name": "MyBankingApp-iOS",
+        "type": "iOS"
+      },
+      "category": "Vulnerable Dependency",
+      "owners": [
+        "ios-team"
+      ],
+      "cves": [
+        {
+          "cve": "CVE-2021-23337",
+          "link": "https://nvd.nist.gov/vuln/detail/CVE-2021-23337",
+          "severity": "Critical",
+          "minorFix": "4.17.21",
+          "majorFix": "4.17.21",
+          "fixAvailable": true
+        },
+        {
+          "cve": "CVE-2020-28500",
+          "link": "https://nvd.nist.gov/vuln/detail/CVE-2020-28500",
+          "severity": "Medium",
+          "minorFix": "4.17.21",
+          "majorFix": null,
+          "fixAvailable": true
+        }
+      ],
+      "library": {
+        "name": "lodash",
+        "version": "4.17.19",
+        "license": "MIT",
+        "packageManager": "npm"
+      },
+      "autoFix": {
+        "type": "VersionBump",
+        "title": "Upgrade lodash to 4.17.21",
+        "description": "Run npm update lodash or update package.json to pin lodash >= 4.17.21"
+      },
+      "policy": {
+        "name": "Critical SCA Policy",
+        "description": "Block critical SCA vulnerabilities"
+      }
+    },
+    {
+      "issueId": "ISS-003",
+      "mainTitle": "Insecure Data Storage — Keychain Missing Accessibility",
+      "secondTitle": "Sensitive credentials stored without kSecAttrAccessibleWhenUnlockedThisDeviceOnly",
+      "description": "The app stores sensitive authentication tokens in the iOS Keychain without specifying the kSecAttrAccessibleWhenUnlockedThisDeviceOnly attribute. This means data may be accessible when the device is locked and could be included in unencrypted backups.",
+      "severity": "High",
+      "originalSeverity": "Critical",
+      "severityChanged": true,
+      "created": "2026-01-05T14:20:00Z",
+      "app": {
+        "id": "app-2",
+        "name": "HealthTracker-iOS",
+        "type": "iOS"
+      },
+      "category": "Mobile Security",
+      "owners": [
+        "ios-security"
+      ],
+      "severityChange": {
+        "from": "Critical",
+        "to": "High",
+        "reason": "Ox determined this issue is exploitable only with physical device access, reducing effective severity",
+        "shortName": "Physical access required",
+        "category": "Exploitability"
+      },
+      "policy": {
+        "name": "iOS Security Policy",
+        "description": "iOS-specific security checks"
+      }
+    },
+    {
+      "issueId": "ISS-004",
+      "mainTitle": "Missing Certificate Pinning",
+      "secondTitle": "App does not implement SSL/TLS certificate pinning for API connections",
+      "description": "The banking application communicates with backend APIs over HTTPS but does not implement certificate pinning. An attacker with network access (e.g., rogue Wi-Fi) could perform a man-in-the-middle attack using a forged certificate trusted by the device.",
+      "severity": "High",
+      "originalSeverity": "High",
+      "severityChanged": false,
+      "created": "2026-01-10T09:15:00Z",
+      "app": {
+        "id": "app-1",
+        "name": "MyBankingApp-iOS",
+        "type": "iOS"
+      },
+      "category": "Mobile Security",
+      "owners": [
+        "ios-team"
+      ],
+      "policy": {
+        "name": "iOS Security Policy",
+        "description": "iOS-specific security checks"
+      }
+    },
+    {
+      "issueId": "ISS-005",
+      "mainTitle": "SQL Injection in SQLite Query Builder",
+      "secondTitle": "User input concatenated directly into SQLite query in DataManager.swift",
+      "description": "In DataManager.swift line 142, user-supplied search text is concatenated directly into a SQLite query string without parameterized queries. This allows SQL injection that could read or modify the local SQLite database containing health records.",
+      "severity": "Critical",
+      "originalSeverity": "Critical",
+      "severityChanged": false,
+      "created": "2026-01-18T16:45:00Z",
+      "app": {
+        "id": "app-2",
+        "name": "HealthTracker-iOS",
+        "type": "iOS"
+      },
+      "category": "Code Vulnerability",
+      "owners": [
+        "ios-team"
+      ],
+      "autoFix": {
+        "type": "CodeChange",
+        "title": "Use parameterized SQLite queries",
+        "description": "Replace string concatenation with sqlite3_bind_text() parameterized query to prevent SQL injection. Change: let query = \"SELECT * FROM records WHERE name = '\\(searchText)'\" to use ? placeholder with bound parameter."
+      },
+      "policy": {
+        "name": "Critical SAST Policy",
+        "description": "Block critical code vulnerabilities"
+      }
+    },
+    {
+      "issueId": "ISS-006",
+      "mainTitle": "Vulnerable OpenSSL in Alamofire",
+      "secondTitle": "Alamofire 5.6.x bundles OpenSSL with known CVEs",
+      "description": "Alamofire 5.6.4 depends on an OpenSSL version with multiple known vulnerabilities including CVE-2024-0727 (denial of service) and CVE-2023-5678 (excessive time in DH key generation). Upgrading to Alamofire 5.8+ resolves these.",
+      "severity": "High",
+      "originalSeverity": "Critical",
+      "severityChanged": true,
+      "created": "2025-10-22T11:30:00Z",
+      "app": {
+        "id": "app-1",
+        "name": "MyBankingApp-iOS",
+        "type": "iOS"
+      },
+      "category": "Vulnerable Dependency",
+      "owners": [
+        "ios-team"
+      ],
+      "severityChange": {
+        "from": "Critical",
+        "to": "High",
+        "reason": "The OpenSSL vulnerabilities in this context are limited to denial of service; no remote code execution is possible through Alamofire usage pattern",
+        "shortName": "Limited exploitability",
+        "category": "Exploitability"
+      },
+      "cves": [
+        {
+          "cve": "CVE-2024-0727",
+          "link": "https://nvd.nist.gov/vuln/detail/CVE-2024-0727",
+          "severity": "High",
+          "minorFix": null,
+          "majorFix": "5.8.0",
+          "fixAvailable": true
+        },
+        {
+          "cve": "CVE-2023-5678",
+          "link": "https://nvd.nist.gov/vuln/detail/CVE-2023-5678",
+          "severity": "Medium",
+          "minorFix": null,
+          "majorFix": "5.8.0",
+          "fixAvailable": true
+        }
+      ],
+      "library": {
+        "name": "Alamofire",
+        "version": "5.6.4",
+        "license": "MIT",
+        "packageManager": "Swift Package Manager"
+      },
+      "autoFix": {
+        "type": "VersionBump",
+        "title": "Upgrade Alamofire to 5.8+",
+        "description": "Update Package.swift to require Alamofire >= 5.8.0 which bundles patched OpenSSL"
+      },
+      "policy": {
+        "name": "Critical SCA Policy",
+        "description": "Block critical SCA vulnerabilities"
+      }
+    },
+    {
+      "issueId": "ISS-007",
+      "mainTitle": "Hardcoded API Key in Source Code",
+      "secondTitle": "Firebase API key found in GoogleService-Info.plist committed to repo",
+      "description": "A Firebase API key is hardcoded in GoogleService-Info.plist which is committed to the repository. While Firebase API keys are generally not secret, this plist also contains the database URL and storage bucket which could be used to enumerate resources.",
+      "severity": "High",
+      "originalSeverity": "High",
+      "severityChanged": false,
+      "created": "2026-02-01T13:00:00Z",
+      "app": {
+        "id": "app-3",
+        "name": "ShopEasy-iOS",
+        "type": "iOS"
+      },
+      "category": "Secret Detection",
+      "owners": [
+        "ios-security"
+      ],
+      "policy": {
+        "name": "Secrets Policy",
+        "description": "Detect hardcoded secrets and credentials"
+      }
+    },
+    {
+      "issueId": "ISS-008",
+      "mainTitle": "Denial of Service in libexpat",
+      "secondTitle": "CVE-2024-50602 — libexpat before 2.6.4 allows DoS via XML parsing",
+      "description": "libexpat before version 2.6.4 has a vulnerability where XML_ResumeParser can crash when called after XML_StopParser, leading to a denial of service. This affects iOS apps using any XML parsing that depends on libexpat.",
+      "severity": "High",
+      "originalSeverity": "High",
+      "severityChanged": false,
+      "created": "2026-01-25T10:00:00Z",
+      "app": {
+        "id": "app-2",
+        "name": "HealthTracker-iOS",
+        "type": "iOS"
+      },
+      "category": "Vulnerable Dependency",
+      "owners": [
+        "ios-team"
+      ],
+      "cves": [
+        {
+          "cve": "CVE-2024-50602",
+          "link": "https://nvd.nist.gov/vuln/detail/CVE-2024-50602",
+          "severity": "High",
+          "minorFix": "2.6.4",
+          "majorFix": "2.6.4",
+          "fixAvailable": true
+        }
+      ],
+      "library": {
+        "name": "libexpat",
+        "version": "2.5.0",
+        "license": "MIT",
+        "packageManager": "CocoaPods"
+      },
+      "autoFix": {
+        "type": "VersionBump",
+        "title": "Upgrade libexpat to 2.6.4+",
+        "description": "Update the CocoaPods dependency to pull libexpat >= 2.6.4"
+      },
+      "policy": {
+        "name": "High SCA Policy",
+        "description": "Flag high severity SCA issues"
+      }
+    },
+    {
+      "issueId": "ISS-009",
+      "mainTitle": "Insecure App Transport Security Configuration",
+      "secondTitle": "NSAllowsArbitraryLoads set to YES in Info.plist",
+      "description": "The app's Info.plist has NSAllowsArbitraryLoads set to YES under NSAppTransportSecurity, disabling App Transport Security for all connections. This allows unencrypted HTTP traffic which can be intercepted.",
+      "severity": "High",
+      "originalSeverity": "Medium",
+      "severityChanged": true,
+      "created": "2026-02-05T15:30:00Z",
+      "app": {
+        "id": "app-3",
+        "name": "ShopEasy-iOS",
+        "type": "iOS"
+      },
+      "category": "Mobile Security",
+      "owners": [
+        "ios-team"
+      ],
+      "severityChange": {
+        "from": "Medium",
+        "to": "High",
+        "reason": "Ox elevated severity because the app handles payment data, making cleartext traffic a higher risk",
+        "shortName": "Sensitive data context",
+        "category": "Business Impact"
+      },
+      "autoFix": {
+        "type": "CodeChange",
+        "title": "Remove NSAllowsArbitraryLoads from Info.plist",
+        "description": "Set NSAllowsArbitraryLoads to NO and add exception domains only for hosts that require HTTP (e.g., legacy internal APIs)"
+      },
+      "policy": {
+        "name": "iOS Security Policy",
+        "description": "iOS-specific security checks"
+      }
+    },
+    {
+      "issueId": "ISS-010",
+      "mainTitle": "Outdated React Native with Known Vulnerabilities",
+      "secondTitle": "react-native 0.71.x has multiple known CVEs in bundled Hermes engine",
+      "description": "ShopEasy uses React Native 0.71.8 which includes the Hermes JavaScript engine with known vulnerabilities. The Hermes engine has buffer overflow and type confusion issues that could allow code execution through crafted JavaScript.",
+      "severity": "Critical",
+      "originalSeverity": "High",
+      "severityChanged": true,
+      "created": "2026-02-10T09:00:00Z",
+      "app": {
+        "id": "app-3",
+        "name": "ShopEasy-iOS",
+        "type": "iOS"
+      },
+      "category": "Vulnerable Dependency",
+      "owners": [
+        "mobile-platform"
+      ],
+      "severityChange": {
+        "from": "High",
+        "to": "Critical",
+        "reason": "Ox elevated from High to Critical because the app processes payment card data and the Hermes RCE could lead to credential theft",
+        "shortName": "Payment data risk",
+        "category": "Business Impact"
+      },
+      "cves": [
+        {
+          "cve": "CVE-2024-21514",
+          "link": "https://nvd.nist.gov/vuln/detail/CVE-2024-21514",
+          "severity": "High",
+          "minorFix": null,
+          "majorFix": "0.73.0",
+          "fixAvailable": true
+        },
+        {
+          "cve": "CVE-2024-28244",
+          "link": "https://nvd.nist.gov/vuln/detail/CVE-2024-28244",
+          "severity": "High",
+          "minorFix": null,
+          "majorFix": "0.73.0",
+          "fixAvailable": true
+        },
+        {
+          "cve": "CVE-2023-49relative",
+          "link": null,
+          "severity": "Medium",
+          "minorFix": null,
+          "majorFix": "0.72.0",
+          "fixAvailable": true
+        }
+      ],
+      "library": {
+        "name": "react-native",
+        "version": "0.71.8",
+        "license": "MIT",
+        "packageManager": "npm"
+      },
+      "autoFix": {
+        "type": "VersionBump",
+        "title": "Upgrade React Native to 0.73+",
+        "description": "Update react-native to >= 0.73.0 in package.json. This is a major version upgrade that may require code changes for breaking API changes."
+      },
+      "policy": {
+        "name": "Critical SCA Policy",
+        "description": "Block critical SCA vulnerabilities"
+      }
+    }
+  ]
+}
