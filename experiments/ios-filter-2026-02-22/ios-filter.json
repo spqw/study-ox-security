@@ -1,0 +1,1285 @@
+{
+  "timestamp": "2026-02-22T14:55:19.212Z",
+  "mockMode": true,
+  "filter": null,
+  "summary": {
+    "totalIssuesScanned": 14,
+    "iosIssuesFound": 12,
+    "iosLibsFound": 29,
+    "categoriesDetected": 15
+  },
+  "categoryGroups": {
+    "Dependency Management": {
+      "totalIssues": 3,
+      "categories": {
+        "CocoaPods": {
+          "count": 2,
+          "critical": 1,
+          "high": 1,
+          "medium": 0,
+          "low": 0,
+          "issues": [
+            "ISS-001",
+            "ISS-008"
+          ]
+        },
+        "Swift Package Manager": {
+          "count": 1,
+          "critical": 0,
+          "high": 1,
+          "medium": 0,
+          "low": 0,
+          "issues": [
+            "ISS-006"
+          ]
+        }
+      }
+    },
+    "Platform Security": {
+      "totalIssues": 4,
+      "categories": {
+        "App Transport Security": {
+          "count": 1,
+          "critical": 0,
+          "high": 1,
+          "medium": 0,
+          "low": 0,
+          "issues": [
+            "ISS-009"
+          ]
+        },
+        "Keychain Security": {
+          "count": 1,
+          "critical": 0,
+          "high": 1,
+          "medium": 0,
+          "low": 0,
+          "issues": [
+            "ISS-003"
+          ]
+        },
+        "Certificate Pinning": {
+          "count": 1,
+          "critical": 0,
+          "high": 1,
+          "medium": 0,
+          "low": 0,
+          "issues": [
+            "ISS-004"
+          ]
+        },
+        "Biometrics": {
+          "count": 1,
+          "critical": 0,
+          "high": 0,
+          "medium": 1,
+          "low": 0,
+          "issues": [
+            "ISS-014"
+          ]
+        }
+      }
+    },
+    "Configuration": {
+      "totalIssues": 2,
+      "categories": {
+        "Plist Configuration": {
+          "count": 2,
+          "critical": 0,
+          "high": 2,
+          "medium": 0,
+          "low": 0,
+          "issues": [
+            "ISS-009",
+            "ISS-007"
+          ]
+        }
+      }
+    },
+    "Code Analysis": {
+      "totalIssues": 2,
+      "categories": {
+        "Swift Code": {
+          "count": 1,
+          "critical": 1,
+          "high": 0,
+          "medium": 0,
+          "low": 0,
+          "issues": [
+            "ISS-005"
+          ]
+        },
+        "WebView Security": {
+          "count": 1,
+          "critical": 0,
+          "high": 0,
+          "medium": 1,
+          "low": 0,
+          "issues": [
+            "ISS-013"
+          ]
+        }
+      }
+    },
+    "Third-Party SDKs": {
+      "totalIssues": 3,
+      "categories": {
+        "React Native (iOS)": {
+          "count": 1,
+          "critical": 1,
+          "high": 0,
+          "medium": 0,
+          "low": 0,
+          "issues": [
+            "ISS-010"
+          ]
+        },
+        "Firebase SDK": {
+          "count": 1,
+          "critical": 0,
+          "high": 1,
+          "medium": 0,
+          "low": 0,
+          "issues": [
+            "ISS-007"
+          ]
+        },
+        "iOS Networking": {
+          "count": 1,
+          "critical": 0,
+          "high": 1,
+          "medium": 0,
+          "low": 0,
+          "issues": [
+            "ISS-006"
+          ]
+        }
+      }
+    },
+    "Other iOS Signals": {
+      "totalIssues": 21,
+      "categories": {
+        "iOS Library": {
+          "count": 4,
+          "critical": 2,
+          "high": 2,
+          "medium": 0,
+          "low": 0,
+          "issues": [
+            "ISS-001",
+            "ISS-010",
+            "ISS-006",
+            "ISS-008"
+          ]
+        },
+        "iOS App Context": {
+          "count": 12,
+          "critical": 4,
+          "high": 6,
+          "medium": 2,
+          "low": 0,
+          "issues": [
+            "ISS-001",
+            "ISS-010",
+            "ISS-005",
+            "ISS-002",
+            "ISS-003",
+            "ISS-004",
+            "ISS-006",
+            "ISS-008",
+            "ISS-009",
+            "ISS-007",
+            "ISS-013",
+            "ISS-014"
+          ]
+        },
+        "Mobile Security": {
+          "count": 5,
+          "critical": 0,
+          "high": 3,
+          "medium": 2,
+          "low": 0,
+          "issues": [
+            "ISS-003",
+            "ISS-004",
+            "ISS-009",
+            "ISS-013",
+            "ISS-014"
+          ]
+        }
+      }
+    }
+  },
+  "categories": {
+    "CocoaPods": {
+      "count": 2,
+      "critical": 1,
+      "high": 1,
+      "medium": 0,
+      "low": 0,
+      "issues": [
+        "ISS-001",
+        "ISS-008"
+      ]
+    },
+    "iOS Library": {
+      "count": 4,
+      "critical": 2,
+      "high": 2,
+      "medium": 0,
+      "low": 0,
+      "issues": [
+        "ISS-001",
+        "ISS-010",
+        "ISS-006",
+        "ISS-008"
+      ]
+    },
+    "iOS App Context": {
+      "count": 12,
+      "critical": 4,
+      "high": 6,
+      "medium": 2,
+      "low": 0,
+      "issues": [
+        "ISS-001",
+        "ISS-010",
+        "ISS-005",
+        "ISS-002",
+        "ISS-003",
+        "ISS-004",
+        "ISS-006",
+        "ISS-008",
+        "ISS-009",
+        "ISS-007",
+        "ISS-013",
+        "ISS-014"
+      ]
+    },
+    "React Native (iOS)": {
+      "count": 1,
+      "critical": 1,
+      "high": 0,
+      "medium": 0,
+      "low": 0,
+      "issues": [
+        "ISS-010"
+      ]
+    },
+    "Swift Code": {
+      "count": 1,
+      "critical": 1,
+      "high": 0,
+      "medium": 0,
+      "low": 0,
+      "issues": [
+        "ISS-005"
+      ]
+    },
+    "Keychain Security": {
+      "count": 1,
+      "critical": 0,
+      "high": 1,
+      "medium": 0,
+      "low": 0,
+      "issues": [
+        "ISS-003"
+      ]
+    },
+    "Mobile Security": {
+      "count": 5,
+      "critical": 0,
+      "high": 3,
+      "medium": 2,
+      "low": 0,
+      "issues": [
+        "ISS-003",
+        "ISS-004",
+        "ISS-009",
+        "ISS-013",
+        "ISS-014"
+      ]
+    },
+    "Certificate Pinning": {
+      "count": 1,
+      "critical": 0,
+      "high": 1,
+      "medium": 0,
+      "low": 0,
+      "issues": [
+        "ISS-004"
+      ]
+    },
+    "iOS Networking": {
+      "count": 1,
+      "critical": 0,
+      "high": 1,
+      "medium": 0,
+      "low": 0,
+      "issues": [
+        "ISS-006"
+      ]
+    },
+    "Swift Package Manager": {
+      "count": 1,
+      "critical": 0,
+      "high": 1,
+      "medium": 0,
+      "low": 0,
+      "issues": [
+        "ISS-006"
+      ]
+    },
+    "App Transport Security": {
+      "count": 1,
+      "critical": 0,
+      "high": 1,
+      "medium": 0,
+      "low": 0,
+      "issues": [
+        "ISS-009"
+      ]
+    },
+    "Plist Configuration": {
+      "count": 2,
+      "critical": 0,
+      "high": 2,
+      "medium": 0,
+      "low": 0,
+      "issues": [
+        "ISS-009",
+        "ISS-007"
+      ]
+    },
+    "Firebase SDK": {
+      "count": 1,
+      "critical": 0,
+      "high": 1,
+      "medium": 0,
+      "low": 0,
+      "issues": [
+        "ISS-007"
+      ]
+    },
+    "WebView Security": {
+      "count": 1,
+      "critical": 0,
+      "high": 0,
+      "medium": 1,
+      "low": 0,
+      "issues": [
+        "ISS-013"
+      ]
+    },
+    "Biometrics": {
+      "count": 1,
+      "critical": 0,
+      "high": 0,
+      "medium": 1,
+      "low": 0,
+      "issues": [
+        "ISS-014"
+      ]
+    }
+  },
+  "issues": [
+    {
+      "issueId": "ISS-001",
+      "title": "Remote Code Execution in libxml2",
+      "subtitle": "CVE-2024-40896 affects libxml2 < 2.12.5 used via CocoaPods",
+      "severity": "Critical",
+      "originalSeverity": "Critical",
+      "app": "MyBankingApp-iOS",
+      "sourceType": "SCA",
+      "oxCategory": "Vulnerable Dependency",
+      "iosScore": 100,
+      "primaryIOSCategory": "CocoaPods",
+      "iosCategories": [
+        "CocoaPods",
+        "iOS Library",
+        "iOS App Context"
+      ],
+      "matchReasons": [
+        "Text match: cocoapods?",
+        "Package manager: CocoaPods",
+        "Known iOS lib: libxml2",
+        "iOS app: MyBankingApp-iOS"
+      ],
+      "library": {
+        "name": "libxml2",
+        "version": "2.11.6",
+        "pm": "CocoaPods"
+      }
+    },
+    {
+      "issueId": "ISS-010",
+      "title": "Outdated React Native with Known Vulnerabilities",
+      "subtitle": "react-native 0.71.x has multiple known CVEs in bundled Hermes engine",
+      "severity": "Critical",
+      "originalSeverity": "High",
+      "app": "ShopEasy-iOS",
+      "sourceType": "SCA",
+      "oxCategory": "Vulnerable Dependency",
+      "iosScore": 95,
+      "primaryIOSCategory": "iOS Library",
+      "iosCategories": [
+        "React Native (iOS)",
+        "iOS Library",
+        "iOS App Context"
+      ],
+      "matchReasons": [
+        "Known iOS lib: react-native",
+        "Text match: react.native",
+        "Text match: hermes\\s*engine",
+        "iOS app: ShopEasy-iOS"
+      ],
+      "library": {
+        "name": "react-native",
+        "version": "0.71.8",
+        "pm": "npm"
+      }
+    },
+    {
+      "issueId": "ISS-005",
+      "title": "SQL Injection in SQLite Query Builder",
+      "subtitle": "User input concatenated directly into SQLite query in DataManager.swift",
+      "severity": "Critical",
+      "originalSeverity": "Critical",
+      "app": "HealthTracker-iOS",
+      "sourceType": "SAST",
+      "oxCategory": "Code Vulnerability",
+      "iosScore": 75,
+      "primaryIOSCategory": "Swift Code",
+      "iosCategories": [
+        "Swift Code",
+        "iOS App Context"
+      ],
+      "matchReasons": [
+        "Text match: \\.swift\\b",
+        "iOS app: HealthTracker-iOS"
+      ],
+      "library": null
+    },
+    {
+      "issueId": "ISS-002",
+      "title": "Prototype Pollution in lodash",
+      "subtitle": "lodash < 4.17.21 allows prototype pollution via merge/zipObjectDeep",
+      "severity": "Critical",
+      "originalSeverity": "Critical",
+      "app": "MyBankingApp-iOS",
+      "sourceType": "SCA",
+      "oxCategory": "Vulnerable Dependency",
+      "iosScore": 30,
+      "primaryIOSCategory": "iOS App Context",
+      "iosCategories": [
+        "iOS App Context"
+      ],
+      "matchReasons": [
+        "iOS app: MyBankingApp-iOS"
+      ],
+      "library": {
+        "name": "lodash",
+        "version": "4.17.19",
+        "pm": "npm"
+      }
+    },
+    {
+      "issueId": "ISS-003",
+      "title": "Insecure Data Storage — Keychain Missing Accessibility",
+      "subtitle": "Sensitive credentials stored without kSecAttrAccessibleWhenUnlockedThisDeviceOnly",
+      "severity": "High",
+      "originalSeverity": "Critical",
+      "app": "HealthTracker-iOS",
+      "sourceType": "SAST",
+      "oxCategory": "Mobile Security",
+      "iosScore": 100,
+      "primaryIOSCategory": "Keychain Security",
+      "iosCategories": [
+        "Keychain Security",
+        "iOS App Context",
+        "Mobile Security"
+      ],
+      "matchReasons": [
+        "Text match: keychain|kSecAttr|SecItem",
+        "Ox category: Mobile Security",
+        "iOS app: HealthTracker-iOS"
+      ],
+      "library": null
+    },
+    {
+      "issueId": "ISS-004",
+      "title": "Missing Certificate Pinning",
+      "subtitle": "App does not implement SSL/TLS certificate pinning for API connections",
+      "severity": "High",
+      "originalSeverity": "High",
+      "app": "MyBankingApp-iOS",
+      "sourceType": "SAST",
+      "oxCategory": "Mobile Security",
+      "iosScore": 100,
+      "primaryIOSCategory": "Certificate Pinning",
+      "iosCategories": [
+        "Certificate Pinning",
+        "iOS App Context",
+        "Mobile Security"
+      ],
+      "matchReasons": [
+        "Text match: certificate\\s*pinning|ssl\\s*pinning|TrustKit",
+        "Ox category: Mobile Security",
+        "iOS app: MyBankingApp-iOS"
+      ],
+      "library": null
+    },
+    {
+      "issueId": "ISS-006",
+      "title": "Vulnerable OpenSSL in Alamofire",
+      "subtitle": "Alamofire 5.6.x bundles OpenSSL with known CVEs",
+      "severity": "High",
+      "originalSeverity": "Critical",
+      "app": "MyBankingApp-iOS",
+      "sourceType": "SCA",
+      "oxCategory": "Vulnerable Dependency",
+      "iosScore": 100,
+      "primaryIOSCategory": "Swift Package Manager",
+      "iosCategories": [
+        "iOS Networking",
+        "Swift Package Manager",
+        "iOS Library",
+        "iOS App Context"
+      ],
+      "matchReasons": [
+        "Package manager: Swift Package Manager",
+        "Known iOS lib: Alamofire",
+        "Text match: alamofire",
+        "iOS app: MyBankingApp-iOS"
+      ],
+      "library": {
+        "name": "Alamofire",
+        "version": "5.6.4",
+        "pm": "Swift Package Manager"
+      }
+    },
+    {
+      "issueId": "ISS-008",
+      "title": "Denial of Service in libexpat",
+      "subtitle": "CVE-2024-50602 — libexpat before 2.6.4 allows DoS via XML parsing",
+      "severity": "High",
+      "originalSeverity": "High",
+      "app": "HealthTracker-iOS",
+      "sourceType": "SCA",
+      "oxCategory": "Vulnerable Dependency",
+      "iosScore": 100,
+      "primaryIOSCategory": "CocoaPods",
+      "iosCategories": [
+        "CocoaPods",
+        "iOS Library",
+        "iOS App Context"
+      ],
+      "matchReasons": [
+        "Text match: cocoapods?",
+        "Package manager: CocoaPods",
+        "Known iOS lib: libexpat",
+        "iOS app: HealthTracker-iOS"
+      ],
+      "library": {
+        "name": "libexpat",
+        "version": "2.5.0",
+        "pm": "CocoaPods"
+      }
+    },
+    {
+      "issueId": "ISS-009",
+      "title": "Insecure App Transport Security Configuration",
+      "subtitle": "NSAllowsArbitraryLoads set to YES in Info.plist",
+      "severity": "High",
+      "originalSeverity": "Medium",
+      "app": "ShopEasy-iOS",
+      "sourceType": "SAST",
+      "oxCategory": "Mobile Security",
+      "iosScore": 100,
+      "primaryIOSCategory": "App Transport Security",
+      "iosCategories": [
+        "App Transport Security",
+        "Plist Configuration",
+        "iOS App Context",
+        "Mobile Security"
+      ],
+      "matchReasons": [
+        "Text match: app\\s*transport\\s*security|NSAppTransportSecurity|NSAllowsArbitraryLoads",
+        "Text match: info\\.plist",
+        "Ox category: Mobile Security",
+        "iOS app: ShopEasy-iOS"
+      ],
+      "library": null
+    },
+    {
+      "issueId": "ISS-007",
+      "title": "Hardcoded API Key in Source Code",
+      "subtitle": "Firebase API key found in GoogleService-Info.plist committed to repo",
+      "severity": "High",
+      "originalSeverity": "High",
+      "app": "ShopEasy-iOS",
+      "sourceType": "Secret Detection",
+      "oxCategory": "Secret Detection",
+      "iosScore": 95,
+      "primaryIOSCategory": "Plist Configuration",
+      "iosCategories": [
+        "Plist Configuration",
+        "Firebase SDK",
+        "iOS App Context"
+      ],
+      "matchReasons": [
+        "Text match: info\\.plist",
+        "Text match: firebase",
+        "Text match: GoogleService",
+        "iOS app: ShopEasy-iOS"
+      ],
+      "library": null
+    },
+    {
+      "issueId": "ISS-013",
+      "title": "UIWebView Deprecated Usage",
+      "subtitle": "App still uses deprecated UIWebView instead of WKWebView",
+      "severity": "Medium",
+      "originalSeverity": "Medium",
+      "app": "HealthTracker-iOS",
+      "sourceType": "SAST",
+      "oxCategory": "Mobile Security",
+      "iosScore": 90,
+      "primaryIOSCategory": "WebView Security",
+      "iosCategories": [
+        "WebView Security",
+        "iOS App Context",
+        "Mobile Security"
+      ],
+      "matchReasons": [
+        "Text match: UIWebView|WKWebView",
+        "Ox category: Mobile Security",
+        "iOS app: HealthTracker-iOS"
+      ],
+      "library": null
+    },
+    {
+      "issueId": "ISS-014",
+      "title": "Biometric Authentication Bypass",
+      "subtitle": "Touch ID / Face ID can be bypassed by presenting fallback passcode dialog",
+      "severity": "Medium",
+      "originalSeverity": "Medium",
+      "app": "MyBankingApp-iOS",
+      "sourceType": "SAST",
+      "oxCategory": "Mobile Security",
+      "iosScore": 90,
+      "primaryIOSCategory": "Biometrics",
+      "iosCategories": [
+        "Biometrics",
+        "iOS App Context",
+        "Mobile Security"
+      ],
+      "matchReasons": [
+        "Text match: biometric|face\\s*id|touch\\s*id",
+        "Ox category: Mobile Security",
+        "iOS app: MyBankingApp-iOS"
+      ],
+      "library": null
+    }
+  ],
+  "libraries": [
+    {
+      "name": "Alamofire",
+      "version": "5.6.4",
+      "app": "MyBankingApp-iOS",
+      "level": "Direct",
+      "source": "Swift Package Manager",
+      "vulnTotal": 3,
+      "vulns": {
+        "critical": 0,
+        "high": 2,
+        "medium": 1,
+        "low": 0
+      },
+      "notMaintained": false,
+      "isDeprecated": false,
+      "confidence": "high",
+      "matchReasons": [
+        "Package manager: Swift Package Manager",
+        "Known iOS library: Alamofire"
+      ]
+    },
+    {
+      "name": "Ono",
+      "version": "2.5.0",
+      "app": "MyBankingApp-iOS",
+      "level": "Direct",
+      "source": "CocoaPods",
+      "vulnTotal": 0,
+      "vulns": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0
+      },
+      "notMaintained": true,
+      "isDeprecated": false,
+      "confidence": "high",
+      "matchReasons": [
+        "Package manager: CocoaPods",
+        "Known iOS library: Ono"
+      ]
+    },
+    {
+      "name": "KeychainAccess",
+      "version": "4.2.2",
+      "app": "MyBankingApp-iOS",
+      "level": "Direct",
+      "source": "Swift Package Manager",
+      "vulnTotal": 0,
+      "vulns": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0
+      },
+      "notMaintained": false,
+      "isDeprecated": false,
+      "confidence": "high",
+      "matchReasons": [
+        "Package manager: Swift Package Manager",
+        "Known iOS library: KeychainAccess"
+      ]
+    },
+    {
+      "name": "CryptoSwift",
+      "version": "1.7.2",
+      "app": "MyBankingApp-iOS",
+      "level": "Direct",
+      "source": "Swift Package Manager",
+      "vulnTotal": 1,
+      "vulns": {
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 0
+      },
+      "notMaintained": false,
+      "isDeprecated": false,
+      "confidence": "high",
+      "matchReasons": [
+        "Package manager: Swift Package Manager",
+        "Known iOS library: CryptoSwift"
+      ]
+    },
+    {
+      "name": "lodash",
+      "version": "4.17.19",
+      "app": "MyBankingApp-iOS",
+      "level": "Direct",
+      "source": "npm",
+      "vulnTotal": 2,
+      "vulns": {
+        "critical": 1,
+        "high": 0,
+        "medium": 1,
+        "low": 0
+      },
+      "notMaintained": false,
+      "isDeprecated": false,
+      "confidence": "low",
+      "matchReasons": [
+        "iOS app: MyBankingApp-iOS"
+      ]
+    },
+    {
+      "name": "SwiftLint",
+      "version": "0.54.0",
+      "app": "MyBankingApp-iOS",
+      "level": "Direct",
+      "source": "Swift Package Manager",
+      "vulnTotal": 0,
+      "vulns": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0
+      },
+      "notMaintained": false,
+      "isDeprecated": false,
+      "confidence": "high",
+      "matchReasons": [
+        "Package manager: Swift Package Manager",
+        "Known iOS library: SwiftLint"
+      ]
+    },
+    {
+      "name": "libxml2",
+      "version": "2.11.6",
+      "app": "MyBankingApp-iOS",
+      "level": "Transitive",
+      "source": "CocoaPods",
+      "vulnTotal": 2,
+      "vulns": {
+        "critical": 1,
+        "high": 1,
+        "medium": 0,
+        "low": 0
+      },
+      "notMaintained": false,
+      "isDeprecated": false,
+      "confidence": "high",
+      "matchReasons": [
+        "Package manager: CocoaPods",
+        "Known iOS library: libxml2"
+      ]
+    },
+    {
+      "name": "OpenSSL",
+      "version": "1.1.1w",
+      "app": "MyBankingApp-iOS",
+      "level": "Transitive",
+      "source": "CocoaPods",
+      "vulnTotal": 2,
+      "vulns": {
+        "critical": 0,
+        "high": 1,
+        "medium": 1,
+        "low": 0
+      },
+      "notMaintained": false,
+      "isDeprecated": false,
+      "confidence": "high",
+      "matchReasons": [
+        "Package manager: CocoaPods",
+        "Known iOS library: OpenSSL"
+      ]
+    },
+    {
+      "name": "BoringSSL-GRPC",
+      "version": "0.0.27",
+      "app": "MyBankingApp-iOS",
+      "level": "Transitive",
+      "source": "CocoaPods",
+      "vulnTotal": 1,
+      "vulns": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 1
+      },
+      "notMaintained": false,
+      "isDeprecated": false,
+      "confidence": "high",
+      "matchReasons": [
+        "Package manager: CocoaPods",
+        "Known iOS library: BoringSSL-GRPC"
+      ]
+    },
+    {
+      "name": "CFNetwork",
+      "version": "0.0.0",
+      "app": "MyBankingApp-iOS",
+      "level": "Transitive",
+      "source": "iOS SDK",
+      "vulnTotal": 0,
+      "vulns": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0
+      },
+      "notMaintained": false,
+      "isDeprecated": false,
+      "confidence": "high",
+      "matchReasons": [
+        "Known iOS library: CFNetwork"
+      ]
+    },
+    {
+      "name": "SQLite.swift",
+      "version": "0.14.1",
+      "app": "HealthTracker-iOS",
+      "level": "Direct",
+      "source": "Swift Package Manager",
+      "vulnTotal": 0,
+      "vulns": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0
+      },
+      "notMaintained": false,
+      "isDeprecated": false,
+      "confidence": "high",
+      "matchReasons": [
+        "Package manager: Swift Package Manager",
+        "Known iOS library: SQLite.swift"
+      ]
+    },
+    {
+      "name": "Charts",
+      "version": "5.0.0",
+      "app": "HealthTracker-iOS",
+      "level": "Direct",
+      "source": "Swift Package Manager",
+      "vulnTotal": 0,
+      "vulns": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0
+      },
+      "notMaintained": false,
+      "isDeprecated": false,
+      "confidence": "high",
+      "matchReasons": [
+        "Package manager: Swift Package Manager",
+        "Known iOS library: Charts"
+      ]
+    },
+    {
+      "name": "Realm",
+      "version": "10.44.0",
+      "app": "HealthTracker-iOS",
+      "level": "Direct",
+      "source": "CocoaPods",
+      "vulnTotal": 1,
+      "vulns": {
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 0
+      },
+      "notMaintained": false,
+      "isDeprecated": false,
+      "confidence": "high",
+      "matchReasons": [
+        "Package manager: CocoaPods",
+        "Known iOS library: Realm"
+      ]
+    },
+    {
+      "name": "HealthKit",
+      "version": "17.0",
+      "app": "HealthTracker-iOS",
+      "level": "Direct",
+      "source": "iOS SDK",
+      "vulnTotal": 0,
+      "vulns": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0
+      },
+      "notMaintained": false,
+      "isDeprecated": false,
+      "confidence": "high",
+      "matchReasons": [
+        "Known iOS library: HealthKit"
+      ]
+    },
+    {
+      "name": "SnapKit",
+      "version": "5.6.0",
+      "app": "HealthTracker-iOS",
+      "level": "Direct",
+      "source": "Swift Package Manager",
+      "vulnTotal": 0,
+      "vulns": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0
+      },
+      "notMaintained": false,
+      "isDeprecated": false,
+      "confidence": "high",
+      "matchReasons": [
+        "Package manager: Swift Package Manager",
+        "Known iOS library: SnapKit"
+      ]
+    },
+    {
+      "name": "libexpat",
+      "version": "2.5.0",
+      "app": "HealthTracker-iOS",
+      "level": "Transitive",
+      "source": "CocoaPods",
+      "vulnTotal": 1,
+      "vulns": {
+        "critical": 0,
+        "high": 1,
+        "medium": 0,
+        "low": 0
+      },
+      "notMaintained": false,
+      "isDeprecated": false,
+      "confidence": "high",
+      "matchReasons": [
+        "Package manager: CocoaPods",
+        "Known iOS library: libexpat"
+      ]
+    },
+    {
+      "name": "RealmCore",
+      "version": "13.26.0",
+      "app": "HealthTracker-iOS",
+      "level": "Transitive",
+      "source": "CocoaPods",
+      "vulnTotal": 2,
+      "vulns": {
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 1
+      },
+      "notMaintained": false,
+      "isDeprecated": false,
+      "confidence": "high",
+      "matchReasons": [
+        "Package manager: CocoaPods",
+        "Known iOS library: RealmCore"
+      ]
+    },
+    {
+      "name": "libuv",
+      "version": "1.44.2",
+      "app": "HealthTracker-iOS",
+      "level": "Transitive",
+      "source": "CocoaPods",
+      "vulnTotal": 1,
+      "vulns": {
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 0
+      },
+      "notMaintained": false,
+      "isDeprecated": false,
+      "confidence": "high",
+      "matchReasons": [
+        "Package manager: CocoaPods",
+        "Known iOS library: libuv"
+      ]
+    },
+    {
+      "name": "sqlite3",
+      "version": "3.42.0",
+      "app": "HealthTracker-iOS",
+      "level": "Transitive",
+      "source": "CocoaPods",
+      "vulnTotal": 0,
+      "vulns": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0
+      },
+      "notMaintained": false,
+      "isDeprecated": false,
+      "confidence": "high",
+      "matchReasons": [
+        "Package manager: CocoaPods",
+        "Known iOS library: sqlite3"
+      ]
+    },
+    {
+      "name": "react-native",
+      "version": "0.71.8",
+      "app": "ShopEasy-iOS",
+      "level": "Direct",
+      "source": "npm",
+      "vulnTotal": 3,
+      "vulns": {
+        "critical": 1,
+        "high": 2,
+        "medium": 0,
+        "low": 0
+      },
+      "notMaintained": false,
+      "isDeprecated": false,
+      "confidence": "high",
+      "matchReasons": [
+        "Known iOS library: react-native"
+      ]
+    },
+    {
+      "name": "react",
+      "version": "18.2.0",
+      "app": "ShopEasy-iOS",
+      "level": "Direct",
+      "source": "npm",
+      "vulnTotal": 0,
+      "vulns": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0
+      },
+      "notMaintained": false,
+      "isDeprecated": false,
+      "confidence": "low",
+      "matchReasons": [
+        "iOS app: ShopEasy-iOS"
+      ]
+    },
+    {
+      "name": "@react-navigation/native",
+      "version": "6.1.9",
+      "app": "ShopEasy-iOS",
+      "level": "Direct",
+      "source": "npm",
+      "vulnTotal": 0,
+      "vulns": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0
+      },
+      "notMaintained": false,
+      "isDeprecated": false,
+      "confidence": "low",
+      "matchReasons": [
+        "iOS app: ShopEasy-iOS"
+      ]
+    },
+    {
+      "name": "stripe-react-native",
+      "version": "0.35.0",
+      "app": "ShopEasy-iOS",
+      "level": "Direct",
+      "source": "npm",
+      "vulnTotal": 1,
+      "vulns": {
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 0
+      },
+      "notMaintained": false,
+      "isDeprecated": false,
+      "confidence": "high",
+      "matchReasons": [
+        "Known iOS library: stripe-react-native"
+      ]
+    },
+    {
+      "name": "moment",
+      "version": "2.29.4",
+      "app": "ShopEasy-iOS",
+      "level": "Direct",
+      "source": "npm",
+      "vulnTotal": 0,
+      "vulns": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0
+      },
+      "notMaintained": true,
+      "isDeprecated": false,
+      "confidence": "low",
+      "matchReasons": [
+        "iOS app: ShopEasy-iOS"
+      ]
+    },
+    {
+      "name": "react-native-firebase",
+      "version": "18.6.0",
+      "app": "ShopEasy-iOS",
+      "level": "Direct",
+      "source": "npm",
+      "vulnTotal": 0,
+      "vulns": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0
+      },
+      "notMaintained": false,
+      "isDeprecated": false,
+      "confidence": "high",
+      "matchReasons": [
+        "Known iOS library: react-native-firebase"
+      ]
+    },
+    {
+      "name": "hermes-engine",
+      "version": "0.71.14",
+      "app": "ShopEasy-iOS",
+      "level": "Transitive",
+      "source": "npm",
+      "vulnTotal": 2,
+      "vulns": {
+        "critical": 1,
+        "high": 1,
+        "medium": 0,
+        "low": 0
+      },
+      "notMaintained": false,
+      "isDeprecated": false,
+      "confidence": "high",
+      "matchReasons": [
+        "Known iOS library: hermes-engine"
+      ]
+    },
+    {
+      "name": "jsc-android",
+      "version": "250231.0.0",
+      "app": "ShopEasy-iOS",
+      "level": "Transitive",
+      "source": "npm",
+      "vulnTotal": 1,
+      "vulns": {
+        "critical": 0,
+        "high": 1,
+        "medium": 0,
+        "low": 0
+      },
+      "notMaintained": false,
+      "isDeprecated": true,
+      "confidence": "high",
+      "matchReasons": [
+        "Known iOS library: jsc-android"
+      ]
+    },
+    {
+      "name": "nanopb",
+      "version": "2.30909.0",
+      "app": "ShopEasy-iOS",
+      "level": "Transitive",
+      "source": "CocoaPods",
+      "vulnTotal": 0,
+      "vulns": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0
+      },
+      "notMaintained": false,
+      "isDeprecated": false,
+      "confidence": "high",
+      "matchReasons": [
+        "Package manager: CocoaPods",
+        "Known iOS library: nanopb"
+      ]
+    },
+    {
+      "name": "GoogleUtilities",
+      "version": "7.12.0",
+      "app": "ShopEasy-iOS",
+      "level": "Transitive",
+      "source": "CocoaPods",
+      "vulnTotal": 0,
+      "vulns": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0
+      },
+      "notMaintained": false,
+      "isDeprecated": false,
+      "confidence": "high",
+      "matchReasons": [
+        "Package manager: CocoaPods",
+        "Known iOS library: GoogleUtilities"
+      ]
+    }
+  ]
+}

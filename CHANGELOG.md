@@ -87,3 +87,18 @@
   - Outputs JSON (full scoring data + methodology) and markdown report to experiments/risk-scores-{date}/
   - Supports app filtering via OX_APP_NAME env var or CLI arg
   - Realistic iOS mock data: 3 apps (banking/health/ecommerce) with distinct risk profiles and 32 libraries
+
+## E12: iOS-Specific Filter
+
+- **2026-02-22T15:10:00Z** — E12: iOS-Specific Filter (scripts/ios-filter.js)
+  - Multi-signal iOS classification engine combining 5 detection methods: package manager (CocoaPods/SPM/Carthage), known iOS library patterns (50+ regex), issue text pattern matching (24 iOS keyword patterns), Ox Mobile Security category, and app name heuristic
+  - Each issue scored 0-100 for iOS relevance based on match weight and signal count
+  - 15 iOS security categories organized into 5 groups: Dependency Management (CocoaPods, SPM, Carthage), Platform Security (ATS, Keychain, Cert Pinning, Biometrics, Code Signing), Configuration (Plist, Provisioning, Xcode, iOS SDK), Code Analysis (Swift, Obj-C, WebView, Binary), Third-Party SDKs (React Native, Firebase, HealthKit, Networking, Storage)
+  - SBOM analysis identifies iOS-relevant libraries by package manager, library name pattern matching, and source indicators
+  - Filters non-iOS issues (web, backend) from mixed-platform portfolios — correctly filtered 12/14 issues in mock data
+  - Per-app iOS issue breakdown with severity counts and category listings
+  - Vulnerable iOS library table ranked by total vulnerability count with maintenance flags
+  - Recommendations engine generates prioritized advice: CocoaPods updates, ATS hardening, cert pinning, keychain config, React Native upgrades, UIWebView migration, Firebase config security
+  - Outputs JSON (full classification data + categories) and markdown report to experiments/ios-filter-{date}/
+  - Supports app filtering via OX_APP_NAME env var or CLI arg
+  - Realistic mock data: 14 issues (12 iOS, 2 non-iOS) across 4 apps + 31 SBOM libraries with varied sources
