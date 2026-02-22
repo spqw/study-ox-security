@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ox Security — iOS Vulnerability Dashboard</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #0f172a;
+    color: #e2e8f0;
+    line-height: 1.6;
+    padding: 0;
+  }
+  .container { max-width: 1400px; margin: 0 auto; padding: 24px; }
+
+  /* Header */
+  .header { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 1px solid #334155; margin-bottom: 24px; }
+  .header h1 { font-size: 24px; font-weight: 700; }
+  .header h1 span { color: #3b82f6; }
+  .header-meta { text-align: right; color: #94a3b8; font-size: 13px; }
+  .data-source { display: inline-block; background: #3b82f620; color: #3b82f6; padding: 2px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; margin-bottom: 4px; }
+
+  /* KPI row */
+  .kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 24px; }
+  .kpi-card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 20px; text-align: center; transition: transform 0.15s, border-color 0.15s; }
+  .kpi-card:hover { transform: translateY(-2px); border-color: #3b82f640; }
+  .kpi-value { font-size: 36px; font-weight: 800; line-height: 1.1; }
+  .kpi-label { font-size: 13px; color: #94a3b8; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  /* Section */
+  .section { margin-bottom: 32px; }
+  .section-title { font-size: 18px; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .section-title::before { content: ''; width: 4px; height: 20px; background: #3b82f6; border-radius: 2px; }
+
+  /* Two-column layout */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+  @media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
+
+  /* Card */
+  .card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 24px; }
+
+  /* Donut chart */
+  .donut-container { display: flex; align-items: center; gap: 32px; }
+  .donut-svg { flex-shrink: 0; }
+  .donut-legend { display: flex; flex-direction: column; gap: 8px; }
+  .legend-item { display: flex; align-items: center; gap: 8px; font-size: 14px; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+  .legend-count { font-weight: 700; min-width: 30px; }
+
+  /* Source type bars */
+  .source-bars { display: flex; flex-direction: column; gap: 10px; }
+  .source-row { display: flex; align-items: center; gap: 12px; }
+  .source-label { width: 120px; font-size: 13px; color: #94a3b8; text-align: right; flex-shrink: 0; }
+  .source-track { flex: 1; height: 24px; background: #0f172a; border-radius: 4px; overflow: hidden; }
+  .source-fill { height: 100%; border-radius: 4px; transition: width 0.6s ease; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; font-size: 12px; font-weight: 600; min-width: 30px; }
+
+  /* SBOM health */
+  .health-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 16px; }
+  .health-item { text-align: center; }
+  .health-num { font-size: 28px; font-weight: 800; }
+  .health-lbl { font-size: 12px; color: #94a3b8; text-transform: uppercase; }
+  .health-bar { width: 100%; height: 8px; background: #0f172a; border-radius: 4px; margin-top: 16px; overflow: hidden; }
+  .health-fill { height: 100%; border-radius: 4px; transition: width 0.6s ease; }
+
+  /* App cards */
+  .app-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+  .app-card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 20px; transition: border-color 0.15s; }
+  .app-card:hover { border-color: #3b82f640; }
+  .app-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
+  .app-name { font-size: 16px; font-weight: 700; }
+  .app-type { font-size: 12px; color: #94a3b8; }
+  .risk-badge { font-size: 18px; font-weight: 800; padding: 4px 12px; border-radius: 8px; display: flex; align-items: baseline; gap: 4px; }
+  .risk-num { font-size: 12px; font-weight: 600; opacity: 0.7; }
+  .sev-bars { margin-bottom: 16px; display: flex; flex-direction: column; gap: 6px; }
+  .sev-bar-row { display: flex; align-items: center; gap: 8px; }
+  .sev-label { width: 14px; font-size: 12px; font-weight: 700; text-align: center; }
+  .sev-bar-track { flex: 1; height: 8px; background: #0f172a; border-radius: 4px; overflow: hidden; }
+  .sev-bar-fill { height: 100%; border-radius: 4px; transition: width 0.4s ease; min-width: 2px; }
+  .sev-count { font-size: 12px; font-weight: 600; width: 24px; text-align: right; color: #94a3b8; }
+  .app-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; border-top: 1px solid #334155; padding-top: 12px; }
+  .app-stat { text-align: center; }
+  .stat-val { display: block; font-size: 18px; font-weight: 700; }
+  .stat-label { font-size: 10px; color: #94a3b8; text-transform: uppercase; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; padding: 10px 12px; border-bottom: 2px solid #334155; color: #94a3b8; font-weight: 600; text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px; }
+  td { padding: 10px 12px; border-bottom: 1px solid #33415520; }
+  tr:hover td { background: #33415530; }
+  .issue-title { max-width: 350px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  /* Pills and badges */
+  .sev-pill { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+  .fix-badge { background: #22c55e20; color: #22c55e; padding: 2px 8px; border-radius: 8px; font-size: 11px; font-weight: 600; }
+  .no-fix { color: #94a3b8; font-size: 11px; }
+  .fix-action { color: #22c55e; font-size: 12px; }
+  .dep-badge { background: #dc262620; color: #dc2626; padding: 2px 8px; border-radius: 8px; font-size: 11px; font-weight: 600; }
+  .unm-badge { background: #f59e0b20; color: #f59e0b; padding: 2px 8px; border-radius: 8px; font-size: 11px; font-weight: 600; }
+  .ok-badge { color: #22c55e; font-size: 11px; }
+  .vuln-counts { white-space: nowrap; }
+  .vc { display: inline-block; padding: 1px 6px; border-radius: 6px; font-size: 11px; font-weight: 700; margin-right: 2px; }
+  .vc-c { background: #dc262620; color: #dc2626; }
+  .vc-h { background: #ea580c20; color: #ea580c; }
+  .vc-m { background: #ca8a0420; color: #ca8a04; }
+  .vc-l { background: #2563eb20; color: #2563eb; }
+
+  /* Footer */
+  .footer { text-align: center; color: #94a3b8; font-size: 12px; padding: 24px 0; border-top: 1px solid #334155; margin-top: 32px; }
+
+  /* Tab navigation */
+  .tabs { display: flex; gap: 4px; margin-bottom: 24px; background: #1e293b; border-radius: 12px; padding: 4px; border: 1px solid #334155; }
+  .tab { padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 600; color: #94a3b8; transition: all 0.15s; border: none; background: none; }
+  .tab:hover { color: #e2e8f0; background: #0f172a; }
+  .tab.active { color: #e2e8f0; background: #3b82f6; }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+</style>
+</head>
+<body>
+<div class="container">
+  <!-- Header -->
+  <div class="header">
+    <h1><span>Ox Security</span> — iOS Vulnerability Dashboard</h1>
+    <div class="header-meta">
+      <div class="data-source">Mock Data</div>
+      <div>Generated: 2/22/2026, 3:18:34 PM</div>
+      <div>Filter: All Applications</div>
+    </div>
+  </div>
+
+  <!-- KPI Row -->
+  <div class="kpi-row">
+    <div class="kpi-card">
+      <div class="kpi-value">4</div>
+      <div class="kpi-label">Applications</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value" style="color:#dc2626">16</div>
+      <div class="kpi-label">Total Issues</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value" style="color:#dc2626">4</div>
+      <div class="kpi-label">Critical</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value" style="color:#ea580c">6</div>
+      <div class="kpi-label">High</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value" style="color:#22c55e">5</div>
+      <div class="kpi-label">Auto-fixable</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-value">18</div>
+      <div class="kpi-label">Libraries</div>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab active" onclick="showTab('overview')">Overview</button>
+    <button class="tab" onclick="showTab('issues')">Issues</button>
+    <button class="tab" onclick="showTab('sbom')">SBOM Health</button>
+    <button class="tab" onclick="showTab('fixes')">Quick Fixes</button>
+  </div>
+
+  <!-- Tab: Overview -->
+  <div id="tab-overview" class="tab-content active">
+    <div class="two-col">
+      <!-- Severity Distribution -->
+      <div class="card">
+        <div class="section-title">Severity Distribution</div>
+        <div class="donut-container">
+          <svg class="donut-svg" viewBox="0 0 100 100" width="160" height="160">
+            <circle cx="50" cy="50" r="40" fill="none" stroke="#dc2626" stroke-width="12" stroke-dasharray="62.83185307179586 188.49555921538757" stroke-dashoffset="0" /><circle cx="50" cy="50" r="40" fill="none" stroke="#ea580c" stroke-width="12" stroke-dasharray="94.24777960769379 157.07963267948966" stroke-dashoffset="-62.83185307179586" /><circle cx="50" cy="50" r="40" fill="none" stroke="#ca8a04" stroke-width="12" stroke-dasharray="62.83185307179586 188.49555921538757" stroke-dashoffset="-157.07963267948963" /><circle cx="50" cy="50" r="40" fill="none" stroke="#2563eb" stroke-width="12" stroke-dasharray="31.41592653589793 219.9114857512855" stroke-dashoffset="-219.9114857512855" />
+            <text x="50" y="46" text-anchor="middle" fill="#e2e8f0" font-size="16" font-weight="800">16</text>
+            <text x="50" y="58" text-anchor="middle" fill="#94a3b8" font-size="7">ISSUES</text>
+          </svg>
+          <div class="donut-legend">
+            
+              <div class="legend-item">
+                <div class="legend-dot" style="background:#dc2626"></div>
+                <span class="legend-count">4</span>
+                <span>Critical</span>
+              </div>
+            
+              <div class="legend-item">
+                <div class="legend-dot" style="background:#ea580c"></div>
+                <span class="legend-count">6</span>
+                <span>High</span>
+              </div>
+            
+              <div class="legend-item">
+                <div class="legend-dot" style="background:#ca8a04"></div>
+                <span class="legend-count">4</span>
+                <span>Medium</span>
+              </div>
+            
+              <div class="legend-item">
+                <div class="legend-dot" style="background:#2563eb"></div>
+                <span class="legend-count">2</span>
+                <span>Low</span>
+              </div>
+            
+              <div class="legend-item">
+                <div class="legend-dot" style="background:#6b7280"></div>
+                <span class="legend-count">0</span>
+                <span>Info</span>
+              </div>
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- Source Distribution -->
+      <div class="card">
+        <div class="section-title">Issue Sources</div>
+        <div class="source-bars">
+          
+            <div class="source-row">
+              <span class="source-label">SAST</span>
+              <div class="source-track">
+                <div class="source-fill" style="width:100%;background:#3b82f6">8</div>
+              </div>
+            </div>
+          
+            <div class="source-row">
+              <span class="source-label">SCA</span>
+              <div class="source-track">
+                <div class="source-fill" style="width:62.5%;background:#8b5cf6">5</div>
+              </div>
+            </div>
+          
+            <div class="source-row">
+              <span class="source-label">IaC</span>
+              <div class="source-track">
+                <div class="source-fill" style="width:25%;background:#ec4899">2</div>
+              </div>
+            </div>
+          
+            <div class="source-row">
+              <span class="source-label">SecretDetection</span>
+              <div class="source-track">
+                <div class="source-fill" style="width:12.5%;background:#14b8a6">1</div>
+              </div>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <!-- App Cards -->
+    <div class="section">
+      <div class="section-title">Application Security Posture</div>
+      <div class="app-grid">
+        
+      <div class="app-card">
+        <div class="app-header">
+          <div>
+            <div class="app-name">SecureBank iOS</div>
+            <div class="app-type">Mobile</div>
+          </div>
+          <div class="risk-badge" style="background:#ea580c20;color:#ea580c;border:1px solid #ea580c40">
+            D <span class="risk-num">72</span>
+          </div>
+        </div>
+        <div class="sev-bars">
+          
+            <div class="sev-bar-row">
+              <span class="sev-label" style="color:#dc2626">C</span>
+              <div class="sev-bar-track">
+                <div class="sev-bar-fill" style="width:13.636363636363635%;background:#dc2626"></div>
+              </div>
+              <span class="sev-count">3</span>
+            </div>
+          
+            <div class="sev-bar-row">
+              <span class="sev-label" style="color:#ea580c">H</span>
+              <div class="sev-bar-track">
+                <div class="sev-bar-fill" style="width:36.36363636363637%;background:#ea580c"></div>
+              </div>
+              <span class="sev-count">8</span>
+            </div>
+          
+            <div class="sev-bar-row">
+              <span class="sev-label" style="color:#ca8a04">M</span>
+              <div class="sev-bar-track">
+                <div class="sev-bar-fill" style="width:68.18181818181817%;background:#ca8a04"></div>
+              </div>
+              <span class="sev-count">15</span>
+            </div>
+          
+            <div class="sev-bar-row">
+              <span class="sev-label" style="color:#2563eb">L</span>
+              <div class="sev-bar-track">
+                <div class="sev-bar-fill" style="width:100%;background:#2563eb"></div>
+              </div>
+              <span class="sev-count">22</span>
+            </div>
+          
+        </div>
+        <div class="app-stats">
+          <div class="app-stat"><span class="stat-val">6</span><span class="stat-label">Libraries</span></div>
+          <div class="app-stat"><span class="stat-val">4</span><span class="stat-label">Vulnerable</span></div>
+          <div class="app-stat"><span class="stat-val">3</span><span class="stat-label">Auto-fixable</span></div>
+          <div class="app-stat"><span class="stat-val">2</span><span class="stat-label">Deprecated</span></div>
+        </div>
+      </div>
+
+      <div class="app-card">
+        <div class="app-header">
+          <div>
+            <div class="app-name">HealthTracker Pro</div>
+            <div class="app-type">Mobile</div>
+          </div>
+          <div class="risk-badge" style="background:#f59e0b20;color:#f59e0b;border:1px solid #f59e0b40">
+            C <span class="risk-num">58</span>
+          </div>
+        </div>
+        <div class="sev-bars">
+          
+            <div class="sev-bar-row">
+              <span class="sev-label" style="color:#dc2626">C</span>
+              <div class="sev-bar-track">
+                <div class="sev-bar-fill" style="width:5.555555555555555%;background:#dc2626"></div>
+              </div>
+              <span class="sev-count">1</span>
+            </div>
+          
+            <div class="sev-bar-row">
+              <span class="sev-label" style="color:#ea580c">H</span>
+              <div class="sev-bar-track">
+                <div class="sev-bar-fill" style="width:27.77777777777778%;background:#ea580c"></div>
+              </div>
+              <span class="sev-count">5</span>
+            </div>
+          
+            <div class="sev-bar-row">
+              <span class="sev-label" style="color:#ca8a04">M</span>
+              <div class="sev-bar-track">
+                <div class="sev-bar-fill" style="width:66.66666666666666%;background:#ca8a04"></div>
+              </div>
+              <span class="sev-count">12</span>
+            </div>
+          
+            <div class="sev-bar-row">
+              <span class="sev-label" style="color:#2563eb">L</span>
+              <div class="sev-bar-track">
+                <div class="sev-bar-fill" style="width:100%;background:#2563eb"></div>
+              </div>
+              <span class="sev-count">18</span>
+            </div>
+          
+        </div>
+        <div class="app-stats">
+          <div class="app-stat"><span class="stat-val">5</span><span class="stat-label">Libraries</span></div>
+          <div class="app-stat"><span class="stat-val">2</span><span class="stat-label">Vulnerable</span></div>
+          <div class="app-stat"><span class="stat-val">1</span><span class="stat-label">Auto-fixable</span></div>
+          <div class="app-stat"><span class="stat-val">0</span><span class="stat-label">Deprecated</span></div>
+        </div>
+      </div>
+
+      <div class="app-card">
+        <div class="app-header">
+          <div>
+            <div class="app-name">ShopEasy Mobile</div>
+            <div class="app-type">Mobile</div>
+          </div>
+          <div class="risk-badge" style="background:#f59e0b20;color:#f59e0b;border:1px solid #f59e0b40">
+            C <span class="risk-num">45</span>
+          </div>
+        </div>
+        <div class="sev-bars">
+          
+            <div class="sev-bar-row">
+              <span class="sev-label" style="color:#dc2626">C</span>
+              <div class="sev-bar-track">
+                <div class="sev-bar-fill" style="width:0%;background:#dc2626"></div>
+              </div>
+              <span class="sev-count">0</span>
+            </div>
+          
+            <div class="sev-bar-row">
+              <span class="sev-label" style="color:#ea580c">H</span>
+              <div class="sev-bar-track">
+                <div class="sev-bar-fill" style="width:21.428571428571427%;background:#ea580c"></div>
+              </div>
+              <span class="sev-count">3</span>
+            </div>
+          
+            <div class="sev-bar-row">
+              <span class="sev-label" style="color:#ca8a04">M</span>
+              <div class="sev-bar-track">
+                <div class="sev-bar-fill" style="width:57.14285714285714%;background:#ca8a04"></div>
+              </div>
+              <span class="sev-count">8</span>
+            </div>
+          
+            <div class="sev-bar-row">
+              <span class="sev-label" style="color:#2563eb">L</span>
+              <div class="sev-bar-track">
+                <div class="sev-bar-fill" style="width:100%;background:#2563eb"></div>
+              </div>
+              <span class="sev-count">14</span>
+            </div>
+          
+        </div>
+        <div class="app-stats">
+          <div class="app-stat"><span class="stat-val">4</span><span class="stat-label">Libraries</span></div>
+          <div class="app-stat"><span class="stat-val">2</span><span class="stat-label">Vulnerable</span></div>
+          <div class="app-stat"><span class="stat-val">1</span><span class="stat-label">Auto-fixable</span></div>
+          <div class="app-stat"><span class="stat-val">0</span><span class="stat-label">Deprecated</span></div>
+        </div>
+      </div>
+
+      <div class="app-card">
+        <div class="app-header">
+          <div>
+            <div class="app-name">InternalTools iPad</div>
+            <div class="app-type">Mobile</div>
+          </div>
+          <div class="risk-badge" style="background:#4ade8020;color:#4ade80;border:1px solid #4ade8040">
+            B <span class="risk-num">33</span>
+          </div>
+        </div>
+        <div class="sev-bars">
+          
+            <div class="sev-bar-row">
+              <span class="sev-label" style="color:#dc2626">C</span>
+              <div class="sev-bar-track">
+                <div class="sev-bar-fill" style="width:0%;background:#dc2626"></div>
+              </div>
+              <span class="sev-count">0</span>
+            </div>
+          
+            <div class="sev-bar-row">
+              <span class="sev-label" style="color:#ea580c">H</span>
+              <div class="sev-bar-track">
+                <div class="sev-bar-fill" style="width:11.11111111111111%;background:#ea580c"></div>
+              </div>
+              <span class="sev-count">1</span>
+            </div>
+          
+            <div class="sev-bar-row">
+              <span class="sev-label" style="color:#ca8a04">M</span>
+              <div class="sev-bar-track">
+                <div class="sev-bar-fill" style="width:55.55555555555556%;background:#ca8a04"></div>
+              </div>
+              <span class="sev-count">5</span>
+            </div>
+          
+            <div class="sev-bar-row">
+              <span class="sev-label" style="color:#2563eb">L</span>
+              <div class="sev-bar-track">
+                <div class="sev-bar-fill" style="width:100%;background:#2563eb"></div>
+              </div>
+              <span class="sev-count">9</span>
+            </div>
+          
+        </div>
+        <div class="app-stats">
+          <div class="app-stat"><span class="stat-val">3</span><span class="stat-label">Libraries</span></div>
+          <div class="app-stat"><span class="stat-val">0</span><span class="stat-label">Vulnerable</span></div>
+          <div class="app-stat"><span class="stat-val">0</span><span class="stat-label">Auto-fixable</span></div>
+          <div class="app-stat"><span class="stat-val">0</span><span class="stat-label">Deprecated</span></div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tab: Issues -->
+  <div id="tab-issues" class="tab-content">
+    <div class="section">
+      <div class="section-title">Top Issues by Severity</div>
+      <div class="card" style="overflow-x:auto">
+        <table>
+          <thead><tr><th>#</th><th>Severity</th><th>Issue</th><th>App</th><th>Source</th><th>Fix</th></tr></thead>
+          <tbody>
+    <tr>
+      <td>1</td>
+      <td><span class="sev-pill" style="background:#dc262620;color:#dc2626;border:1px solid #dc262640">Critical</span></td>
+      <td class="issue-title">Remote Code Execution in CocoaPods dependency</td>
+      <td>SecureBank iOS</td>
+      <td>SCA</td>
+      <td><span class="fix-badge">Auto-fix</span></td>
+    </tr>
+
+    <tr>
+      <td>2</td>
+      <td><span class="sev-pill" style="background:#dc262620;color:#dc2626;border:1px solid #dc262640">Critical</span></td>
+      <td class="issue-title">SQL Injection via FMDB raw query</td>
+      <td>SecureBank iOS</td>
+      <td>SAST</td>
+      <td><span class="no-fix">Manual</span></td>
+    </tr>
+
+    <tr>
+      <td>3</td>
+      <td><span class="sev-pill" style="background:#dc262620;color:#dc2626;border:1px solid #dc262640">Critical</span></td>
+      <td class="issue-title">Prototype Pollution in lodash</td>
+      <td>HealthTracker Pro</td>
+      <td>SCA</td>
+      <td><span class="fix-badge">Auto-fix</span></td>
+    </tr>
+
+    <tr>
+      <td>4</td>
+      <td><span class="sev-pill" style="background:#dc262620;color:#dc2626;border:1px solid #dc262640">Critical</span></td>
+      <td class="issue-title">Missing App Transport Security exception</td>
+      <td>SecureBank iOS</td>
+      <td>IaC</td>
+      <td><span class="no-fix">Manual</span></td>
+    </tr>
+
+    <tr>
+      <td>5</td>
+      <td><span class="sev-pill" style="background:#ea580c20;color:#ea580c;border:1px solid #ea580c40">High</span></td>
+      <td class="issue-title">Hardcoded API key in source code</td>
+      <td>ShopEasy Mobile</td>
+      <td>SecretDetection</td>
+      <td><span class="no-fix">Manual</span></td>
+    </tr>
+
+    <tr>
+      <td>6</td>
+      <td><span class="sev-pill" style="background:#ea580c20;color:#ea580c;border:1px solid #ea580c40">High</span></td>
+      <td class="issue-title">Insecure Keychain access level</td>
+      <td>SecureBank iOS</td>
+      <td>SAST</td>
+      <td><span class="no-fix">Manual</span></td>
+    </tr>
+
+    <tr>
+      <td>7</td>
+      <td><span class="sev-pill" style="background:#ea580c20;color:#ea580c;border:1px solid #ea580c40">High</span></td>
+      <td class="issue-title">Missing certificate pinning</td>
+      <td>HealthTracker Pro</td>
+      <td>SAST</td>
+      <td><span class="no-fix">Manual</span></td>
+    </tr>
+
+    <tr>
+      <td>8</td>
+      <td><span class="sev-pill" style="background:#ea580c20;color:#ea580c;border:1px solid #ea580c40">High</span></td>
+      <td class="issue-title">OpenSSL vulnerability CVE-2024-5535</td>
+      <td>SecureBank iOS</td>
+      <td>SCA</td>
+      <td><span class="fix-badge">Auto-fix</span></td>
+    </tr>
+
+    <tr>
+      <td>9</td>
+      <td><span class="sev-pill" style="background:#ea580c20;color:#ea580c;border:1px solid #ea580c40">High</span></td>
+      <td class="issue-title">React Native bridge exposure</td>
+      <td>ShopEasy Mobile</td>
+      <td>SAST</td>
+      <td><span class="no-fix">Manual</span></td>
+    </tr>
+
+    <tr>
+      <td>10</td>
+      <td><span class="sev-pill" style="background:#ea580c20;color:#ea580c;border:1px solid #ea580c40">High</span></td>
+      <td class="issue-title">Weak biometric authentication fallback</td>
+      <td>HealthTracker Pro</td>
+      <td>SAST</td>
+      <td><span class="no-fix">Manual</span></td>
+    </tr>
+
+    <tr>
+      <td>11</td>
+      <td><span class="sev-pill" style="background:#ca8a0420;color:#ca8a04;border:1px solid #ca8a0440">Medium</span></td>
+      <td class="issue-title">Outdated Firebase SDK</td>
+      <td>ShopEasy Mobile</td>
+      <td>SCA</td>
+      <td><span class="fix-badge">Auto-fix</span></td>
+    </tr>
+
+    <tr>
+      <td>12</td>
+      <td><span class="sev-pill" style="background:#ca8a0420;color:#ca8a04;border:1px solid #ca8a0440">Medium</span></td>
+      <td class="issue-title">Unencrypted Core Data store</td>
+      <td>HealthTracker Pro</td>
+      <td>SAST</td>
+      <td><span class="no-fix">Manual</span></td>
+    </tr>
+
+    <tr>
+      <td>13</td>
+      <td><span class="sev-pill" style="background:#ca8a0420;color:#ca8a04;border:1px solid #ca8a0440">Medium</span></td>
+      <td class="issue-title">UIWebView usage detected</td>
+      <td>InternalTools iPad</td>
+      <td>SAST</td>
+      <td><span class="no-fix">Manual</span></td>
+    </tr>
+
+    <tr>
+      <td>14</td>
+      <td><span class="sev-pill" style="background:#ca8a0420;color:#ca8a04;border:1px solid #ca8a0440">Medium</span></td>
+      <td class="issue-title">Alamofire security configuration</td>
+      <td>SecureBank iOS</td>
+      <td>SCA</td>
+      <td><span class="fix-badge">Auto-fix</span></td>
+    </tr>
+
+    <tr>
+      <td>15</td>
+      <td><span class="sev-pill" style="background:#2563eb20;color:#2563eb;border:1px solid #2563eb40">Low</span></td>
+      <td class="issue-title">Excessive app permissions</td>
+      <td>ShopEasy Mobile</td>
+      <td>IaC</td>
+      <td><span class="no-fix">Manual</span></td>
+    </tr>
+
+    <tr>
+      <td>16</td>
+      <td><span class="sev-pill" style="background:#2563eb20;color:#2563eb;border:1px solid #2563eb40">Low</span></td>
+      <td class="issue-title">Debug logging enabled in release build</td>
+      <td>InternalTools iPad</td>
+      <td>SAST</td>
+      <td><span class="no-fix">Manual</span></td>
+    </tr></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tab: SBOM Health -->
+  <div id="tab-sbom" class="tab-content">
+    <div class="section">
+      <div class="section-title">SBOM Health Overview</div>
+      <div class="card">
+        <div class="health-grid">
+          <div class="health-item">
+            <div class="health-num" style="color:#e2e8f0">18</div>
+            <div class="health-lbl">Total Libraries</div>
+          </div>
+          <div class="health-item">
+            <div class="health-num" style="color:#dc2626">8</div>
+            <div class="health-lbl">Vulnerable</div>
+          </div>
+          <div class="health-item">
+            <div class="health-num" style="color:#f59e0b">2</div>
+            <div class="health-lbl">Deprecated</div>
+          </div>
+          <div class="health-item">
+            <div class="health-num" style="color:#ea580c">3</div>
+            <div class="health-lbl">Unmaintained</div>
+          </div>
+        </div>
+        <div class="health-bar">
+          <div class="health-fill" style="width:56%;background:#dc2626"></div>
+        </div>
+        <div style="text-align:center;margin-top:8px;font-size:13px;color:#94a3b8">56% of libraries have no known vulnerabilities</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Most Vulnerable Libraries</div>
+      <div class="card" style="overflow-x:auto">
+        <table>
+          <thead><tr><th>Library</th><th>Version</th><th>Source</th><th>App</th><th>Vulnerabilities</th><th>Status</th></tr></thead>
+          <tbody>
+    <tr>
+      <td>AFNetworking</td>
+      <td>3.2.1</td>
+      <td>CocoaPods</td>
+      <td>SecureBank iOS</td>
+      <td class="vuln-counts">
+        <span class="vc vc-c">1C</span>
+        <span class="vc vc-h">1H</span>
+        <span class="vc vc-m">1M</span>
+        
+      </td>
+      <td><span class="dep-badge">Deprecated</span></td>
+    </tr>
+
+    <tr>
+      <td>OpenSSL</td>
+      <td>1.1.1w</td>
+      <td>CocoaPods</td>
+      <td>SecureBank iOS</td>
+      <td class="vuln-counts">
+        
+        <span class="vc vc-h">1H</span>
+        <span class="vc vc-m">1M</span>
+        
+      </td>
+      <td><span class="ok-badge">OK</span></td>
+    </tr>
+
+    <tr>
+      <td>lodash</td>
+      <td>4.17.15</td>
+      <td>npm</td>
+      <td>HealthTracker Pro</td>
+      <td class="vuln-counts">
+        <span class="vc vc-c">1C</span>
+        <span class="vc vc-h">1H</span>
+        
+        
+      </td>
+      <td><span class="ok-badge">OK</span></td>
+    </tr>
+
+    <tr>
+      <td>Alamofire</td>
+      <td>5.8.0</td>
+      <td>SPM</td>
+      <td>SecureBank iOS</td>
+      <td class="vuln-counts">
+        
+        
+        <span class="vc vc-m">1M</span>
+        
+      </td>
+      <td><span class="ok-badge">OK</span></td>
+    </tr>
+
+    <tr>
+      <td>FMDB</td>
+      <td>2.7.5</td>
+      <td>CocoaPods</td>
+      <td>SecureBank iOS</td>
+      <td class="vuln-counts">
+        
+        <span class="vc vc-h">1H</span>
+        
+        
+      </td>
+      <td><span class="dep-badge">Deprecated</span></td>
+    </tr>
+
+    <tr>
+      <td>Realm</td>
+      <td>10.42.0</td>
+      <td>CocoaPods</td>
+      <td>HealthTracker Pro</td>
+      <td class="vuln-counts">
+        
+        
+        <span class="vc vc-m">1M</span>
+        
+      </td>
+      <td><span class="ok-badge">OK</span></td>
+    </tr>
+
+    <tr>
+      <td>react-native</td>
+      <td>0.72.4</td>
+      <td>npm</td>
+      <td>ShopEasy Mobile</td>
+      <td class="vuln-counts">
+        
+        <span class="vc vc-h">1H</span>
+        
+        
+      </td>
+      <td><span class="ok-badge">OK</span></td>
+    </tr>
+
+    <tr>
+      <td>Firebase</td>
+      <td>8.15.0</td>
+      <td>CocoaPods</td>
+      <td>ShopEasy Mobile</td>
+      <td class="vuln-counts">
+        
+        
+        <span class="vc vc-m">1M</span>
+        
+      </td>
+      <td><span class="ok-badge">OK</span></td>
+    </tr></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tab: Quick Fixes -->
+  <div id="tab-fixes" class="tab-content">
+    <div class="section">
+      <div class="section-title">Auto-Fix Opportunities (5 available)</div>
+      <div class="card" style="overflow-x:auto">
+        
+        <table>
+          <thead><tr><th>Severity</th><th>Issue</th><th>App</th><th>Fix Action</th></tr></thead>
+          <tbody>
+    <tr>
+      <td><span class="sev-pill" style="background:#dc262620;color:#dc2626">Critical</span></td>
+      <td>Remote Code Execution in CocoaPods dependency</td>
+      <td>SecureBank iOS</td>
+      <td class="fix-action">Upgrade AFNetworking to 4.0.1</td>
+    </tr>
+
+    <tr>
+      <td><span class="sev-pill" style="background:#dc262620;color:#dc2626">Critical</span></td>
+      <td>Prototype Pollution in lodash</td>
+      <td>HealthTracker Pro</td>
+      <td class="fix-action">Upgrade lodash to 4.17.21</td>
+    </tr>
+
+    <tr>
+      <td><span class="sev-pill" style="background:#ea580c20;color:#ea580c">High</span></td>
+      <td>OpenSSL vulnerability CVE-2024-5535</td>
+      <td>SecureBank iOS</td>
+      <td class="fix-action">Upgrade OpenSSL to 3.0.13</td>
+    </tr>
+
+    <tr>
+      <td><span class="sev-pill" style="background:#ca8a0420;color:#ca8a04">Medium</span></td>
+      <td>Outdated Firebase SDK</td>
+      <td>ShopEasy Mobile</td>
+      <td class="fix-action">Upgrade Firebase to 10.x</td>
+    </tr>
+
+    <tr>
+      <td><span class="sev-pill" style="background:#ca8a0420;color:#ca8a04">Medium</span></td>
+      <td>Alamofire security configuration</td>
+      <td>SecureBank iOS</td>
+      <td class="fix-action">Update Alamofire to 5.9.0</td>
+    </tr></tbody>
+        </table>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    Generated by Ox Security Study Toolkit &middot; 2026-02-22 &middot; Data source: Mock Data
+  </div>
+</div>
+
+<script>
+function showTab(name) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>

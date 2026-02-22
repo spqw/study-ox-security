@@ -168,3 +168,19 @@
   - Outputs JSON (full drift data + matrix + reasons) and markdown report to experiments/severity-drift-{date}/
   - Supports app filtering via OX_APP_NAME env var or CLI arg
   - Realistic mock data: 16 issues across 3 iOS apps with 9 drifted (3 upgraded, 6 downgraded), 15 severity change reasons across 6 categories
+
+## E17: HTML Dashboard
+
+- **2026-02-22T15:22:00Z** — E17: HTML Dashboard (scripts/html-dashboard.js)
+  - Generates a self-contained static HTML page — no server needed, just open in any browser
+  - Dark-themed, responsive dashboard with 4 tabbed views: Overview, Issues, SBOM Health, Quick Fixes
+  - Overview tab: KPI row (apps, issues, critical, high, auto-fixable, libraries), SVG donut chart for severity distribution, source type bar chart, per-app security posture cards with risk grades (A-F), severity mini-bars, and library stats
+  - Issues tab: sortable table of top 20 issues with severity pills, app attribution, source type, and auto-fix badges
+  - SBOM Health tab: library health grid (total, vulnerable, deprecated, unmaintained) with health percentage bar, most vulnerable libraries table with per-severity vulnerability counts and maintenance status badges
+  - Quick Fixes tab: auto-fix opportunity table showing severity, issue, app, and fix action for immediate remediation
+  - Per-app cards show: risk grade badge (A-F with score), severity bar charts (C/H/M/L), library count, vulnerable count, auto-fixable count, deprecated count
+  - All CSS and JS inlined — zero external dependencies, works offline
+  - Outputs dashboard.html and data.json to experiments/dashboard-{date}/
+  - Supports app filtering via OX_APP_NAME env var or CLI arg
+  - Falls back to realistic mock data (4 iOS apps, 16 issues, 18 libraries) when OX_API_KEY not configured
+  - Fetches apps, issues, and SBOM libraries from Ox Security API when key is available

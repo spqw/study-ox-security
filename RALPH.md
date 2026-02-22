@@ -47,7 +47,7 @@ Your goal: build the most useful iOS vulnerability analysis toolkit using the Ox
 
 ### Tier 3 — Reporting & Dashboards
 
-- [ ] **E17: HTML Dashboard** — Static HTML page showing vulnerability overview (no server needed, just open in browser)
+- [x] **E17: HTML Dashboard** — Static HTML page showing vulnerability overview (no server needed, just open in browser)
 - [ ] **E18: JSON Export for CI** — Generate machine-readable JSON that can be consumed by CI pipelines (exit code based on critical count)
 - [ ] **E19: Diff Report** — Compare two scan results and show what changed (new issues, resolved issues, severity changes)
 - [ ] **E20: Notification Script** — Generate webhook-compatible payloads for Slack/Teams when new critical issues appear
